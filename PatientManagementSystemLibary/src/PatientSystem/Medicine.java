@@ -9,7 +9,6 @@ package PatientSystem;
  *
  * @author Jonbr
  */
-public class Patient extends SystemUsers {
-    private int age;
-    private String gender;
+public class Medicine {
+    
 }
