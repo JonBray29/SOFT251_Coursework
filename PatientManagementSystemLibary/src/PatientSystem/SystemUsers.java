@@ -16,6 +16,7 @@ public abstract class SystemUsers {
     protected String addressLineOne;
     protected String city;
     protected String postcode;
+    protected String password;
 
     
     
@@ -63,6 +64,14 @@ public abstract class SystemUsers {
 
     public void setPostcode(String postcode) {
         this.postcode = postcode;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     

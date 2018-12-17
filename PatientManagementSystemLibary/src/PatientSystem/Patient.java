@@ -14,13 +14,14 @@ public class Patient extends SystemUsers {
     private String gender;
     
     public Patient(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, 
-    int age, String gender) {
+    String password, int age, String gender) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.addressLineOne = addressLineOne;
         this.city = city;
         this.postcode = postcode;
+        this.password = password;
         this.age = age;
         this.gender = gender;
     }

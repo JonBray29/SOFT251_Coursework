@@ -11,13 +11,14 @@ package PatientSystem;
  */
 public class Admin extends SystemUsers {
     
-        public Admin(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode) {
+        public Admin(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, String password) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.addressLineOne = addressLineOne;
         this.city = city;
         this.postcode = postcode;
+        this.password = password;
     }
     
     public void setUserId(String userId) {
