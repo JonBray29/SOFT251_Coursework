@@ -25,5 +25,5 @@ public class Doctor extends SystemUsers {
         
         this.userId = userId;
     }
-    
+  
 }

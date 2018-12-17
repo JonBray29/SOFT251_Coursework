@@ -17,7 +17,6 @@ public abstract class SystemUsers {
     protected String city;
     protected String postcode;
     protected String password;
-
     
     
     public String getUserId() {
@@ -73,6 +72,5 @@ public abstract class SystemUsers {
     public void setPassword(String password) {
         this.password = password;
     }
-
     
 }
