@@ -11,4 +11,7 @@ package PatientSystem;
  */
 public class Medicine {
     private String name;
+    private int quantityInStock;
+    private double priceToBuy;
+    private double priceToSell;
 }

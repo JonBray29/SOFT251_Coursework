@@ -13,10 +13,12 @@ public abstract class SystemUsers {
     protected String userId;
     protected String firstName;
     protected String lastName;
-    protected String addressLine1;
+    protected String addressLineOne;
     protected String city;
     protected String postcode;
 
+    
+    
     public String getUserId() {
         return userId;
     }
@@ -40,11 +42,11 @@ public abstract class SystemUsers {
     }
 
     public String getAddressLine1() {
-        return addressLine1;
+        return addressLineOne;
     }
 
     public void setAddressLine1(String addressLine1) {
-        this.addressLine1 = addressLine1;
+        this.addressLineOne = addressLineOne;
     }
 
     public String getCity() {

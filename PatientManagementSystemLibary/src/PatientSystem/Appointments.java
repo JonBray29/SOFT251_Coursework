@@ -10,5 +10,6 @@ package PatientSystem;
  * @author Jonbr
  */
 public class Appointments {
-    
+    private Doctor doctor;
+    private Patient patient;
 }

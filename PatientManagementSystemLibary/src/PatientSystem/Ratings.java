@@ -10,5 +10,5 @@ package PatientSystem;
  * @author Jonbr
  */
 public class Ratings {
-    
+    private Doctor doctor;
 }
