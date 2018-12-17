@@ -11,4 +11,18 @@ package PatientSystem;
  */
 public class Secretary extends SystemUsers {
     
+        public Secretary(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode) {
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.addressLineOne = addressLineOne;
+        this.city = city;
+        this.postcode = postcode;
+    }
+    
+    public void setUserId(String userId) {
+        
+        this.userId = userId;
+    }
+    
 }
