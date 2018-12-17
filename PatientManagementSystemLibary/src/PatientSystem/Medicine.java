@@ -10,5 +10,5 @@ package PatientSystem;
  * @author Jonbr
  */
 public class Medicine {
-    
+    private String name;
 }

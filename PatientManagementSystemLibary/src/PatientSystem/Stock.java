@@ -9,13 +9,6 @@ package PatientSystem;
  *
  * @author Jonbr
  */
-public class Prescription {
-    private Doctor doctor;
-    private Patient patient;
-    private String notes;
+public class Stock {
     private Medicine medicine;
-    private int quantity;
-    private String dosage;
-    
-    
 }
