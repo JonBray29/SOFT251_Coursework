@@ -28,6 +28,12 @@ public class Patient extends SystemUsers {
         this.age = age;
         this.gender = gender;
     }
+    
+    protected static String newUsername() {
+        String username;
+        
+        return username;
+    }
 
     public void setUserId(String userId) {
         

@@ -22,15 +22,16 @@ public abstract class SystemUsers {
     
     public static SystemUsers createUser(String type){
         SystemUsers user;
+        createId(type);
         switch(type){
             case"admin":
                 user = new Admin(); /* (username, firstname, lastname, address, cityaddress, postcodeAddress, pass);*/
                 break;
             case"doctor":
-                user = new Doctor(); /* (username, firstname, lastname, address, cityaddress, postcodeAddress, pass);*/
+                user = new Doctor(); /* (username, firstname, lastname, address, cityaddress, postcodeAddress, "password");*/
                 break;
             case"secretary":
-                user = new Secretary(); /* (username, firstname, lastname, address, cityaddress, postcodeAddress, pass);*/
+                user = new Secretary(); /* (username, firstname, lastname, address, cityaddress, postcodeAddress, "password");*/
                 break;
             case"patient":
                 user = new Patient(); /* (username, firstname, lastname, address, cityaddress, postcodeAddress, pass);*/
@@ -39,6 +40,27 @@ public abstract class SystemUsers {
                 user = null;
         }
         return user;
+    }
+    
+    private static String createId(String type){
+        String username;
+        switch(type){
+            case"admin":
+                username = Admin.newUsername();
+                break;
+            case"doctor":
+                username = Doctor.newUsername();
+                break;
+            case"secretary":
+                username = Secretary.newUsername();
+                break;
+            case"patient":
+                username = Patient.newUsername();
+                break;
+            default:
+                username = null;
+        }
+        return username;
     }
     
     public String getUserId() {

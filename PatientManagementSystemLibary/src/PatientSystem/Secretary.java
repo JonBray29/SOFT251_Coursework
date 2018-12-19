@@ -26,6 +26,12 @@ public class Secretary extends SystemUsers {
         this.password = password;
     }
     
+    protected static String newUsername() {
+        String username;
+        
+        return username;
+    }
+    
     public void setUserId(String userId) {
         
         this.userId = userId;
