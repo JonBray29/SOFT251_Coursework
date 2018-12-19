@@ -10,8 +10,6 @@ package PatientSystem;
  * @author Jonbr
  */
 public class Patient extends SystemUsers {
-    private int age;
-    private String gender;
     
     public Patient(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, 
     String password, int age, String gender) {
@@ -23,22 +21,6 @@ public class Patient extends SystemUsers {
         this.postcode = postcode;
         this.password = password;
         this.age = age;
-        this.gender = gender;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
         this.gender = gender;
     }
     

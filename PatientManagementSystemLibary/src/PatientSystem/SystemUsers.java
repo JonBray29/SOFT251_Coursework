@@ -17,6 +17,29 @@ public abstract class SystemUsers {
     protected String city;
     protected String postcode;
     protected String password;
+    protected int age;
+    protected String gender;
+    
+    public static SystemUsers createUser(type){
+        SystemUsers user;
+        switch(type){
+            case"admin":
+                user = new Admin();
+                break;
+            case"doctor":
+                user = new Doctor();
+                break;
+            case"secretary":
+                user = new Secretary();
+                break;
+            case"patient":
+                user = new Patient();
+                break;
+            default:
+                user = null;
+        }
+        return user;
+    }
     
     
     public String getUserId() {
@@ -72,5 +95,22 @@ public abstract class SystemUsers {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+    
     
 }
