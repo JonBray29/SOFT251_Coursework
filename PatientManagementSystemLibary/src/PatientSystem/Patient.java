@@ -11,6 +11,11 @@ package PatientSystem;
  */
 public class Patient extends SystemUsers {
     
+    /*remove this constructor and change systemusers construtor to variables*/
+    public Patient() {
+        
+    }
+    
     public Patient (String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, 
     String password, int age, String gender) {
         this.userId = userId;

@@ -10,8 +10,13 @@ package PatientSystem;
  * @author Jonbr
  */
 public class Secretary extends SystemUsers {
+        
+    /*remove this constructor and change systemusers construtor to variables*/
+    public Secretary() {
+            
+    }
     
-        public Secretary(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, String password) {
+    public Secretary(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, String password) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;

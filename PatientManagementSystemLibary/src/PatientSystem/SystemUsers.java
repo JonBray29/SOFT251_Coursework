@@ -20,20 +20,20 @@ public abstract class SystemUsers {
     protected int age;
     protected String gender;
     
-    public static SystemUsers createUser(type){
+    public static SystemUsers createUser(String type){
         SystemUsers user;
         switch(type){
             case"admin":
-                user = new Admin();
+                user = new Admin(); /* (username, firstname, lastname, address, cityaddress, postcodeAddress, pass);*/
                 break;
             case"doctor":
-                user = new Doctor();
+                user = new Doctor(); /* (username, firstname, lastname, address, cityaddress, postcodeAddress, pass);*/
                 break;
             case"secretary":
-                user = new Secretary();
+                user = new Secretary(); /* (username, firstname, lastname, address, cityaddress, postcodeAddress, pass);*/
                 break;
             case"patient":
-                user = new Patient();
+                user = new Patient(); /* (username, firstname, lastname, address, cityaddress, postcodeAddress, pass);*/
                 break;
             default:
                 user = null;
