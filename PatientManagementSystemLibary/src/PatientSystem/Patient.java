@@ -11,7 +11,7 @@ package PatientSystem;
  */
 public class Patient extends SystemUsers {
     
-    /*remove this constructor and change systemusers construtor to variables*/
+    //remove this constructor and change systemusers construtor to variables
     public Patient() {
         
     }

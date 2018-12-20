@@ -5,6 +5,8 @@
  */
 package PatientSystem;
 
+import java.util.HashMap;
+
 /**
  *
  * @author Jonbr
@@ -19,22 +21,23 @@ public abstract class SystemUsers {
     protected String password;
     protected int age;
     protected String gender;
+    protected HashMap<String, SystemUsers> map = new HashMap<String, SystemUsers>();
     
     public static SystemUsers createUser(String type){
         SystemUsers user;
         createId(type);
         switch(type){
             case"admin":
-                user = new Admin(); /* (username, firstname, lastname, address, cityaddress, postcodeAddress, pass);*/
+                user = new Admin(); // (username, firstname, lastname, address, cityaddress, postcodeAddress, pass);
                 break;
             case"doctor":
-                user = new Doctor(); /* (username, firstname, lastname, address, cityaddress, postcodeAddress, "password");*/
+                user = new Doctor(); // (username, firstname, lastname, address, cityaddress, postcodeAddress, "password");
                 break;
             case"secretary":
-                user = new Secretary(); /* (username, firstname, lastname, address, cityaddress, postcodeAddress, "password");*/
+                user = new Secretary(); // (username, firstname, lastname, address, cityaddress, postcodeAddress, "password");
                 break;
             case"patient":
-                user = new Patient(); /* (username, firstname, lastname, address, cityaddress, postcodeAddress, pass);*/
+                user = new Patient(); // (username, firstname, lastname, address, cityaddress, postcodeAddress, pass);
                 break;
             default:
                 user = null;
