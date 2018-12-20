@@ -31,7 +31,13 @@ public class Secretary extends SystemUsers {
     protected static String newUsername() {
         String username;
         Random rand = new Random();
-        username = "A" + rand.nextInt(10000);
+        username = "S" + rand.nextInt(10000);
+            if (registeredUsers.containsKey(username)){
+                newUsername();
+            }
+            else{
+                return username;
+            }
         return username;
     }
     
