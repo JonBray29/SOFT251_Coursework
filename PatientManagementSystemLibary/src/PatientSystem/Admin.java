@@ -5,6 +5,8 @@
  */
 package PatientSystem;
 
+import java.util.Random;
+
 /**
  *
  * @author Jonbr
@@ -28,7 +30,8 @@ public class Admin extends SystemUsers {
     
     protected static String newUsername() {
         String username;
-        
+        Random rand = new Random();
+        username = "A" + rand.nextInt(10000);
         return username;
     }
     

@@ -21,7 +21,7 @@ public abstract class SystemUsers {
     protected String password;
     protected int age;
     protected String gender;
-    protected HashMap<String, SystemUsers> map = new HashMap<String, SystemUsers>();
+    protected static HashMap<String, String> registeredUser = new HashMap<String, String>();
     
     public static SystemUsers createUser(String type){
         SystemUsers user;
@@ -29,15 +29,19 @@ public abstract class SystemUsers {
         switch(type){
             case"admin":
                 user = new Admin(); // (username, firstname, lastname, address, cityaddress, postcodeAddress, pass);
+                registeredUser.put(username, pass);
                 break;
             case"doctor":
                 user = new Doctor(); // (username, firstname, lastname, address, cityaddress, postcodeAddress, "password");
+                registeredUser.put(username, pass);
                 break;
             case"secretary":
                 user = new Secretary(); // (username, firstname, lastname, address, cityaddress, postcodeAddress, "password");
+                registeredUser.put(username, pass);
                 break;
             case"patient":
                 user = new Patient(); // (username, firstname, lastname, address, cityaddress, postcodeAddress, pass);
+                registeredUser.put(username, pass);
                 break;
             default:
                 user = null;
