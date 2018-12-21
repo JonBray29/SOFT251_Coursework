@@ -28,19 +28,19 @@ public abstract class SystemUsers {
         createId(type);
         switch(type){
             case"admin":
-                user = new Admin(); // (userId, firstName, lastName, addressLineOne, city, postcode, password);
+                user = new Admin(userId, firstName, lastName, addressLineOne, city, postcode, password); 
                 registeredUsers.put(userId, password);
                 break;
             case"doctor":
-                user = new Doctor(); // (userId, firstName, lastName, addressLineOne, city, postcode, password);
+                user = new Doctor(userId, firstName, lastName, addressLineOne, city, postcode, password);
                 registeredUsers.put(userId, password);
                 break;
             case"secretary":
-                user = new Secretary(); // (userId, firstName, lastName, addressLineOne, city, postcode, password);
+                user = new Secretary(userId, firstName, lastName, addressLineOne, city, postcode, password);
                 registeredUsers.put(userId, password);
                 break;
             case"patient":
-                user = new Patient(); // (userId, firstName, lastName, addressLineOne, city, postcode, password, age, gender);
+                user = new Patient(userId, firstName, lastName, addressLineOne, city, postcode, password, age, gender);
                 registeredUsers.put(userId, password);
                 break;
             default:

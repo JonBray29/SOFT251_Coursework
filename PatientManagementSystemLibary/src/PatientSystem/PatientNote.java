@@ -9,6 +9,7 @@ package PatientSystem;
  *
  * @author Jonbr
  */
-public class PatientHistory {
-    
+public class PatientNote {
+    private Patient patient;
+    private String notes;
 }
