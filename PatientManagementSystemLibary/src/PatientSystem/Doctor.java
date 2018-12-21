@@ -29,40 +29,16 @@ public class Doctor extends SystemUsers {
     }
     
     protected static String newUsername() {
-        String username;
         Random rand = new Random();
-        username = "D" + rand.nextInt(10000);
-            if (registeredUsers.containsKey(username)){
+        SystemUsers.userId = "D" + rand.nextInt(10000);
+            if (registeredUsers.containsKey(SystemUsers.userId)){
                 newUsername();
             }
             else{
-                return username;
+                return SystemUsers.userId;
             }
-        return username;
+        return SystemUsers.userId;
     }
     
-    public void setUserId(String userId) {
-        
-        this.userId = userId;
-    }
-    public void setfirstName(String firstName) {
-        
-        this.firstName = firstName;
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-    public void setAddressLineOne(String addressLineOne) {
-        this.addressLineOne = addressLineOne;
-    }
-    public void setCity(String city) {
-        this.city = city;
-    }
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
   
 }

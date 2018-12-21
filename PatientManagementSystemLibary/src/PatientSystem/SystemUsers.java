@@ -12,15 +12,15 @@ import java.util.HashMap;
  * @author Jonbr
  */
 public abstract class SystemUsers {
-    protected String userId;
-    protected String firstName;
-    protected String lastName;
-    protected String addressLineOne;
-    protected String city;
-    protected String postcode;
-    protected String password;
-    protected int age;
-    protected String gender;
+    protected static String userId;
+    protected static String firstName;
+    protected static String lastName;
+    protected static String addressLineOne;
+    protected static String city;
+    protected static String postcode;
+    protected static String password;
+    protected static int age;
+    protected static String gender;
     protected static HashMap<String, String> registeredUsers = new HashMap<String, String>();
     
     public static SystemUsers createUser(String type){
@@ -28,20 +28,20 @@ public abstract class SystemUsers {
         createId(type);
         switch(type){
             case"admin":
-                user = new Admin(); // (username, firstname, lastname, address, cityaddress, postcodeAddress, pass);
-                registeredUsers.put(username, pass);
+                user = new Admin(); // (userId, firstName, lastName, addressLineOne, city, postcode, password);
+                registeredUsers.put(userId, password);
                 break;
             case"doctor":
-                user = new Doctor(); // (username, firstname, lastname, address, cityaddress, postcodeAddress, "password");
-                registeredUsers.put(username, pass);
+                user = new Doctor(); // (userId, firstName, lastName, addressLineOne, city, postcode, password);
+                registeredUsers.put(userId, password);
                 break;
             case"secretary":
-                user = new Secretary(); // (username, firstname, lastname, address, cityaddress, postcodeAddress, "password");
-                registeredUsers.put(username, pass);
+                user = new Secretary(); // (userId, firstName, lastName, addressLineOne, city, postcode, password);
+                registeredUsers.put(userId, password);
                 break;
             case"patient":
-                user = new Patient(); // (username, firstname, lastname, address, cityaddress, postcodeAddress, pass);
-                registeredUsers.put(username, pass);
+                user = new Patient(); // (userId, firstName, lastName, addressLineOne, city, postcode, password, age, gender);
+                registeredUsers.put(userId, password);
                 break;
             default:
                 user = null;
@@ -50,29 +50,28 @@ public abstract class SystemUsers {
     }
     
     private static String createId(String type){
-        String username;
         switch(type){
             case"admin":
-                username = Admin.newUsername();
+                SystemUsers.userId = Admin.newUsername();
                 break;
             case"doctor":
-                username = Doctor.newUsername();
+                SystemUsers.userId = Doctor.newUsername();
                 break;
             case"secretary":
-                username = Secretary.newUsername();
+                SystemUsers.userId = Secretary.newUsername();
                 break;
             case"patient":
-                username = Patient.newUsername();
+                SystemUsers.userId = Patient.newUsername();
                 break;
             default:
-                username = null;
+                SystemUsers.userId = null;
         }
-        return username;
+        return SystemUsers.userId;
     }
     
-    private void login() { /*Maybe make into a boolean*/
-        if(registeredUsers.containsKey(username)) {
-            if(username == registeredUsers.get(username)) {
+    public void login() { /*Maybe make into a boolean*/
+        if(registeredUsers.containsKey(userId)) {
+            if(userId == registeredUsers.get(userId)) {
                 /*Allow login*/
             }
             else {
@@ -84,6 +83,33 @@ public abstract class SystemUsers {
         }
     }
     
+    /*setters*/
+    public static void setFirstName(String firstName) {
+        SystemUsers.firstName = firstName;
+    }
+    public static void setLastName(String lastName) {
+        SystemUsers.lastName = lastName;
+    }
+    public static void setAddressLineOne(String addressLineOne) {
+        SystemUsers.addressLineOne = addressLineOne;
+    }
+    public static void setCity(String city) {
+        SystemUsers.city = city;
+    }
+    public static void setPostcode(String postcode) {
+        SystemUsers.postcode = postcode;
+    }
+    public static void setPassword(String password) {
+        SystemUsers.password = password;
+    }
+    public static void setAge(int age) {
+        SystemUsers.age = age;
+    }
+    public static void setGender(String gender) {
+        SystemUsers.gender = gender;
+    }    
+    
+    /*getters*/
     public String getUserId() {
         return userId;
     }
