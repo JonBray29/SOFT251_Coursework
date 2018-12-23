@@ -6,12 +6,15 @@
 package PatientSystem;
 
 import java.util.Random;
+import java.util.ArrayList;
 
 /**
  *
  * @author Jonbr
  */
 public class Doctor extends SystemUsers {
+    private ArrayList doctorAppointments;
+    private ArrayList ratings;
     
     //remove this constructor and change systemusers construtor to variables
     public Doctor() {
@@ -26,6 +29,8 @@ public class Doctor extends SystemUsers {
         this.city = city;
         this.postcode = postcode;
         this.password = password;
+        this.doctorAppointments = new ArrayList();
+        this.ratings = new ArrayList();
     }
     
     protected static String newUsername() {
@@ -39,6 +44,22 @@ public class Doctor extends SystemUsers {
             }
         return SystemUsers.userId;
     }
+
+    public void setDoctorAppointments(ArrayList doctorAppointments) {
+        this.doctorAppointments = doctorAppointments;
+    }
+    public void setRatings(ArrayList ratings) {
+        this.ratings = ratings;
+    }
+    
+    public ArrayList getDoctorAppointments() {
+        return doctorAppointments;
+    }
+    public ArrayList getRatings() {
+        return ratings;
+    }
+    
+
     
   
 }
