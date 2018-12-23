@@ -69,17 +69,20 @@ public abstract class SystemUsers {
         return SystemUsers.userId;
     }
     
-    public void login() { /*Maybe make into a boolean*/
+    public boolean login() { 
         if(registeredUsers.containsKey(userId)  == true) {
             if(userId == registeredUsers.get(userId)  == true) {
                 /*Allow login*/
+                return true;
             }
             else {
                 /*password not recognised*/
+                return false;
             }
         }
         else {
             /*Username not recognised*/
+            return false;
         }
     }
     
