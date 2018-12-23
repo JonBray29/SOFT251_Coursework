@@ -10,5 +10,6 @@ package PatientSystem;
  * @author Jonbr
  */
 public class Orders {
-    
+    private Medicine medicine;
+    private int quantity;
 }

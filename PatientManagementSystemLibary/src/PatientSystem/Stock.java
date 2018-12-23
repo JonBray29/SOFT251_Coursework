@@ -11,4 +11,31 @@ package PatientSystem;
  */
 public class Stock {
     private Medicine medicine;
+    private int quantityInStock;
+    private double priceToBuy;
+    
+    public Stock(Medicine medicine, int quantityInStock, double priceToBuy, double priceToSell) {
+        this.medicine = medicine;
+        this.quantityInStock = quantityInStock;
+        this.priceToBuy = priceToBuy;
+    }
+
+    /*Setters*/
+    public void setQuantityInStock(int quantityInStock) {
+    this.quantityInStock = quantityInStock;
+    }
+    public void setPriceToBuy(double priceToBuy) {
+        this.priceToBuy = priceToBuy;
+    }
+    
+    /*Getters*/
+    public Medicine getMedicine() {
+        return medicine;
+    }
+    public int getQuantityInStock() {
+        return quantityInStock;
+    }
+    public double getPriceToBuy() {
+        return priceToBuy;
+    }
 }

@@ -12,4 +12,5 @@ package PatientSystem;
 public class Appointments {
     private Doctor doctor;
     private Patient patient;
+    private String dateTime;
 }

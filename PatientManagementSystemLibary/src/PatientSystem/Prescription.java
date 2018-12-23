@@ -28,6 +28,5 @@ public class Prescription {
     
     public static void createPrescription() {
         Prescription prescription = new Prescription(doctor, patient, notes, medicine, quantity, dosage);
-        
     }
 }

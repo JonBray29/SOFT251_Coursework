@@ -10,6 +10,6 @@ package PatientSystem;
  * @author Jonbr
  */
 public class PatientNote {
-    private Patient patient;
     private String notes;
+    private String dateTime;
 }
