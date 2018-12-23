@@ -10,12 +10,12 @@ package PatientSystem;
  * @author Jonbr
  */
 public class Prescription {
-    private Doctor doctor;
-    private Patient patient;
-    private String notes;
-    private Medicine medicine;
-    private int quantity;
-    private String dosage;
+    private static Doctor doctor;
+    private static Patient patient;
+    private static String notes;
+    private static Medicine medicine;
+    private static int quantity;
+    private static String dosage;
     
     public Prescription(Doctor doctor, Patient patient, String notes, Medicine medicine, int quantity, String dosage) {
         this.doctor = doctor;
@@ -25,4 +25,9 @@ public class Prescription {
         this.quantity = quantity;
         this.dosage = dosage;
     };
+    
+    public static void createPrescription() {
+        Prescription prescription = new Prescription(doctor, patient, notes, medicine, quantity, dosage);
+        
+    }
 }

@@ -31,7 +31,7 @@ public class Admin extends SystemUsers {
     protected static String newUsername() {
         Random rand = new Random();
         SystemUsers.userId = "A" + rand.nextInt(10000);
-            if (registeredUsers.containsKey(SystemUsers.userId)){
+            if (registeredUsers.containsKey(SystemUsers.userId) == true){
                 newUsername();
             }
             else{

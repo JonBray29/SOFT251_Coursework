@@ -70,8 +70,8 @@ public abstract class SystemUsers {
     }
     
     public void login() { /*Maybe make into a boolean*/
-        if(registeredUsers.containsKey(userId)) {
-            if(userId == registeredUsers.get(userId)) {
+        if(registeredUsers.containsKey(userId)  == true) {
+            if(userId == registeredUsers.get(userId)  == true) {
                 /*Allow login*/
             }
             else {
