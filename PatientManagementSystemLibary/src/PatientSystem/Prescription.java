@@ -25,8 +25,45 @@ public class Prescription {
         this.quantity = quantity;
         this.dosage = dosage;
     };
-    
-    public static void createPrescription() {
-        Prescription prescription = new Prescription(doctor, patient, notes, medicine, quantity, dosage);
+
+    /*Setters*/
+    public static void setDoctor(Doctor doctor) {
+        Prescription.doctor = doctor;
     }
+    public static void setPatient(Patient patient) {
+        Prescription.patient = patient;
+    }
+    public static void setNotes(String notes) {
+        Prescription.notes = notes;
+    }
+    public static void setMedicine(Medicine medicine) {
+        Prescription.medicine = medicine;
+    }
+    public static void setQuantity(int quantity) {
+        Prescription.quantity = quantity;
+    }
+    public static void setDosage(String dosage) {
+        Prescription.dosage = dosage;
+    }
+    
+    /*Getters*/
+    public static Doctor getDoctor() {
+        return doctor;
+    }
+    public static Patient getPatient() {
+        return patient;
+    }
+    public static String getNotes() {
+        return notes;
+    }
+    public static Medicine getMedicine() {
+        return medicine;
+    }
+    public static int getQuantity() {
+        return quantity;
+    }
+    public static String getDosage() {
+        return dosage;
+    }
+          
 }

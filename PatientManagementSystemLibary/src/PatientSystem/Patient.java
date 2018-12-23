@@ -50,6 +50,7 @@ public class Patient extends SystemUsers {
         return SystemUsers.userId;
     }
     
+    /*Setters*/
     public void setPatientAppointments(ArrayList patientAppointments) {
         this.patientAppointments = patientAppointments;
     }
@@ -60,6 +61,7 @@ public class Patient extends SystemUsers {
         this.notes = notes;
     }
 
+    /*Getters*/
     public ArrayList getPatientAppointments() {
         return patientAppointments;
     }

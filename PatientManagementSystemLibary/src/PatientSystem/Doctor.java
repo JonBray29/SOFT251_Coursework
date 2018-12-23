@@ -45,6 +45,7 @@ public class Doctor extends SystemUsers {
         return SystemUsers.userId;
     }
 
+    /*Setters*/
     public void setDoctorAppointments(ArrayList doctorAppointments) {
         this.doctorAppointments = doctorAppointments;
     }
@@ -52,6 +53,7 @@ public class Doctor extends SystemUsers {
         this.ratings = ratings;
     }
     
+    /*Getters*/
     public ArrayList getDoctorAppointments() {
         return doctorAppointments;
     }
