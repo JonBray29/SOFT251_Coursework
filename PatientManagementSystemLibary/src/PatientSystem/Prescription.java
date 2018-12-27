@@ -25,6 +25,7 @@ public class Prescription {
         this.quantity = quantity;
         this.dosage = dosage;
     };
+    
 
     /*Setters*/
     public static void setDoctor(Doctor doctor) {

@@ -12,10 +12,16 @@ package PatientSystem;
 public class PatientNote {
     private String notes;
     private String dateTime;
+    private Patient patient;
     
     public PatientNote(String notes, String dateTime){
         this.notes = notes;
         this.dateTime = dateTime;
+    }
+    
+    public void createNote() {
+        PatientNote note = new PatientNote(notes, dateTime);
+        patient.getNotes().add(note);
     }
 
     /*Setters*/
@@ -25,6 +31,9 @@ public class PatientNote {
     public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
     }
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 
     /*Getters*/
     public String getNotes() {
@@ -32,6 +41,9 @@ public class PatientNote {
     }
     public String getDateTime() {
         return dateTime;
+    }
+    public Patient getPatient() {
+        return patient;
     }
     
     
