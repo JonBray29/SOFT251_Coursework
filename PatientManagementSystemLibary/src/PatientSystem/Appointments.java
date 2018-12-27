@@ -14,15 +14,16 @@ public class Appointments {
     private Patient patient;
     private String dateTime;
     
-    public Appointments(Doctor doctor, Patient patient, String datetime) {
+    private Appointments(Doctor doctor, Patient patient, String datetime) {
         this.doctor = doctor;
         this.patient = patient;
         this.dateTime = dateTime;
     }
     
-    public void createCompany() {
+    public void createAppointment() {
         Appointments appointment = new Appointments(doctor, patient, dateTime);
-        doctor.getDoctorAppointments().Add(appointment); /*Correct statement*/
+        doctor.getDoctorAppointments().add(appointment);
+        patient.getPatientAppointments().add(appointment);
     }
 
     /*Setters*/

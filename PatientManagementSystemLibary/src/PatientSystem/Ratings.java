@@ -10,28 +10,41 @@ package PatientSystem;
  * @author Jonbr
  */
 public class Ratings {
-    private int rating;
+    private int ratingValue;
     private String comments;
-    
-    public Ratings(int rating, String comments) {
-        this.rating = rating;
+    private Doctor doctor;
+
+    private Ratings(int ratingValue, String comments) {
+        this.ratingValue = ratingValue;
         this.comments = comments;
+    }
+    
+    public void createRating() {
+        Ratings rating = new Ratings(ratingValue, comments);
+        doctor.getRatings().add(rating);
     }
 
     /*Setters*/
-    public void setRating(int rating) {
-        this.rating = rating;
+    public void setRatingValue(int ratingValue) {
+        this.ratingValue = ratingValue;
     }
     public void setComments(String comments) {
         this.comments = comments;
     }
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+    
 
     /*Getters*/
-    public int getRating() {
-        return rating;
+    public int getRatingValue() {
+        return ratingValue;
     }
     public String getComments() {
         return comments;
+    }
+    public Doctor getDoctor() {
+        return doctor;
     }
     
     
