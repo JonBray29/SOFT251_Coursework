@@ -19,6 +19,11 @@ public class Appointments {
         this.patient = patient;
         this.dateTime = dateTime;
     }
+    
+    public void createCompany() {
+        Appointments appointment = new Appointments(doctor, patient, dateTime);
+        doctor.getDoctorAppointments().Add(appointment); /*Correct statement*/
+    }
 
     /*Setters*/
     public void setDoctor(Doctor doctor) {
