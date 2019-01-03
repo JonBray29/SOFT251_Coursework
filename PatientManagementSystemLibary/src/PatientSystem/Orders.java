@@ -13,11 +13,15 @@ public class Orders {
     private Medicine medicine;
     private int quantity;
     
-    public Orders(Medicine medicine, int quantaty) {
+    private Orders(Medicine medicine, int quantity) {
         this.medicine = medicine;
         this.quantity = quantity;
     }
 
+    public void createOrders(){
+        Orders order = new Orders(medicine, quantity);
+    }
+    
     /*Setters*/
     public void setMedicine(Medicine medicine) {
         this.medicine = medicine;

@@ -17,7 +17,7 @@ public class Prescription {
     private static int quantity;
     private static String dosage;
     
-    public Prescription(Doctor doctor, Patient patient, String notes, Medicine medicine, int quantity, String dosage) {
+    private Prescription(Doctor doctor, Patient patient, String notes, Medicine medicine, int quantity, String dosage) {
         this.doctor = doctor;
         this.patient = patient;
         this.notes = notes;
@@ -26,6 +26,9 @@ public class Prescription {
         this.dosage = dosage;
     };
     
+    public void createPrescription(){
+        Prescription prescription = new Prescription(doctor, patient, notes, medicine, quantity, dosage);
+    }
 
     /*Setters*/
     public static void setDoctor(Doctor doctor) {

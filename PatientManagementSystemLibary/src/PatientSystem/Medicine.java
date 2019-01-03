@@ -11,33 +11,23 @@ package PatientSystem;
  */
 public class Medicine {
     private String name;
-    private int quantityInStock;
-    private double priceToBuy;
     
-    public Medicine(String name, int quantityInStock, double priceToBuy, double priceToSell) {
+    private Medicine(String name) {
         this.name = name;
-        this.quantityInStock = quantityInStock;
-        this.priceToBuy = priceToBuy;
     }
 
-    /*Setters*/
-    public void setQuantityInStock(int quantityInStock) {
-    this.quantityInStock = quantityInStock;
+    public void createMedicine(){
+        Medicine medicine = new Medicine(name);
     }
-    public void setPriceToBuy(double priceToBuy) {
-        this.priceToBuy = priceToBuy;
+    
+    /*Setters*/
+    public void setName(String name) {
+        this.name = name;
     }
     
     /*Getters*/
     public String getName() {
         return name;
     }
-    public int getQuantityInStock() {
-        return quantityInStock;
-    }
-    public double getPriceToBuy() {
-        return priceToBuy;
-    }
-        
     
 }

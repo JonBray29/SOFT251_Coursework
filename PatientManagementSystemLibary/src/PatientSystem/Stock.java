@@ -14,12 +14,16 @@ public class Stock {
     private int quantityInStock;
     private double priceToBuy;
     
-    public Stock(Medicine medicine, int quantityInStock, double priceToBuy, double priceToSell) {
+    private Stock(Medicine medicine, int quantityInStock, double priceToBuy) {
         this.medicine = medicine;
         this.quantityInStock = quantityInStock;
         this.priceToBuy = priceToBuy;
     }
 
+    public void createStock(){
+        Stock stock = new Stock(medicine, quantityInStock, priceToBuy);
+    }
+    
     /*Setters*/
     public void setQuantityInStock(int quantityInStock) {
     this.quantityInStock = quantityInStock;
