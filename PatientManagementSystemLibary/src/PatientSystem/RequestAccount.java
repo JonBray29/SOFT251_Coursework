@@ -9,17 +9,17 @@ package PatientSystem;
  *
  * @author Jonbr
  */
-public class CreateAccountRequest {
+public class RequestAccount {
     
-    protected String firstName;
-    protected String lastName;
-    protected String addressLineOne;
-    protected String city;
-    protected String postcode;
-    protected String password;
-    protected int age;
+    private String firstName;
+    private String lastName;
+    private String addressLineOne;
+    private String city;
+    private String postcode;
+    private String password;
+    private int age;
 
-    public CreateAccountRequest(String firstName, String lastName, String addressLineOne, String city, String postcode, String password, int age) {
+    private RequestAccount(String firstName, String lastName, String addressLineOne, String city, String postcode, String password, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.addressLineOne = addressLineOne;
@@ -27,6 +27,10 @@ public class CreateAccountRequest {
         this.postcode = postcode;
         this.password = password;
         this.age = age;
+    }
+    
+    public void requestAccount(){
+        RequestAccount account = new RequestAccount(firstName, lastName, addressLineOne, city, postcode, password, age);
     }
 
     /*Setters*/
@@ -74,6 +78,5 @@ public class CreateAccountRequest {
     public int getAge() {
         return age;
     }
-    
     
 }

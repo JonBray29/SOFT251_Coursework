@@ -9,23 +9,22 @@ package PatientSystem;
  *
  * @author Jonbr
  */
-public class Appointments {
+public class RequestAppointment {
+    
     private Doctor doctor;
     private Patient patient;
     private String dateTime;
     
-    private Appointments(Doctor doctor, Patient patient, String dateTime) {
+    private RequestAppointment(Doctor doctor, Patient patient, String dateTime) {
         this.doctor = doctor;
         this.patient = patient;
         this.dateTime = dateTime;
     }
     
     public void createAppointment() {
-        Appointments appointment = new Appointments(doctor, patient, dateTime);
-        doctor.getDoctorAppointments().add(appointment);
-        patient.getPatientAppointments().add(appointment);
+        RequestAppointment appointment = new RequestAppointment(doctor, patient, dateTime);
     }
-
+    
     /*Setters*/
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
@@ -47,7 +46,4 @@ public class Appointments {
     public String getDateTime() {
         return dateTime;
     }
-    
-    
-    
 }
