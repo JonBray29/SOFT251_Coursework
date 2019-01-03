@@ -14,7 +14,7 @@ public class PatientNote {
     private String dateTime;
     private Patient patient;
     
-    public PatientNote(String notes, String dateTime){
+    private PatientNote(String notes, String dateTime){
         this.notes = notes;
         this.dateTime = dateTime;
     }
