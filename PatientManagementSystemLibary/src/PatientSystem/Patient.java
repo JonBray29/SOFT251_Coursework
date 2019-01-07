@@ -16,11 +16,7 @@ public class Patient extends SystemUsers {
     private ArrayList patientAppointments;
     private ArrayList prescriptions;
     private ArrayList notes;
-    
-    //remove this constructor and change systemusers construtor to variables
-    public Patient() {
-        
-    }
+    private ArrayList notifications;
     
     public Patient (String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, 
     String password, int age, String gender) {
@@ -36,6 +32,7 @@ public class Patient extends SystemUsers {
         this.patientAppointments = new ArrayList();
         this.prescriptions = new ArrayList();
         this.notes = new ArrayList();
+        this.notifications = new ArrayList();
     }
     
     protected static String newUsername() {
@@ -60,6 +57,9 @@ public class Patient extends SystemUsers {
     public void setNotes(ArrayList notes) {
         this.notes = notes;
     }
+    public void setNotifications(ArrayList notifications) {
+        this.notifications = notifications;
+    }
 
     /*Getters*/
     public ArrayList getPatientAppointments() {
@@ -70,6 +70,9 @@ public class Patient extends SystemUsers {
     }
     public ArrayList getNotes() {
         return notes;
+    }
+    public ArrayList getNotifications() {
+        return notifications;
     }
      
 }

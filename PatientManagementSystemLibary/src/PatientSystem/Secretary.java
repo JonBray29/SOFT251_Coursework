@@ -5,6 +5,7 @@
  */
 package PatientSystem;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -13,10 +14,8 @@ import java.util.Random;
  */
 public class Secretary extends SystemUsers {
         
-    //remove this constructor and change systemusers construtor to variables
-    public Secretary() {
-            
-    }
+    private ArrayList notifications;
+
     
     public Secretary(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, String password) {
         this.userId = userId;
@@ -26,6 +25,8 @@ public class Secretary extends SystemUsers {
         this.city = city;
         this.postcode = postcode;
         this.password = password;
+        this.notifications = new ArrayList();
+           
     }
     
     protected static String newUsername() {
@@ -40,4 +41,12 @@ public class Secretary extends SystemUsers {
         return SystemUsers.userId;
     }
 
+    /*Setters*/
+    public void setNotifications(ArrayList notifications) {
+        this.notifications = notifications;
+    }
+    /*Getters*/
+    public ArrayList getNotifications() {
+        return notifications;
+    }
 }

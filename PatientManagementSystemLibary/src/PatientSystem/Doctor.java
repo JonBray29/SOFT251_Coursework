@@ -15,11 +15,7 @@ import java.util.ArrayList;
 public class Doctor extends SystemUsers {
     private ArrayList doctorAppointments;
     private ArrayList ratings;
-    
-    //remove this constructor and change systemusers construtor to variables
-    public Doctor() {
-        
-    }
+    private ArrayList notifications;
     
     public Doctor(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, String password) {
         this.userId = userId;
@@ -31,6 +27,7 @@ public class Doctor extends SystemUsers {
         this.password = password;
         this.doctorAppointments = new ArrayList();
         this.ratings = new ArrayList();
+        this.notifications = new ArrayList();
     }
     
     protected static String newUsername() {
@@ -52,6 +49,9 @@ public class Doctor extends SystemUsers {
     public void setRatings(ArrayList ratings) {
         this.ratings = ratings;
     }
+    public void setNotifications(ArrayList notifications) {
+        this.notifications = notifications;
+    }    
     
     /*Getters*/
     public ArrayList getDoctorAppointments() {
@@ -60,8 +60,8 @@ public class Doctor extends SystemUsers {
     public ArrayList getRatings() {
         return ratings;
     }
-    
-
-    
+    public ArrayList getNotifications() {
+        return notifications;
+    }    
   
 }
