@@ -5,6 +5,8 @@
  */
 package PatientSystem;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Jonbr
@@ -23,7 +25,7 @@ public class Stock {
     public void createStock(){
         Stock stock = new Stock(medicine, quantityInStock, priceToBuy);
     }
-    
+       
     /*Setters*/
     public void setQuantityInStock(int quantityInStock) {
     this.quantityInStock = quantityInStock;

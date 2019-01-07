@@ -26,8 +26,12 @@ public class Prescription {
         this.dosage = dosage;
     };
     
-    public void createPrescription(){
+    public void createPrescription() {
         Prescription prescription = new Prescription(doctor, patient, notes, medicine, quantity, dosage);
+    }
+    
+    public void collectPrescription() {
+        
     }
 
     /*Setters*/
