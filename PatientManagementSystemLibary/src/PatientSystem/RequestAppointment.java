@@ -14,6 +14,7 @@ public class RequestAppointment {
     private Doctor doctor;
     private Patient patient;
     private String dateTime;
+    private Secretary secretary;
     
     private RequestAppointment(Doctor doctor, Patient patient, String dateTime) {
         this.doctor = doctor;
@@ -23,6 +24,7 @@ public class RequestAppointment {
     
     public void createAppointment() {
         RequestAppointment appointment = new RequestAppointment(doctor, patient, dateTime);
+        secretary.getNotifications().add(appointment);
     }
     
     /*Setters*/

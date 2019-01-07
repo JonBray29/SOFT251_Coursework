@@ -23,7 +23,9 @@ public class Appointments {
     public void createAppointment() {
         Appointments appointment = new Appointments(doctor, patient, dateTime);
         doctor.getDoctorAppointments().add(appointment);
+        doctor.getNotifications().add(appointment);
         patient.getPatientAppointments().add(appointment);
+        patient.getNotifications().add(appointment);
     }
 
     /*Setters*/

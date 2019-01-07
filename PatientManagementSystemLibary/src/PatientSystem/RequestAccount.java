@@ -18,6 +18,8 @@ public class RequestAccount {
     private String postcode;
     private String password;
     private int age;
+    private Secretary secretary;
+    private Patient patient;
 
     private RequestAccount(String firstName, String lastName, String addressLineOne, String city, String postcode, String password, int age) {
         this.firstName = firstName;
@@ -31,6 +33,12 @@ public class RequestAccount {
     
     public void requestAccount(){
         RequestAccount account = new RequestAccount(firstName, lastName, addressLineOne, city, postcode, password, age);
+        secretary.getNotifications().add(account);
+    }
+    
+    public void requestTermination() {
+        String termination = patient + " Requested account termination";
+        secretary.getNotifications().add(termination);
     }
 
     /*Setters*/
