@@ -33,7 +33,9 @@ public class Stock {
         {
             if (s.getQuantityInStock() <= 5)
             {
-                
+                String type = s.getMedicine().toString();
+                String notification = type + " is running low on stock";
+                /*add to secretarys notifications*/
             }
         }
     }
