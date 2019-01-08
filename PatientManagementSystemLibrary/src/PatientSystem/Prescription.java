@@ -5,6 +5,8 @@
  */
 package PatientSystem;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Jonbr
@@ -16,6 +18,7 @@ public class Prescription {
     private static Medicine medicine;
     private static int quantity;
     private static String dosage;
+    private static ArrayList<Prescription> uncollectedPrescriptions;
     
     private Prescription(Doctor doctor, Patient patient, String notes, Medicine medicine, int quantity, String dosage) {
         this.doctor = doctor;
@@ -28,10 +31,12 @@ public class Prescription {
     
     public void createPrescription() {
         Prescription prescription = new Prescription(doctor, patient, notes, medicine, quantity, dosage);
+        patient.getPrescriptions().add(prescription);
+        uncollectedPrescriptions.add(prescription);
     }
     
     public void collectPrescription() {
-        
+        /*Delete from uncollected presriptions when collected, prescriptions will still stay in patients arraylist*/
     }
 
     /*Setters*/

@@ -48,6 +48,10 @@ public class Stock {
     public void setPriceToBuy(double priceToBuy) {
         this.priceToBuy = priceToBuy;
     }
+    public static void setListOfQuantity(ArrayList<Stock> listOfQuantity) {
+        Stock.listOfQuantity = listOfQuantity;
+    }
+    
     
     /*Getters*/
     public Medicine getMedicine() {
@@ -59,4 +63,8 @@ public class Stock {
     public double getPriceToBuy() {
         return priceToBuy;
     }
+    public static ArrayList<Stock> getListOfQuantity() {
+        return listOfQuantity;
+    }
+    
 }
