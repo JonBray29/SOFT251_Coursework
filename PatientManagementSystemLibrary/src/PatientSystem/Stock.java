@@ -31,7 +31,7 @@ public class Stock {
     public void checkStock() {
         for(Stock s : listOfQuantity)
         {
-            if(Stock.listOfQuantity.getQuantityInStock =< 5)
+            if (s.getQuantityInStock() <= 5)
             {
                 
             }
