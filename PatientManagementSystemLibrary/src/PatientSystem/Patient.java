@@ -14,8 +14,8 @@ import java.util.ArrayList;
  */
 public class Patient extends SystemUsers {
     private ArrayList patientAppointments;
-    private ArrayList prescriptions;
-    private ArrayList notes;
+    private ArrayList<Prescription> prescriptions;
+    private ArrayList<PatientNote> notes;
     private ArrayList<Notifications> notifications;
     
     public Patient (String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, 
@@ -30,8 +30,8 @@ public class Patient extends SystemUsers {
         this.age = age;
         this.gender = gender;*/
         this.patientAppointments = new ArrayList();
-        this.prescriptions = new ArrayList();
-        this.notes = new ArrayList();
+        this.prescriptions = new ArrayList<Prescription>();
+        this.notes = new ArrayList<PatientNote>();
         this.notifications = new ArrayList<Notifications>();
     }
     
