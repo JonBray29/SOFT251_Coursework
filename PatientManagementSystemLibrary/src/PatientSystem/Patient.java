@@ -16,7 +16,7 @@ public class Patient extends SystemUsers {
     private ArrayList patientAppointments;
     private ArrayList prescriptions;
     private ArrayList notes;
-    private ArrayList notifications;
+    private ArrayList<Notifications> notifications;
     
     public Patient (String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, 
     String password, int age, String gender) {
@@ -28,11 +28,11 @@ public class Patient extends SystemUsers {
         this.postcode = postcode;
         this.password = password;
         this.age = age;
-        this.gender = gender;
+        this.gender = gender;*/
         this.patientAppointments = new ArrayList();
         this.prescriptions = new ArrayList();
         this.notes = new ArrayList();
-        this.notifications = new ArrayList();*/
+        this.notifications = new ArrayList<Notifications>();
     }
     
     protected static String newUsername() {

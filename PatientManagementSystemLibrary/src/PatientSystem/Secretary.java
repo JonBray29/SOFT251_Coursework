@@ -14,7 +14,7 @@ import java.util.Random;
  */
 public class Secretary extends SystemUsers {
         
-    private ArrayList notifications;
+    private ArrayList<Notifications> notifications;
 
     
     public Secretary(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, String password) {
@@ -24,8 +24,8 @@ public class Secretary extends SystemUsers {
         this.addressLineOne = addressLineOne;
         this.city = city;
         this.postcode = postcode;
-        this.password = password;
-        this.notifications = new ArrayList();*/
+        this.password = password;*/
+        this.notifications = new ArrayList<Notifications>();
            
     }
     

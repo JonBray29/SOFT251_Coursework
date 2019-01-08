@@ -35,7 +35,8 @@ public class Stock {
             {
                 String type = s.getMedicine().toString();
                 String notification = type + " is running low on stock";
-                /*add to secretarys notifications*/
+                Notifications notifications = new Notifications(notification);
+                /*Add to secretarys notifications*/
             }
         }
     }

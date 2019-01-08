@@ -22,10 +22,12 @@ public class Appointments {
     
     public void createAppointment() {
         Appointments appointment = new Appointments(doctor, patient, dateTime);
+        String notification = "New appointment has been made: " + appointment.toString();
+        Notifications notifications = new Notifications(notification);
         doctor.getDoctorAppointments().add(appointment);
-        doctor.getNotifications().add(appointment);
+        doctor.getNotifications().add(notifications);
         patient.getPatientAppointments().add(appointment);
-        patient.getNotifications().add(appointment);
+        patient.getNotifications().add(notifications);
     }
 
     /*Setters*/
