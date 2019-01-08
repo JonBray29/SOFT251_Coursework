@@ -5,6 +5,8 @@
  */
 package PatientSystem;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Jonbr
@@ -13,6 +15,7 @@ public class Appointments {
     private Doctor doctor;
     private Patient patient;
     private String dateTime;
+    private static ArrayList<Appointments> allAppointments;
     
     private Appointments(Doctor doctor, Patient patient, String dateTime) {
         this.doctor = doctor;
@@ -28,6 +31,7 @@ public class Appointments {
         doctor.getNotifications().add(notifications);
         patient.getPatientAppointments().add(appointment);
         patient.getNotifications().add(notifications);
+        allAppointments.add(appointment);
     }
 
     /*Setters*/

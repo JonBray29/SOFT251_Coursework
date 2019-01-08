@@ -5,6 +5,8 @@
  */
 package PatientSystem;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Jonbr
@@ -14,7 +16,7 @@ public class RequestAppointment {
     private Doctor doctor;
     private Patient patient;
     private String dateTime;
-    private Secretary secretary;
+    private static ArrayList<RequestAppointment> requestAppointment;
     
     private RequestAppointment(Doctor doctor, Patient patient, String dateTime) {
         this.doctor = doctor;
@@ -24,7 +26,10 @@ public class RequestAppointment {
     
     public void createAppointment() {
         RequestAppointment appointment = new RequestAppointment(doctor, patient, dateTime);
-        secretary.getNotifications().add(appointment);
+        requestAppointment.add(appointment);
+        String notification = "New appointment requested: " + appointment.toString();
+        Notifications notifications = new Notifications(notification);
+        /*notify all secretarys, add list of secretarys and loop through list*/
     }
     
     /*Setters*/
@@ -37,7 +42,11 @@ public class RequestAppointment {
     public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
     }
-
+    public static void setRequestAppointment(ArrayList<RequestAppointment> requestAppointment) {
+        RequestAppointment.requestAppointment = requestAppointment;
+    }
+    
+    
     /*Getters*/
     public Doctor getDoctor() {
         return doctor;
@@ -48,4 +57,8 @@ public class RequestAppointment {
     public String getDateTime() {
         return dateTime;
     }
+    public static ArrayList<RequestAppointment> getRequestAppointment() {
+        return requestAppointment;
+    }
+    
 }

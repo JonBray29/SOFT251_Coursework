@@ -5,6 +5,8 @@
  */
 package PatientSystem;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Jonbr
@@ -18,8 +20,8 @@ public class RequestAccount {
     private String postcode;
     private String password;
     private int age;
-    private Secretary secretary;
     private Patient patient;
+    private static ArrayList<RequestAccount> requestAccount;
 
     private RequestAccount(String firstName, String lastName, String addressLineOne, String city, String postcode, String password, int age) {
         this.firstName = firstName;
@@ -33,12 +35,16 @@ public class RequestAccount {
     
     public void requestAccount(){
         RequestAccount account = new RequestAccount(firstName, lastName, addressLineOne, city, postcode, password, age);
-        secretary.getNotifications().add(account);
+        requestAccount.add(account);
+        String notification = "new account requested";
+        Notifications notifications = new Notifications(notification);
+        /*Notify all secretarys*/
     }
     
     public void requestTermination() {
-        String termination = patient + " Requested account termination";
-        secretary.getNotifications().add(termination);
+        String notification = patient + " Requested account termination";
+        Notifications notifications = new Notifications(notification);
+        /*Notify all secretarys*/
     }
 
     /*Setters*/
@@ -63,6 +69,13 @@ public class RequestAccount {
     public void setAge(int age) {
         this.age = age;
     }
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+    public static void setRequestAccount(ArrayList<RequestAccount> requestAccount) {
+        RequestAccount.requestAccount = requestAccount;
+    }
+    
 
     /*Getters*/
     public String getFirstName() {
@@ -86,5 +99,7 @@ public class RequestAccount {
     public int getAge() {
         return age;
     }
-    
+    public static ArrayList<RequestAccount> getRequestAccount() {
+        return requestAccount;
+    }
 }
