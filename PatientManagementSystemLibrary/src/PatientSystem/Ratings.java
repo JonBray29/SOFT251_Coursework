@@ -33,8 +33,7 @@ public class Ratings {
     }
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
-    }
-    
+    }    
 
     /*Getters*/
     public int getRatingValue() {

@@ -18,14 +18,14 @@ public class Secretary extends SystemUsers {
 
     
     public Secretary(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, String password) {
-        this.userId = userId;
+        /*this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.addressLineOne = addressLineOne;
         this.city = city;
         this.postcode = postcode;
         this.password = password;
-        this.notifications = new ArrayList();
+        this.notifications = new ArrayList();*/
            
     }
     

@@ -15,6 +15,7 @@ public class Stock {
     private Medicine medicine;
     private int quantityInStock;
     private double priceToBuy;
+    private static ArrayList<Stock> listOfQuantity = new ArrayList<Stock>();
     
     private Stock(Medicine medicine, int quantityInStock, double priceToBuy) {
         this.medicine = medicine;
@@ -24,6 +25,17 @@ public class Stock {
 
     public void createStock(){
         Stock stock = new Stock(medicine, quantityInStock, priceToBuy);
+        listOfQuantity.add(stock);
+    }
+    
+    public void checkStock() {
+        for(Stock s : listOfQuantity)
+        {
+            if(Stock.listOfQuantity.getQuantityInStock =< 5)
+            {
+                
+            }
+        }
     }
        
     /*Setters*/

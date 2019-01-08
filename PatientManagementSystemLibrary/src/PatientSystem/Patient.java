@@ -20,7 +20,7 @@ public class Patient extends SystemUsers {
     
     public Patient (String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, 
     String password, int age, String gender) {
-        this.userId = userId;
+        /*this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.addressLineOne = addressLineOne;
@@ -32,7 +32,7 @@ public class Patient extends SystemUsers {
         this.patientAppointments = new ArrayList();
         this.prescriptions = new ArrayList();
         this.notes = new ArrayList();
-        this.notifications = new ArrayList();
+        this.notifications = new ArrayList();*/
     }
     
     protected static String newUsername() {

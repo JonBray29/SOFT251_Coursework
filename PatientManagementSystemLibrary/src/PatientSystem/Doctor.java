@@ -18,7 +18,7 @@ public class Doctor extends SystemUsers {
     private ArrayList notifications;
     
     public Doctor(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, String password) {
-        this.userId = userId;
+        /*this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.addressLineOne = addressLineOne;
@@ -27,7 +27,7 @@ public class Doctor extends SystemUsers {
         this.password = password;
         this.doctorAppointments = new ArrayList();
         this.ratings = new ArrayList();
-        this.notifications = new ArrayList();
+        this.notifications = new ArrayList();*/
     }
     
     protected static String newUsername() {
