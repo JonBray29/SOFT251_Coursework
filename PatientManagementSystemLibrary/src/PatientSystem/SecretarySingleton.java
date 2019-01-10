@@ -14,10 +14,10 @@ import java.util.ArrayList;
 public class SecretarySingleton {
     
     private static SecretarySingleton instance;
-    private ArrayList<SystemUsers> listOfSecretarys = null;
+    private ArrayList<Secretary> listOfSecretarys = null;
 
     private SecretarySingleton() {
-        listOfSecretarys = new ArrayList<SystemUsers>();
+        listOfSecretarys = new ArrayList<Secretary>();
     }
     
     public static SecretarySingleton getInstance() {
@@ -27,7 +27,7 @@ public class SecretarySingleton {
         return instance;
     }
 
-    public ArrayList<SystemUsers> getListOfSecretarys() {
+    public ArrayList<Secretary> getListOfSecretarys() {
         return listOfSecretarys;
     }
 
