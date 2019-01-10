@@ -38,6 +38,7 @@ public abstract class SystemUsers {
             case"secretary":
                 user = new Secretary(userId, firstName, lastName, addressLineOne, city, postcode, password);
                 registeredUsers.put(userId, password);
+                SecretarySingleton.getInstance().getListOfSecretarys().add(user);
                 break;
             case"patient":
                 user = new Patient(userId, firstName, lastName, addressLineOne, city, postcode, password, age, gender);
