@@ -29,7 +29,9 @@ public class RequestAppointment {
         requestAppointment.add(appointment);
         String notification = "New appointment requested: " + appointment.toString();
         Notifications notifications = new Notifications(notification);
-        /*notify all secretarys, add list of secretarys and loop through list*/
+        for(Secretary i : SecretarySingleton.getInstance().getListOfSecretarys()) {
+            i.getNotifications().add(notification);
+        }
     }
     
     /*Setters*/

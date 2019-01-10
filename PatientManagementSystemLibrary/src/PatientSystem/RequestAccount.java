@@ -38,13 +38,17 @@ public class RequestAccount {
         requestAccount.add(account);
         String notification = "new account requested";
         Notifications notifications = new Notifications(notification);
-        /*Notify all secretarys*/
+        for(Secretary i : SecretarySingleton.getInstance().getListOfSecretarys()) {
+            i.getNotifications().add(notification);
+        }
     }
     
     public void requestTermination() {
-        String notification = patient + " Requested account termination";
+        String notification = patient.getUserId() + patient.getFirstName() + patient.getLastName() + " Requested account termination";
         Notifications notifications = new Notifications(notification);
-        /*Notify all secretarys*/
+        for(Secretary i : SecretarySingleton.getInstance().getListOfSecretarys()) {
+            i.getNotifications().add(notification);
+        }
     }
 
     /*Setters*/
