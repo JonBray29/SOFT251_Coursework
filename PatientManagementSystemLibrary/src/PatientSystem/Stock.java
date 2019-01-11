@@ -16,6 +16,7 @@ public class Stock {
     private int quantityInStock;
     private double priceToBuy;
     private static ArrayList<Stock> listOfStock = new ArrayList<Stock>();
+    private int newQuantity;
     
     private Stock(Medicine medicine, int quantityInStock, double priceToBuy) {
         this.medicine = medicine;
@@ -48,9 +49,18 @@ public class Stock {
         switch(type.toLowerCase()){
             case"add":
                 //add medicine for all in listOfStock, if getMedicine = medicine update.
+
+                for(Stock s : listOfStock) {
+                    if(s.getMedicine() == medicine)
+                    newQuantity = s.getQuantityInStock() + quantity;
+                    s.setQuantityInStock(newQuantity);
+                }
                 break;
             case"remove":
-                //remove medicine
+                for(Stock s : listOfStock) {
+                    if(s.getMedicine() == medicine)
+                    newQuantity = s.getQuantityInStock() - quantity;
+                    s.setQuantityInStock(newQuantity);
                 break;
         }
     }
