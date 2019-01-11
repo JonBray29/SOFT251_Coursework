@@ -14,17 +14,19 @@ import java.util.ArrayList;
 public class Appointments {
     private Doctor doctor;
     private Patient patient;
-    private String dateTime;
+    private String date;
+    private String time;
     private static ArrayList<Appointments> allAppointments;
     
-    private Appointments(Doctor doctor, Patient patient, String dateTime) {
+    private Appointments(Doctor doctor, Patient patient, String date, String time) {
         this.doctor = doctor;
         this.patient = patient;
-        this.dateTime = dateTime;
+        this.date = date;
+        this.time = time;
     }
     
     public void createAppointment() {
-        Appointments appointment = new Appointments(doctor, patient, dateTime);
+        Appointments appointment = new Appointments(doctor, patient, date, time);
         String notification = "New appointment has been made: " + appointment.toString();
         Notifications notifications = new Notifications(notification);
         doctor.getDoctorAppointments().add(appointment);
@@ -41,9 +43,13 @@ public class Appointments {
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
-    public void setDateTime(String dateTime) {
-        this.dateTime = dateTime;
+    public void setDate(String date) {
+        this.date = date;
     }
+    public void setTime(String time) {
+        this.time = time;
+    }
+    
 
     /*Getters*/
     public Doctor getDoctor() {
@@ -52,10 +58,15 @@ public class Appointments {
     public Patient getPatient() {
         return patient;
     }
-    public String getDateTime() {
-        return dateTime;
+    public String getDate() {
+        return date;
     }
-    
-    
+    public String getTime() {
+        return time;
+    }
+    public static ArrayList<Appointments> getAllAppointments() {
+        return allAppointments;
+    }
+      
     
 }

@@ -36,7 +36,7 @@ public class Prescription {
     }
     
     public void collectPrescription() {
-        /*Delete from uncollected presriptions when collected, prescriptions will still stay in patients arraylist*/
+        //Delete from uncollected prescriptions, also update the stock, using current update method.
     }
 
     /*Setters*/

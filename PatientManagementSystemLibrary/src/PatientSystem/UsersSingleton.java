@@ -19,6 +19,7 @@ public class UsersSingleton {
 
     private UsersSingleton() {
         listOfUsers = new ArrayList<SystemUsers>();
+        listOfSecretarys = new ArrayList<Secretary>();
     }
     
     public static UsersSingleton getInstance() {

@@ -22,6 +22,10 @@ public class Orders {
         Orders order = new Orders(medicine, quantity);
     }
     
+    public void deliverOrder() {
+        //Simulate a delivery, updates the stock using existing update method.
+    }
+    
     /*Setters*/
     public void setMedicine(Medicine medicine) {
         this.medicine = medicine;
