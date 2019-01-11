@@ -38,8 +38,6 @@ public abstract class SystemUsers {
             case"secretary":
                 user = new Secretary(userId, firstName, lastName, addressLineOne, city, postcode, password);
                 registeredUsers.put(userId, password);
-                Secretary temp = new Secretary(userId, firstName, lastName, addressLineOne, city, postcode, password);
-                SecretarySingleton.getInstance().getListOfSecretarys().add(temp);
                 break;
             case"patient":
                 user = new Patient(userId, firstName, lastName, addressLineOne, city, postcode, password, age, gender);
@@ -48,6 +46,7 @@ public abstract class SystemUsers {
             default:
                 user = null;
         }
+        UsersSingleton.getInstance().getListOfUsers().add(user);
         return user;
     }
     

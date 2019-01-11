@@ -38,7 +38,7 @@ public class Stock {
                 Notifications notifications = new Notifications(notification);
                 /*Add to secretarys notifications*/
                 for(Secretary i : SecretarySingleton.getInstance().getListOfSecretarys()) {
-                    i.getNotifications().add(notifications);
+                    i.getNotifications().add(notification);
                 }
             }
         }
