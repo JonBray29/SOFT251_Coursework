@@ -31,4 +31,9 @@ public class UsersSingleton {
         return listOfUsers;
     }
     
+    public  ArrayList<Secretary> getSecretarys() {
+        for(SystemUsers s : listOfUsers) {
+            if(s.getUserId().charAt(0) == "S")
+        }
+    }
 }
