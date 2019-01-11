@@ -15,7 +15,7 @@ public class Stock {
     private Medicine medicine;
     private int quantityInStock;
     private double priceToBuy;
-    private static ArrayList<Stock> listOfQuantity = new ArrayList<Stock>();
+    private static ArrayList<Stock> listOfStock = new ArrayList<Stock>();
     
     private Stock(Medicine medicine, int quantityInStock, double priceToBuy) {
         this.medicine = medicine;
@@ -25,11 +25,11 @@ public class Stock {
 
     public void createStock(){
         Stock stock = new Stock(medicine, quantityInStock, priceToBuy);
-        listOfQuantity.add(stock);
+        listOfStock.add(stock);
     }
     
     public void checkStock() {
-        for(Stock s : listOfQuantity)
+        for(Stock s : listOfStock)
         {
             if (s.getQuantityInStock() <= 5)
             {
@@ -43,11 +43,11 @@ public class Stock {
         }
     }
     
-    public void updateStock(String type, String medicine, int quantity) {
+    public void updateStock(String type, Medicine medicine, int quantity) {
         //Updates the stock whether it's a collection or delivery, do switch statement for type.
         switch(type.toLowerCase()){
             case"add":
-                //add medicine
+                //add medicine for all in listOfStock, if getMedicine = medicine update.
                 break;
             case"remove":
                 //remove medicine
@@ -62,9 +62,13 @@ public class Stock {
     public void setPriceToBuy(double priceToBuy) {
         this.priceToBuy = priceToBuy;
     }
-    public static void setListOfQuantity(ArrayList<Stock> listOfQuantity) {
-        Stock.listOfQuantity = listOfQuantity;
+    public void setMedicine(Medicine medicine) {
+        this.medicine = medicine;
     }
+    public static void setListOfStock(ArrayList<Stock> listOfStock) {
+        Stock.listOfStock = listOfStock;
+    }
+    
     
     
     /*Getters*/
@@ -77,8 +81,8 @@ public class Stock {
     public double getPriceToBuy() {
         return priceToBuy;
     }
-    public static ArrayList<Stock> getListOfQuantity() {
-        return listOfQuantity;
+    public static ArrayList<Stock> getListOfStock() {
+        return listOfStock;
     }
     
 }
