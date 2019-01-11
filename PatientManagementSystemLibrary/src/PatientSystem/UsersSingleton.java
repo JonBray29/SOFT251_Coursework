@@ -32,7 +32,7 @@ public class UsersSingleton {
         return listOfUsers;
     }
     
-    public  ArrayList<Secretary> getSecretarys() {
+    public  ArrayList<Secretary> getListOfSecretarys() {
         for(SystemUsers s : listOfUsers) {
             if(s.getUserId().charAt(0) == 'S') {
                 listOfSecretarys.add((Secretary) s);

@@ -36,10 +36,9 @@ public class Stock {
                 String type = s.getMedicine().toString();
                 String notification = type + " is running low on stock";
                 Notifications notifications = new Notifications(notification);
-                /*Add to secretarys notifications*/
-                /*for(Secretary i : SecretarySingleton.getInstance().getListOfSecretarys()) {
+                for(Secretary i : UsersSingleton.getInstance().getListOfSecretarys()) {
                     i.getNotifications().add(notification);
-                }*/
+                }
             }
         }
     }
