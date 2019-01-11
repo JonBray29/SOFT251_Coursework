@@ -15,6 +15,7 @@ public class UsersSingleton {
     
     private static UsersSingleton instance;
     private ArrayList<SystemUsers> listOfUsers = null;
+    private ArrayList<Secretary> listOfSecretarys;
 
     private UsersSingleton() {
         listOfUsers = new ArrayList<SystemUsers>();
@@ -33,7 +34,10 @@ public class UsersSingleton {
     
     public  ArrayList<Secretary> getSecretarys() {
         for(SystemUsers s : listOfUsers) {
-            if(s.getUserId().charAt(0) == "S")
+            if(s.getUserId().charAt(0) == 'S') {
+                listOfSecretarys.add((Secretary) s);
+            }
         }
+        return listOfSecretarys;
     }
 }
