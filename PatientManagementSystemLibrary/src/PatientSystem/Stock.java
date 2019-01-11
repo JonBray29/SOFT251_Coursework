@@ -51,16 +51,21 @@ public class Stock {
                 //add medicine for all in listOfStock, if getMedicine = medicine update.
 
                 for(Stock s : listOfStock) {
-                    if(s.getMedicine() == medicine)
-                    newQuantity = s.getQuantityInStock() + quantity;
-                    s.setQuantityInStock(newQuantity);
+                    if(s.getMedicine() == medicine) {
+                        newQuantity = s.getQuantityInStock() + quantity;
+                        s.setQuantityInStock(newQuantity);
+                    }
                 }
+                checkStock();
                 break;
             case"remove":
                 for(Stock s : listOfStock) {
-                    if(s.getMedicine() == medicine)
-                    newQuantity = s.getQuantityInStock() - quantity;
-                    s.setQuantityInStock(newQuantity);
+                    if(s.getMedicine() == medicine) {
+                        newQuantity = s.getQuantityInStock() - quantity;
+                        s.setQuantityInStock(newQuantity);
+                    }
+                }
+                checkStock();
                 break;
         }
     }

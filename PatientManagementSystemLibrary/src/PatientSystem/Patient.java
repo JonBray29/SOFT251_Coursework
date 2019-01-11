@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author Jonbr
  */
 public class Patient extends SystemUsers {
-    private ArrayList patientAppointments;
+    private ArrayList<Appointments> patientAppointments;
     private ArrayList<Prescription> prescriptions;
     private ArrayList<PatientNote> notes;
     private ArrayList<Notifications> notifications;
@@ -29,7 +29,7 @@ public class Patient extends SystemUsers {
         this.password = password;
         this.age = age;
         this.gender = gender;*/
-        this.patientAppointments = new ArrayList();
+        this.patientAppointments = new ArrayList<Appointments>();
         this.prescriptions = new ArrayList<Prescription>();
         this.notes = new ArrayList<PatientNote>();
         this.notifications = new ArrayList<Notifications>();

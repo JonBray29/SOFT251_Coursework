@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author Jonbr
  */
 public class Doctor extends SystemUsers {
-    private ArrayList doctorAppointments;
+    private ArrayList<Appointments> doctorAppointments;
     private ArrayList<Ratings> ratings;
     private ArrayList<Notifications> notifications;
     
@@ -25,7 +25,7 @@ public class Doctor extends SystemUsers {
         this.city = city;
         this.postcode = postcode;
         this.password = password;*/
-        this.doctorAppointments = new ArrayList();
+        this.doctorAppointments = new ArrayList<Appointments>();
         this.ratings = new ArrayList<Ratings>();
         this.notifications = new ArrayList<Notifications>();
     }

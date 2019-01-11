@@ -24,6 +24,11 @@ public class Orders {
     
     public void deliverOrder() {
         //Simulate a delivery, updates the stock using existing update method.
+        for(Medicine m : Medicine.getListOfMedicine()) {
+            if(m.getName() == selectedMedicine) {
+                Stock.updateStock("add", m, int quantity);
+            }
+        }
     }
     
     /*Setters*/
