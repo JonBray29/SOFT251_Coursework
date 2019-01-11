@@ -45,6 +45,14 @@ public class Stock {
     
     public void updateStock(String type, String medicine, int quantity) {
         //Updates the stock whether it's a collection or delivery, do switch statement for type.
+        switch(type.toLowerCase()){
+            case"add":
+                //add medicine
+                break;
+            case"remove":
+                //remove medicine
+                break;
+        }
     }
        
     /*Setters*/

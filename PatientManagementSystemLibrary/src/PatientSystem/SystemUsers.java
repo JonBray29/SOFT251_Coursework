@@ -51,7 +51,7 @@ public abstract class SystemUsers {
     }
     
     private static String createId(String type){
-        switch(type){
+        switch(type.toLowerCase()){
             case"admin":
                 SystemUsers.userId = Admin.newUsername();
                 break;
