@@ -22,13 +22,14 @@ public class Orders {
         Orders order = new Orders(medicine, quantity);
     }
     
-    public void deliverOrder() {
+    public void deliverOrder(String selectedMedicine, int quantity) {
         //Simulate a delivery, updates the stock using existing update method.
         for(Medicine m : Medicine.getListOfMedicine()) {
             if(m.getName() == selectedMedicine) {
-                Stock.updateStock("add", m, int quantity);
+            Stock.updateStock("add", m, quantity);
             }
         }
+        Stock.updateStock("add", medicine, quantity);
     }
     
     /*Setters*/

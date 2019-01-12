@@ -16,7 +16,7 @@ public class Stock {
     private int quantityInStock;
     private double priceToBuy;
     private static ArrayList<Stock> listOfStock = new ArrayList<Stock>();
-    private int newQuantity;
+    private static int newQuantity;
     
     private Stock(Medicine medicine, int quantityInStock, double priceToBuy) {
         this.medicine = medicine;
@@ -29,7 +29,7 @@ public class Stock {
         listOfStock.add(stock);
     }
     
-    public void checkStock() {
+    public static void checkStock() {
         for(Stock s : listOfStock)
         {
             if (s.getQuantityInStock() <= 5)
@@ -44,7 +44,7 @@ public class Stock {
         }
     }
     
-    public void updateStock(String type, Medicine medicine, int quantity) {
+    public static void updateStock(String type, Medicine medicine, int quantity) {
         //Updates the stock whether it's a collection or delivery, do switch statement for type.
         switch(type.toLowerCase()){
             case"add":

@@ -37,6 +37,13 @@ public class Prescription {
     
     public void collectPrescription() {
         //Delete from uncollected prescriptions, also update the stock, using current update method.
+        
+        for(Medicine m : Medicine.getListOfMedicine()) {
+            if(m.getName() == selectedMedicine) {
+            Stock.updateStock("remove", m, quantity);
+            }
+        }
+        Stock.updateStock("remove", medicine, quantity);
     }
 
     /*Setters*/

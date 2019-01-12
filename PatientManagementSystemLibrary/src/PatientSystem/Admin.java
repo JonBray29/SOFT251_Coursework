@@ -30,14 +30,14 @@ public class Admin extends SystemUsers {
     
     protected static String newUsername() {
         Random rand = new Random();
-        SystemUsers.userId = "A" + rand.nextInt(10000);
-            if (registeredUsers.containsKey(SystemUsers.userId) == true){
+        String userId = "A" + rand.nextInt(10000);
+            if (registeredUsers.containsKey(userId)  == true){
                 newUsername();
             }
             else{
-                return SystemUsers.userId;
+                return userId;
             }
-        return SystemUsers.userId;
+        return userId;
     }
     
     
