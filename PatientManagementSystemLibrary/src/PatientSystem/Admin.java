@@ -18,7 +18,8 @@ public class Admin extends SystemUsers {
             
     }
     
-    public Admin(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, String password) {
+    public Admin(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, 
+    String password, int age, String gender) {
         /*this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;

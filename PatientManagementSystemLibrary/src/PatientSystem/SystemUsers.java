@@ -28,13 +28,13 @@ public abstract class SystemUsers {
         SystemUsers user;
         switch(type){
             case"admin":
-                user = new Admin(userId, firstName, lastName, addressLineOne, city, postcode, password); 
+                user = new Admin(userId, firstName, lastName, addressLineOne, city, postcode, password, age, gender); 
                 break;
             case"doctor":
-                user = new Doctor(userId, firstName, lastName, addressLineOne, city, postcode, password);
+                user = new Doctor(userId, firstName, lastName, addressLineOne, city, postcode, password, age, gender);
                 break;
             case"secretary":
-                user = new Secretary(userId, firstName, lastName, addressLineOne, city, postcode, password);
+                user = new Secretary(userId, firstName, lastName, addressLineOne, city, postcode, password, age, gender);
                 break;
             case"patient":
                 user = new Patient(userId, firstName, lastName, addressLineOne, city, postcode, password, age, gender);

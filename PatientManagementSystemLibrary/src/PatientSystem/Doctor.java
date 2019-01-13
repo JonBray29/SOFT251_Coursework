@@ -17,7 +17,8 @@ public class Doctor extends SystemUsers {
     private ArrayList<Ratings> ratings;
     private ArrayList<Notifications> notifications;
     
-    public Doctor(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, String password) {
+    public Doctor(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, 
+    String password, int age, String gender) {
         /*this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;

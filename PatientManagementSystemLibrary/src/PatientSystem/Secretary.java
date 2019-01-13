@@ -17,7 +17,8 @@ public class Secretary extends SystemUsers {
     private ArrayList<Notifications> notifications;
 
     
-    public Secretary(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, String password) {
+    public Secretary(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, 
+    String password, int age, String gender) {
         /*this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
