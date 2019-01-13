@@ -19,6 +19,16 @@ public class RequestOrder {
         this.medicine = medicine;
     }
 
+    public void createRequestOrder() {
+        RequestOrder order = new RequestOrder(medicine);
+        requestOrder.add(order);
+        String notification = "New order requested: " + order.toString();
+        Notifications notifications = new Notifications(notification);
+        for(Secretary i : UsersSingleton.getInstance().getListOfSecretarys()) {
+            i.getNotifications().add(notification);
+        }
+    }
+    
     //setters
     public void setMedicine(Medicine medicine) {
         this.medicine = medicine;
