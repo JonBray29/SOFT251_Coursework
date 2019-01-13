@@ -42,8 +42,12 @@ public abstract class SystemUsers {
             default:
                 user = null;
         }
-        UsersSingleton.getInstance().getListOfUsers().add(user); //method cant be in factory, so change to seperate method, add to contoller?
         return user;
+    }
+    
+    private void addToList(SystemUsers user) {
+        UsersSingleton.getInstance().getListOfUsers().add(user); //method cant be in factory, so change to seperate method, add to contoller?
+
     }
     
     private String createId(String type){
