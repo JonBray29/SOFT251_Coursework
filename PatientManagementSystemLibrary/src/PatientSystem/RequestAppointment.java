@@ -26,7 +26,7 @@ public class RequestAppointment {
         this.time = time;
     }
     
-    public void createAppointment() {
+    public void createAppointment(Doctor doctor, Patient patient, String date, String time) {
         RequestAppointment appointment = new RequestAppointment(doctor, patient, date, time);
         requestAppointment.add(appointment);
         String notification = "New appointment requested: " + appointment.toString();

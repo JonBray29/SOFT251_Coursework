@@ -19,7 +19,7 @@ public class RequestOrder {
         this.medicine = medicine;
     }
 
-    public void createRequestOrder() {
+    public void createRequestOrder(Medicine medicine) {
         RequestOrder order = new RequestOrder(medicine);
         requestOrder.add(order);
         String notification = "New order requested: " + order.toString();

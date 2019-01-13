@@ -14,18 +14,16 @@ import java.util.ArrayList;
 public class Stock {
     private Medicine medicine;
     private int quantityInStock;
-    private double priceToBuy;
     private static ArrayList<Stock> listOfStock = new ArrayList<Stock>();
     private static int newQuantity;
     
-    private Stock(Medicine medicine, int quantityInStock, double priceToBuy) {
+    private Stock(Medicine medicine, int quantityInStock) {
         this.medicine = medicine;
         this.quantityInStock = quantityInStock;
-        this.priceToBuy = priceToBuy;
     }
 
-    public void createStock(){
-        Stock stock = new Stock(medicine, quantityInStock, priceToBuy);
+    public void createStock(Medicine medicine, int quantityInStock){
+        Stock stock = new Stock(medicine, quantityInStock);
         listOfStock.add(stock);
     }
     
@@ -74,9 +72,6 @@ public class Stock {
     public void setQuantityInStock(int quantityInStock) {
     this.quantityInStock = quantityInStock;
     }
-    public void setPriceToBuy(double priceToBuy) {
-        this.priceToBuy = priceToBuy;
-    }
     public void setMedicine(Medicine medicine) {
         this.medicine = medicine;
     }
@@ -92,9 +87,6 @@ public class Stock {
     }
     public int getQuantityInStock() {
         return quantityInStock;
-    }
-    public double getPriceToBuy() {
-        return priceToBuy;
     }
     public static ArrayList<Stock> getListOfStock() {
         return listOfStock;

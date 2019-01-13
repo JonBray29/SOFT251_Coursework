@@ -20,10 +20,10 @@ public class RequestAccount {
     private String postcode;
     private String password;
     private int age;
-    private Patient patient;
+    private String gender;
     private static ArrayList<RequestAccount> requestAccount;
 
-    private RequestAccount(String firstName, String lastName, String addressLineOne, String city, String postcode, String password, int age) {
+    private RequestAccount(String firstName, String lastName, String addressLineOne, String city, String postcode, String password, int age, String gender) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.addressLineOne = addressLineOne;
@@ -31,10 +31,11 @@ public class RequestAccount {
         this.postcode = postcode;
         this.password = password;
         this.age = age;
+        this.gender = gender;
     }
     
-    public void requestAccount(){
-        RequestAccount account = new RequestAccount(firstName, lastName, addressLineOne, city, postcode, password, age);
+    public void requestAccount(String firstName, String lastName, String addressLineOne, String city, String postcode, String password, int age, String gender){
+        RequestAccount account = new RequestAccount(firstName, lastName, addressLineOne, city, postcode, password, age, gender);
         requestAccount.add(account);
         String notification = "new account requested";
         Notifications notifications = new Notifications(notification);
@@ -43,7 +44,7 @@ public class RequestAccount {
         }
     }
     
-    public void requestTermination() {
+    public void requestTermination(Patient patient) {
         String notification = patient.getUserId() + patient.getFirstName() + patient.getLastName() + " Requested account termination";
         Notifications notifications = new Notifications(notification);
         for(Secretary i : UsersSingleton.getInstance().getListOfSecretarys()) {
@@ -73,8 +74,8 @@ public class RequestAccount {
     public void setAge(int age) {
         this.age = age;
     }
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
     public static void setRequestAccount(ArrayList<RequestAccount> requestAccount) {
         RequestAccount.requestAccount = requestAccount;
@@ -102,6 +103,9 @@ public class RequestAccount {
     }
     public int getAge() {
         return age;
+    }
+    public String getGender() {
+        return gender;
     }
     public static ArrayList<RequestAccount> getRequestAccount() {
         return requestAccount;

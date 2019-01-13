@@ -29,7 +29,6 @@ public class Orders {
             Stock.updateStock("add", m, quantity);
             }
         }
-        Stock.updateStock("add", medicine, quantity);
     }
     
     /*Setters*/

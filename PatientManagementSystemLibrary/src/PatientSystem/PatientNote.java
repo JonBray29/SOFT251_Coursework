@@ -13,7 +13,6 @@ public class PatientNote {
     private String notes;
     private String date;
     private String time;
-    private Patient patient;
     
     private PatientNote(String notes, String date, String time){
         this.notes = notes;
@@ -21,7 +20,7 @@ public class PatientNote {
         this.time = time;
     }
     
-    public void createNote(String notes, String date, String time) {
+    public void createNote(String notes, String date, String time, Patient patient) {
         PatientNote note = new PatientNote(notes, date, time);
         patient.getNotes().add(note);
     }
@@ -36,9 +35,6 @@ public class PatientNote {
     public void setTime(String time) {
         this.time = time;
     }
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
 
     /*Getters*/
     public String getNotes() {
@@ -49,11 +45,7 @@ public class PatientNote {
     }
     public String getTime() {
         return time;
-    }
-    public Patient getPatient() {
-        return patient;
-    }
-    
+    }   
     
     
 }

@@ -29,7 +29,7 @@ public class Prescription {
         this.dosage = dosage;
     };
     
-    public void createPrescription() {
+    public void createPrescription(Doctor doctor, Patient patient, String notes, Medicine medicine, int quantity, String dosage) {
         Prescription prescription = new Prescription(doctor, patient, notes, medicine, quantity, dosage);
         patient.getPrescriptions().add(prescription);
         uncollectedPrescriptions.add(prescription);

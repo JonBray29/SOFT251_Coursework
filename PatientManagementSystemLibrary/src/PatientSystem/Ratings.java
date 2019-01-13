@@ -12,14 +12,13 @@ package PatientSystem;
 public class Ratings {
     private int ratingValue;
     private String comments;
-    private Doctor doctor;
 
     private Ratings(int ratingValue, String comments) {
         this.ratingValue = ratingValue;
         this.comments = comments;
     }
     
-    public void createRating() {
+    public void createRating(int ratingValue, String comments, Doctor doctor) {
         Ratings rating = new Ratings(ratingValue, comments);
         doctor.getRatings().add(rating);
     }
@@ -30,10 +29,7 @@ public class Ratings {
     }
     public void setComments(String comments) {
         this.comments = comments;
-    }
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
-    }    
+    }  
 
     /*Getters*/
     public int getRatingValue() {
@@ -41,11 +37,6 @@ public class Ratings {
     }
     public String getComments() {
         return comments;
-    }
-    public Doctor getDoctor() {
-        return doctor;
-    }
-    
-    
+    }    
     
 }
