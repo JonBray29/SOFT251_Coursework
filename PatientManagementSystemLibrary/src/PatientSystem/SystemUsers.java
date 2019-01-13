@@ -46,7 +46,7 @@ public abstract class SystemUsers {
     }
     
     private void addToList(SystemUsers user) {
-        UsersSingleton.getInstance().getListOfUsers().add(user); //method cant be in factory, so change to seperate method, add to contoller?
+        UsersSingleton.getInstance().getListOfUsers().add(user);
 
     }
     
@@ -89,8 +89,13 @@ public abstract class SystemUsers {
         }
     }
     
-    public void removeUser(SystemUsers user) {
+    public void removeUser(String userId) {
         //Remove user account
+        for(SystemUsers s : UsersSingleton.getInstance().getListOfUsers()) {
+            if(s.getUserId() == userId) {
+                UsersSingleton.getInstance().getListOfUsers().remove(s);
+            }
+        }
     }
     
     /*setters*/

@@ -11,16 +11,18 @@ package PatientSystem;
  */
 public class PatientNote {
     private String notes;
-    private String dateTime;
+    private String date;
+    private String time;
     private Patient patient;
     
-    private PatientNote(String notes, String dateTime){
+    private PatientNote(String notes, String date, String time){
         this.notes = notes;
-        this.dateTime = dateTime;
+        this.date = date;
+        this.time = time;
     }
     
-    public void createNote() {
-        PatientNote note = new PatientNote(notes, dateTime);
+    public void createNote(String notes, String date, String time) {
+        PatientNote note = new PatientNote(notes, date, time);
         patient.getNotes().add(note);
     }
 
@@ -28,8 +30,11 @@ public class PatientNote {
     public void setNotes(String notes) {
         this.notes = notes;
     }
-    public void setDateTime(String dateTime) {
-        this.dateTime = dateTime;
+    public void setDate(String date) {
+        this.date = date;
+    }
+    public void setTime(String time) {
+        this.time = time;
     }
     public void setPatient(Patient patient) {
         this.patient = patient;
@@ -39,8 +44,11 @@ public class PatientNote {
     public String getNotes() {
         return notes;
     }
-    public String getDateTime() {
-        return dateTime;
+    public String getDate() {
+        return date;
+    }
+    public String getTime() {
+        return time;
     }
     public Patient getPatient() {
         return patient;

@@ -20,7 +20,7 @@ public class Medicine {
         this.listOfMedicine = new ArrayList<Medicine>();
     }
 
-    public void createMedicine(){
+    public void createMedicine(String name){
         Medicine medicine = new Medicine(name);
         listOfMedicine.add(medicine);
     }

@@ -35,7 +35,7 @@ public class Prescription {
         uncollectedPrescriptions.add(prescription);
     }
     
-    public void collectPrescription() {
+    public void collectPrescription(String selectedMedicine) {
         //Delete from uncollected prescriptions, also update the stock, using current update method.
         
         for(Medicine m : Medicine.getListOfMedicine()) {
