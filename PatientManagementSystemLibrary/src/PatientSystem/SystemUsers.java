@@ -47,7 +47,6 @@ public abstract class SystemUsers {
     
     private void addToList(SystemUsers user) {
         UsersSingleton.getInstance().getListOfUsers().add(user);
-
     }
     
     private String createId(String type){

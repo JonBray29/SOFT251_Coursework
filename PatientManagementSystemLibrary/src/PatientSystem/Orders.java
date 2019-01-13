@@ -5,6 +5,8 @@
  */
 package PatientSystem;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Jonbr
@@ -12,6 +14,7 @@ package PatientSystem;
 public class Orders {
     private Medicine medicine;
     private int quantity;
+    private static ArrayList<Orders> listOfOrders;
     
     private Orders(Medicine medicine, int quantity) {
         this.medicine = medicine;
@@ -20,6 +23,7 @@ public class Orders {
 
     public void createOrders(){
         Orders order = new Orders(medicine, quantity);
+        listOfOrders.add(order);
     }
     
     public void deliverOrder(String selectedMedicine, int quantity) {
@@ -46,7 +50,9 @@ public class Orders {
     public int getQuantity() {
         return quantity;
     }
-    
+    public static ArrayList<Orders> getListOfOrders() {
+        return listOfOrders;
+    }   
     
     
 }
