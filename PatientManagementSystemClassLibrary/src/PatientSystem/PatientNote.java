@@ -6,6 +6,7 @@
 package PatientSystem;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  *
@@ -13,16 +14,16 @@ import java.io.Serializable;
  */
 public class PatientNote implements Serializable{
     private String notes;
-    private String date;
+    private Date date;
     private String time;
     
-    private PatientNote(String notes, String date, String time){
+    private PatientNote(String notes, Date date, String time){
         this.notes = notes;
         this.date = date;
         this.time = time;
     }
     
-    public void createNote(String notes, String date, String time, Patient patient) {
+    public void createNote(String notes, Date date, String time, Patient patient) {
         PatientNote note = new PatientNote(notes, date, time);
         patient.getNotes().add(note);
     }
@@ -31,7 +32,7 @@ public class PatientNote implements Serializable{
     public void setNotes(String notes) {
         this.notes = notes;
     }
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
     public void setTime(String time) {
@@ -42,7 +43,7 @@ public class PatientNote implements Serializable{
     public String getNotes() {
         return notes;
     }
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
     public String getTime() {

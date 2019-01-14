@@ -7,6 +7,7 @@ package PatientSystem;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -16,18 +17,18 @@ public class RequestAppointment implements Serializable{
     
     private Doctor doctor;
     private Patient patient;
-    private String date;
+    private Date date;
     private String time;
     private static ArrayList<RequestAppointment> requestAppointment = new ArrayList<RequestAppointment>();
     
-    private RequestAppointment(Doctor doctor, Patient patient, String date, String time) {
+    private RequestAppointment(Doctor doctor, Patient patient, Date date, String time) {
         this.doctor = doctor;
         this.patient = patient;
-        this.date= date;
+        this.date = date;
         this.time = time;
     }
     
-    public void createAppointment(Doctor doctor, Patient patient, String date, String time) {
+    public void createAppointment(Doctor doctor, Patient patient, Date date, String time) {
         RequestAppointment appointment = new RequestAppointment(doctor, patient, date, time);
         requestAppointment.add(appointment);
         String notification = "New appointment requested: " + appointment.toString();
@@ -44,7 +45,7 @@ public class RequestAppointment implements Serializable{
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
     public void setTime(String time) {
@@ -62,7 +63,7 @@ public class RequestAppointment implements Serializable{
     public Patient getPatient() {
         return patient;
     }
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
     public String getTime() {
