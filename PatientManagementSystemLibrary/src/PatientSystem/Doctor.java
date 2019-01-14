@@ -19,13 +19,13 @@ public class Doctor extends SystemUsers {
     
     public Doctor(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, 
     String password, int age, String gender) {
-        /*this.userId = userId;
+        this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.addressLineOne = addressLineOne;
         this.city = city;
         this.postcode = postcode;
-        this.password = password;*/
+        this.password = password;
         this.doctorAppointments = new ArrayList<Appointments>();
         this.ratings = new ArrayList<Ratings>();
         this.notifications = new ArrayList<Notifications>();
@@ -44,25 +44,29 @@ public class Doctor extends SystemUsers {
     }
 
     /*Setters*/
-    public void setDoctorAppointments(ArrayList doctorAppointments) {
+    public void setDoctorAppointments(ArrayList<Appointments> doctorAppointments) {
         this.doctorAppointments = doctorAppointments;
     }
-    public void setRatings(ArrayList ratings) {
+    public void setRatings(ArrayList<Ratings> ratings) {
         this.ratings = ratings;
     }
-    public void setNotifications(ArrayList notifications) {
+    public void setNotifications(ArrayList<Notifications> notifications) {
         this.notifications = notifications;
-    }    
-    
+    }
+
     /*Getters*/
-    public ArrayList getDoctorAppointments() {
+
+    public ArrayList<Appointments> getDoctorAppointments() {
         return doctorAppointments;
     }
-    public ArrayList getRatings() {
+
+    public ArrayList<Ratings> getRatings() {
         return ratings;
     }
-    public ArrayList getNotifications() {
+
+    public ArrayList<Notifications> getNotifications() {
         return notifications;
-    }    
+    }
+    
   
 }

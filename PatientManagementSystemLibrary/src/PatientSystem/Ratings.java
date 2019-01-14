@@ -23,6 +23,16 @@ public class Ratings {
         doctor.getRatings().add(rating);
     }
 
+    public void createFeedback(Doctor doctor) {
+        for(Doctor d : UsersSingleton.getInstance().getListOfDoctors()){
+            if(d == doctor) {
+                for(Ratings r : d.getRatings()) {
+                    
+                }
+            }
+        }
+    }
+    
     /*Setters*/
     public void setRatingValue(int ratingValue) {
         this.ratingValue = ratingValue;

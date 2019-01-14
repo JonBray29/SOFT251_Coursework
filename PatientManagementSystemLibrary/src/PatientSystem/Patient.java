@@ -20,7 +20,7 @@ public class Patient extends SystemUsers {
     
     public Patient (String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, 
     String password, int age, String gender) {
-        /*this.userId = userId;
+        this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.addressLineOne = addressLineOne;
@@ -28,7 +28,7 @@ public class Patient extends SystemUsers {
         this.postcode = postcode;
         this.password = password;
         this.age = age;
-        this.gender = gender;*/
+        this.gender = gender;
         this.patientAppointments = new ArrayList<Appointments>();
         this.prescriptions = new ArrayList<Prescription>();
         this.notes = new ArrayList<PatientNote>();
@@ -48,31 +48,33 @@ public class Patient extends SystemUsers {
     }
     
     /*Setters*/
-    public void setPatientAppointments(ArrayList patientAppointments) {
+
+    public void setPatientAppointments(ArrayList<Appointments> patientAppointments) {
         this.patientAppointments = patientAppointments;
     }
-    public void setPrescriptions(ArrayList prescriptions) {
+    public void setPrescriptions(ArrayList<Prescription> prescriptions) {
         this.prescriptions = prescriptions;
     }
-    public void setNotes(ArrayList notes) {
+    public void setNotes(ArrayList<PatientNote> notes) {
         this.notes = notes;
     }
-    public void setNotifications(ArrayList notifications) {
+    public void setNotifications(ArrayList<Notifications> notifications) {
         this.notifications = notifications;
     }
 
     /*Getters*/
-    public ArrayList getPatientAppointments() {
+    public ArrayList<Appointments> getPatientAppointments() {
         return patientAppointments;
     }
-    public ArrayList getPrescriptions() {
+    public ArrayList<Prescription> getPrescriptions() {
         return prescriptions;
     }
-    public ArrayList getNotes() {
+    public ArrayList<PatientNote> getNotes() {
         return notes;
     }
-    public ArrayList getNotifications() {
+    public ArrayList<Notifications> getNotifications() {
         return notifications;
     }
+
      
 }

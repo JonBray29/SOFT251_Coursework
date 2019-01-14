@@ -12,12 +12,12 @@ import java.util.ArrayList;
  * @author Jonbr
  */
 public class Prescription {
-    private static Doctor doctor;
-    private static Patient patient;
-    private static String notes;
-    private static Medicine medicine;
-    private static int quantity;
-    private static String dosage;
+    private Doctor doctor;
+    private Patient patient;
+    private String notes;
+    private Medicine medicine;
+    private int quantity;
+    private String dosage;
     private static ArrayList<Prescription> uncollectedPrescriptions;
     
     private Prescription(Doctor doctor, Patient patient, String notes, Medicine medicine, int quantity, String dosage) {
@@ -47,43 +47,48 @@ public class Prescription {
     }
 
     /*Setters*/
-    public static void setDoctor(Doctor doctor) {
-        Prescription.doctor = doctor;
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
-    public static void setPatient(Patient patient) {
-        Prescription.patient = patient;
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
-    public static void setNotes(String notes) {
-        Prescription.notes = notes;
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
-    public static void setMedicine(Medicine medicine) {
-        Prescription.medicine = medicine;
+    public void setMedicine(Medicine medicine) {
+        this.medicine = medicine;
     }
-    public static void setQuantity(int quantity) {
-        Prescription.quantity = quantity;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
-    public static void setDosage(String dosage) {
-        Prescription.dosage = dosage;
+    public void setDosage(String dosage) {
+        this.dosage = dosage;
     }
     
     /*Getters*/
-    public static Doctor getDoctor() {
+    public Doctor getDoctor() {
         return doctor;
     }
-    public static Patient getPatient() {
+    public Patient getPatient() {
         return patient;
     }
-    public static String getNotes() {
+    public String getNotes() {
         return notes;
     }
-    public static Medicine getMedicine() {
+    public Medicine getMedicine() {
         return medicine;
     }
-    public static int getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
-    public static String getDosage() {
+    public String getDosage() {
         return dosage;
     }
+
+    public static ArrayList<Prescription> getUncollectedPrescriptions() {
+        return uncollectedPrescriptions;
+    }
+    
           
 }

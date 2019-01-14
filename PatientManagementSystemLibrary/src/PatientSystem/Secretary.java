@@ -19,13 +19,13 @@ public class Secretary extends SystemUsers {
     
     public Secretary(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, 
     String password, int age, String gender) {
-        /*this.userId = userId;
+        this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.addressLineOne = addressLineOne;
         this.city = city;
         this.postcode = postcode;
-        this.password = password;*/
+        this.password = password;
         this.notifications = new ArrayList<Notifications>();
            
     }
@@ -43,11 +43,13 @@ public class Secretary extends SystemUsers {
     }
 
     /*Setters*/
-    public void setNotifications(ArrayList notifications) {
+    public void setNotifications(ArrayList<Notifications> notifications) {
         this.notifications = notifications;
     }
+    
     /*Getters*/
-    public ArrayList getNotifications() {
+    public ArrayList<Notifications> getNotifications() {
         return notifications;
     }
+  
 }
