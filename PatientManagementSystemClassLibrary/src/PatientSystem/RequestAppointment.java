@@ -35,7 +35,10 @@ public class RequestAppointment implements Serializable{
         Notifications notifications = new Notifications(notification);
         for(Secretary i : UsersSingleton.getInstance().getListOfSecretarys()) {
             i.getNotifications().add(notifications);
+            Secretary.write(i);
         }
+        Notifications.write(notifications);
+        write(appointment);
     }
     
     //Serialization

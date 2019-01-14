@@ -35,7 +35,10 @@ public class Appointments implements Serializable{
         doctor.getNotifications().add(notifications);
         patient.getPatientAppointments().add(appointment);
         patient.getNotifications().add(notifications);
-        allAppointments.add(appointment);
+        allAppointments.add(appointment);   
+        write(appointment);
+        Doctor.write(doctor);
+        Patient.write(patient);
     }
 
     /*Setters*/

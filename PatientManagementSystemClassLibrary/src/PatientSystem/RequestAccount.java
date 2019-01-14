@@ -42,7 +42,10 @@ public class RequestAccount implements Serializable{
         Notifications notifications = new Notifications(notification);
         for(Secretary i : UsersSingleton.getInstance().getListOfSecretarys()) {
             i.getNotifications().add(notifications);
+            Secretary.write(i);
         }
+        write(account);
+        Notifications.write(notifications);
     }
     
     public void requestTermination(Patient patient) {
@@ -50,7 +53,9 @@ public class RequestAccount implements Serializable{
         Notifications notifications = new Notifications(notification);
         for(Secretary i : UsersSingleton.getInstance().getListOfSecretarys()) {
             i.getNotifications().add(notifications);
+            Secretary.write(i);            
         }
+        Notifications.write(notifications);
     }
 
     //Serialization

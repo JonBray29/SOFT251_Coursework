@@ -22,7 +22,10 @@ public class Ratings implements Serializable{
     
     public void createRating(int ratingValue, String comments, Doctor doctor) {
         Ratings rating = new Ratings(ratingValue, comments);
+        SystemUsers.write(doctor);
         doctor.getRatings().add(rating);
+        write(rating);
+        Doctor.write(doctor);
     }
 
     public void createFeedback(Doctor doctor, String comment) {
@@ -39,6 +42,8 @@ public class Ratings implements Serializable{
                 String notification = "Average rating: " + Double.toString(average) + "" + comment;
                 Notifications notifications = new Notifications(notification);
                 d.getNotifications().add(notifications);
+                Notifications.write(notifications);
+                Doctor.write(d);
             }
         }
     }

@@ -25,6 +25,8 @@ public class Orders implements Serializable{
     public void createOrders(){
         Orders order = new Orders(medicine, quantity);
         listOfOrders.add(order);
+        write(order);
+
     }
     
     public void deliverOrder(String selectedMedicine, int quantity) {

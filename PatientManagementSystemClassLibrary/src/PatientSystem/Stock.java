@@ -25,6 +25,8 @@ public class Stock implements Serializable{
     public void createStock(Medicine medicine, int quantityInStock){
         Stock stock = new Stock(medicine, quantityInStock);
         listOfStock.add(stock);
+        write(stock);
+
     }
     
     public static void checkStock() {
@@ -35,9 +37,12 @@ public class Stock implements Serializable{
                 String type = s.getMedicine().toString();
                 String notification = type + " is running low on stock";
                 Notifications notifications = new Notifications(notification);
+                Notifications.write(notifications);
                 for(Secretary i : UsersSingleton.getInstance().getListOfSecretarys()) {
                     i.getNotifications().add(notifications);
+                    Secretary.write(i);
                 }
+                Notifications.write(notifications);
             }
         }
     }
@@ -53,6 +58,7 @@ public class Stock implements Serializable{
                     if(s.getMedicine() == medicine) {
                         newQuantity = s.getQuantityInStock() + quantity;
                         s.setQuantityInStock(newQuantity);
+                        write(s);
                     }
                 }
                 checkStock();
@@ -62,6 +68,7 @@ public class Stock implements Serializable{
                     if(s.getMedicine() == medicine) {
                         newQuantity = s.getQuantityInStock() - quantity;
                         s.setQuantityInStock(newQuantity);
+                        write(s);
                     }
                 }
                 checkStock();

@@ -23,6 +23,7 @@ public class Medicine implements Serializable{
     public void createMedicine(String name){
         Medicine medicine = new Medicine(name);
         listOfMedicine.add(medicine);
+        write(medicine);
     }
     
     //Serialization

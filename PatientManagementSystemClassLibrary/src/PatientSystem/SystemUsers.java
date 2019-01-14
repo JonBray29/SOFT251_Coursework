@@ -46,10 +46,6 @@ public abstract class SystemUsers implements Serializable{
         return user;
     }
     
-    private static void addToList(SystemUsers user) {
-        UsersSingleton.getInstance().getListOfUsers().add(user);
-    }
-    
     private String createId(String type){
         String userId;
         switch(type.toLowerCase()){
@@ -75,6 +71,11 @@ public abstract class SystemUsers implements Serializable{
         registeredUsers.put(userId, password);
     }
     
+        
+    private static void addToList(SystemUsers user) {
+        UsersSingleton.getInstance().getListOfUsers().add(user);
+    }
+    
     public void login(String userId, String password) { 
         if(registeredUsers.containsKey(userId)  == true) {
             if(password == registeredUsers.get(userId)  == true) {
@@ -94,6 +95,7 @@ public abstract class SystemUsers implements Serializable{
         for(SystemUsers s : UsersSingleton.getInstance().getListOfUsers()) {
             if(s.getUserId() == userId) {
                 UsersSingleton.getInstance().getListOfUsers().remove(s);
+                write(s);
             }
         }
     }

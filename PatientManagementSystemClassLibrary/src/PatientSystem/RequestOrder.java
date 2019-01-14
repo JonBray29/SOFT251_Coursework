@@ -27,7 +27,9 @@ public class RequestOrder implements Serializable{
         Notifications notifications = new Notifications(notification);
         for(Secretary i : UsersSingleton.getInstance().getListOfSecretarys()) {
             i.getNotifications().add(notifications);
+            Secretary.write(i);
         }
+        write(order);
     }
     
     //Serialization

@@ -34,17 +34,19 @@ public class Prescription implements Serializable{
         Prescription prescription = new Prescription(doctor, patient, notes, medicine, quantity, dosage);
         patient.getPrescriptions().add(prescription);
         uncollectedPrescriptions.add(prescription);
+        write(prescription);
+        Patient.write(patient);
     }
     
-    public void collectPrescription(String selectedMedicine) {
-        //Delete from uncollected prescriptions, also update the stock, using current update method.
-        
-        for(Medicine m : Medicine.getListOfMedicine()) {
-            if(m.getName() == selectedMedicine) {
-            Stock.updateStock("remove", m, quantity);
+    public void collectPrescription(Prescription prescription) {        
+        for(Prescription p : uncollectedPrescriptions) {
+            for(Medicine m : Medicine.getListOfMedicine()){
+                if(m == p.getMedicine()) {
+                    Stock.updateStock("remove", m, quantity);
+                }
             }
+            uncollectedPrescriptions.remove(p);
         }
-        Stock.updateStock("remove", medicine, quantity);
     }
     
     //Serialization
