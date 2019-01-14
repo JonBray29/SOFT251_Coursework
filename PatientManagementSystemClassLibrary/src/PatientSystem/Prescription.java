@@ -46,6 +46,16 @@ public class Prescription implements Serializable{
         }
         Stock.updateStock("remove", medicine, quantity);
     }
+    
+    //Serialization
+    public static void write(Prescription prescription) {
+        Serialiser.writeObject(prescription, "prescription_file.ser");
+    }
+    public static void read() {
+        Prescription prescription = (Prescription) Serialiser.readObject("prescription_file.ser");
+        uncollectedPrescriptions.add(prescription);
+    }
+
 
     /*Setters*/
     public void setDoctor(Doctor doctor) {

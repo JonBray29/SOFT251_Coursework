@@ -25,6 +25,15 @@ public class Medicine implements Serializable{
         listOfMedicine.add(medicine);
     }
     
+    //Serialization
+    public static void write(Medicine medicine) {
+        Serialiser.writeObject(medicine, "medicine_file.ser");
+    }
+    public static void read() {
+        Medicine medicine = (Medicine) Serialiser.readObject("medicine_file.ser");
+        listOfMedicine.add(medicine);        
+    }
+    
     /*Setters*/
     public void setName(String name) {
         this.name = name;
@@ -32,8 +41,7 @@ public class Medicine implements Serializable{
     public static void setListOfMedicine(ArrayList<Medicine> listOfMedicine) {
         Medicine.listOfMedicine = listOfMedicine;
     }
-    
-    
+       
     /*Getters*/
     public String getName() {
         return name;

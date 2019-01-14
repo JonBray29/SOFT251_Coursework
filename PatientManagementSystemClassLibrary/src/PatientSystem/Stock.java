@@ -16,7 +16,6 @@ public class Stock implements Serializable{
     private Medicine medicine;
     private int quantityInStock;
     private static ArrayList<Stock> listOfStock = new ArrayList<Stock>();
-    private static int newQuantity;
     
     private Stock(Medicine medicine, int quantityInStock) {
         this.medicine = medicine;
@@ -45,6 +44,7 @@ public class Stock implements Serializable{
     
     public static void updateStock(String type, Medicine medicine, int quantity) {
         //Updates the stock whether it's a collection or delivery, do switch statement for type.
+        int newQuantity;
         switch(type.toLowerCase()){
             case"add":
                 //add medicine for all in listOfStock, if getMedicine = medicine update.
@@ -69,6 +69,15 @@ public class Stock implements Serializable{
         }
     }
        
+    //Serialization
+    public static void write(Stock stock) {
+        Serialiser.writeObject(stock, "stock_file.ser");
+    }
+    public static void read() {
+        Stock stock = (Stock) Serialiser.readObject("stock_file.ser");
+        listOfStock.add(stock);
+    }        
+    
     /*Setters*/
     public void setQuantityInStock(int quantityInStock) {
     this.quantityInStock = quantityInStock;

@@ -27,6 +27,16 @@ public class PatientNote implements Serializable{
         PatientNote note = new PatientNote(notes, date, time);
         patient.getNotes().add(note);
     }
+    
+    
+    //Serialization
+    public static void write(PatientNote note) {
+        Serialiser.writeObject(note, "patient_notes_file.ser");
+    }
+    public static void read() {
+        PatientNote note = (PatientNote) Serialiser.readObject("patient_notes_file.ser");
+    }
+
 
     /*Setters*/
     public void setNotes(String notes) {

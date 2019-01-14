@@ -18,5 +18,11 @@ public class Notifications implements Serializable{
         this.notification = notification;
     }
     
-    
+    //Serialization
+    public static void write(Notifications notification) {
+        Serialiser.writeObject(notification, "notification_file.ser");
+    }
+    public static void read() {
+        Notifications notification = (Notifications) Serialiser.readObject("notificaation_file.ser");
+    }
 }

@@ -42,5 +42,4 @@ public class Admin extends SystemUsers implements Serializable{
         return userId;
     }
     
-    
 }

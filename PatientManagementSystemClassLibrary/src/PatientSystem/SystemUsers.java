@@ -46,7 +46,7 @@ public abstract class SystemUsers implements Serializable{
         return user;
     }
     
-    private void addToList(SystemUsers user) {
+    private static void addToList(SystemUsers user) {
         UsersSingleton.getInstance().getListOfUsers().add(user);
     }
     
@@ -96,6 +96,15 @@ public abstract class SystemUsers implements Serializable{
                 UsersSingleton.getInstance().getListOfUsers().remove(s);
             }
         }
+    }
+    
+    //Serialization
+    public static void write(SystemUsers user) {
+        Serialiser.writeObject(user, "user_file.ser");
+    }
+    public static void read() {
+        SystemUsers user = (SystemUsers) Serialiser.readObject("user_file.ser");
+        addToList(user);
     }
     
     /*setters*/

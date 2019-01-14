@@ -36,6 +36,15 @@ public class Orders implements Serializable{
         }
     }
     
+    //Serialization
+    public static void write(Orders order) {
+        Serialiser.writeObject(order, "order_file.ser");
+    }
+    public static void read() {
+        Orders order = (Orders) Serialiser.readObject("order_file.ser");
+        listOfOrders.add(order);
+    }      
+    
     /*Setters*/
     public void setMedicine(Medicine medicine) {
         this.medicine = medicine;

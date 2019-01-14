@@ -30,6 +30,15 @@ public class RequestOrder implements Serializable{
         }
     }
     
+    //Serialization
+    public static void write(RequestOrder order) {
+        Serialiser.writeObject(order, "request_order_file.ser");
+    }
+    public static void read() {
+        RequestOrder order = (RequestOrder) Serialiser.readObject("request_order_file.ser");
+        requestOrder.add(order);
+    }     
+    
     //setters
     public void setMedicine(Medicine medicine) {
         this.medicine = medicine;

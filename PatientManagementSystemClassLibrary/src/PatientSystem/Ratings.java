@@ -43,6 +43,14 @@ public class Ratings implements Serializable{
         }
     }
     
+    //Serialization
+    public static void write(Ratings rating) {
+        Serialiser.writeObject(rating, "ratings_file.ser");
+    }
+    public static void read() {
+        Ratings rating = (Ratings) Serialiser.readObject("ratings_file.ser");
+    }
+    
     /*Setters*/
     public void setRatingValue(int ratingValue) {
         this.ratingValue = ratingValue;

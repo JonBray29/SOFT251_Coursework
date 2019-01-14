@@ -13,30 +13,27 @@ package PatientSystem;
 import java.io.*;
 
 public class Serialiser {
-    private String fileName;
     
-    public boolean writeObject(Serializable object){
+    public static void writeObject(Serializable object, String fileName){
         try {
-            FileOutputStream fileOut = new FileOutputStream(fileName);
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            FileOutputStream fileWrite = new FileOutputStream(fileName);
+            ObjectOutputStream out = new ObjectOutputStream(fileWrite);
             out.writeObject(object);
             out.close();
-            fileOut.close();
-            return true;
+            fileWrite.close();
          } catch (IOException i) {
             i.printStackTrace();
-            return false;
          }
     }
     
-    public Serializable readObject(){
+    public static Serializable readObject(String fileName){
         Serializable loadedObject = null;
         try {
-         FileInputStream fileIn = new FileInputStream(fileName);
-         ObjectInputStream in = new ObjectInputStream(fileIn);
+         FileInputStream fileRead = new FileInputStream(fileName);
+         ObjectInputStream in = new ObjectInputStream(fileRead);
          loadedObject = (Serializable) in.readObject();
          in.close();
-         fileIn.close();
+         fileRead.close();
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {

@@ -55,6 +55,14 @@ public class Appointments implements Serializable{
         Appointments.allAppointments = allAppointments;
     }  
     
+    //Serialization
+    public static void write(Appointments appointment) {
+        Serialiser.writeObject(appointment, "appointment_file.ser");
+    }
+    public static void read() {
+        Appointments appointment = (Appointments) Serialiser.readObject("appointment_file.ser");
+        allAppointments.add(appointment);
+    }
 
     /*Getters*/
     public Doctor getDoctor() {

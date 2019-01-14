@@ -53,6 +53,15 @@ public class RequestAccount implements Serializable{
         }
     }
 
+    //Serialization
+    public static void write(RequestAccount account) {
+        Serialiser.writeObject(account, "request_account_file.ser");
+    }
+    public static void read() {
+        RequestAccount account = (RequestAccount) Serialiser.readObject("request_account_file.ser");
+        requestAccount.add(account);
+    }      
+    
     /*Setters*/
     public void setFirstName(String firstName) {
         this.firstName = firstName;

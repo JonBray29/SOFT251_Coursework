@@ -38,6 +38,15 @@ public class RequestAppointment implements Serializable{
         }
     }
     
+    //Serialization
+    public static void write(RequestAppointment appointment) {
+        Serialiser.writeObject(appointment, "request_appointment_file.ser");
+    }
+    public static void read() {
+        RequestAppointment appointment = (RequestAppointment) Serialiser.readObject("request_appointment_file.ser");
+        requestAppointment.add(appointment);
+    }      
+    
     /*Setters*/
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
