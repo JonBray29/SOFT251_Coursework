@@ -25,7 +25,7 @@ public class RequestOrder {
         String notification = "New order requested: " + order.toString();
         Notifications notifications = new Notifications(notification);
         for(Secretary i : UsersSingleton.getInstance().getListOfSecretarys()) {
-            i.getNotifications().add(notification);
+            i.getNotifications().add(notifications);
         }
     }
     

@@ -40,7 +40,7 @@ public class RequestAccount {
         String notification = "new account requested";
         Notifications notifications = new Notifications(notification);
         for(Secretary i : UsersSingleton.getInstance().getListOfSecretarys()) {
-            i.getNotifications().add(notification);
+            i.getNotifications().add(notifications);
         }
     }
     
@@ -48,7 +48,7 @@ public class RequestAccount {
         String notification = patient.getUserId() + patient.getFirstName() + patient.getLastName() + " Requested account termination";
         Notifications notifications = new Notifications(notification);
         for(Secretary i : UsersSingleton.getInstance().getListOfSecretarys()) {
-            i.getNotifications().add(notification);
+            i.getNotifications().add(notifications);
         }
     }
 

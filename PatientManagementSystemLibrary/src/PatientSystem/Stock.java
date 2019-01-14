@@ -36,7 +36,7 @@ public class Stock {
                 String notification = type + " is running low on stock";
                 Notifications notifications = new Notifications(notification);
                 for(Secretary i : UsersSingleton.getInstance().getListOfSecretarys()) {
-                    i.getNotifications().add(notification);
+                    i.getNotifications().add(notifications);
                 }
             }
         }
