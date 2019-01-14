@@ -5,11 +5,13 @@
  */
 package PatientSystem;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Jonbr
  */
-public class PatientNote {
+public class PatientNote implements Serializable{
     private String notes;
     private String date;
     private String time;

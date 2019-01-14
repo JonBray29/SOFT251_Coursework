@@ -5,16 +5,17 @@
  */
 package PatientSystem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Jonbr
  */
-public class Orders {
+public class Orders implements Serializable{
     private Medicine medicine;
     private int quantity;
-    private static ArrayList<Orders> listOfOrders;
+    private static ArrayList<Orders> listOfOrders = new ArrayList<Orders>();
     
     private Orders(Medicine medicine, int quantity) {
         this.medicine = medicine;
@@ -41,6 +42,9 @@ public class Orders {
     }
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+    public static void setListOfOrders(ArrayList<Orders> listOfOrders) {
+        Orders.listOfOrders = listOfOrders;
     }
 
     /*getters*/

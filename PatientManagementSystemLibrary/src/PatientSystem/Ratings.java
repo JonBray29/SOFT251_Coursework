@@ -5,11 +5,13 @@
  */
 package PatientSystem;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Jonbr
  */
-public class Ratings {
+public class Ratings implements Serializable{
     private int ratingValue;
     private String comments;
 

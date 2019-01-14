@@ -5,18 +5,19 @@
  */
 package PatientSystem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Jonbr
  */
-public class Appointments {
+public class Appointments implements Serializable{
     private Doctor doctor;
     private Patient patient;
     private String date;
     private String time;
-    private static ArrayList<Appointments> allAppointments;
+    private static ArrayList<Appointments> allAppointments = new ArrayList<Appointments>();
     
     private Appointments(Doctor doctor, Patient patient, String date, String time) {
         this.doctor = doctor;
@@ -49,6 +50,9 @@ public class Appointments {
     public void setTime(String time) {
         this.time = time;
     }
+    public static void setAllAppointments(ArrayList<Appointments> allAppointments) {
+        Appointments.allAppointments = allAppointments;
+    }  
     
 
     /*Getters*/

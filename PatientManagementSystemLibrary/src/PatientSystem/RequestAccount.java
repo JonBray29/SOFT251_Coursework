@@ -5,13 +5,14 @@
  */
 package PatientSystem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Jonbr
  */
-public class RequestAccount {
+public class RequestAccount implements Serializable{
     
     private String firstName;
     private String lastName;
@@ -21,7 +22,7 @@ public class RequestAccount {
     private String password;
     private int age;
     private String gender;
-    private static ArrayList<RequestAccount> requestAccount;
+    private static ArrayList<RequestAccount> requestAccount = new ArrayList<RequestAccount>();
 
     private RequestAccount(String firstName, String lastName, String addressLineOne, String city, String postcode, String password, int age, String gender) {
         this.firstName = firstName;

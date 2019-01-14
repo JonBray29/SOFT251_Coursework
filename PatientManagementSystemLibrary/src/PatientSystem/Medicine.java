@@ -5,19 +5,19 @@
  */
 package PatientSystem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Jonbr
  */
-public class Medicine {
+public class Medicine implements Serializable{
     private String name;
-    private static ArrayList<Medicine> listOfMedicine;
+    private static ArrayList<Medicine> listOfMedicine  = new ArrayList<Medicine>();
     
     private Medicine(String name) {
         this.name = name;
-        this.listOfMedicine = new ArrayList<Medicine>();
     }
 
     public void createMedicine(String name){

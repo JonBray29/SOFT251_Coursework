@@ -5,6 +5,7 @@
  */
 package PatientSystem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -12,9 +13,9 @@ import java.util.Random;
  *
  * @author Jonbr
  */
-public class Secretary extends SystemUsers {
+public class Secretary extends SystemUsers implements Serializable{
         
-    private ArrayList<Notifications> notifications;
+    private ArrayList<Notifications> notifications  = new ArrayList<>();
 
     
     public Secretary(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, 
@@ -25,9 +26,7 @@ public class Secretary extends SystemUsers {
         this.addressLineOne = addressLineOne;
         this.city = city;
         this.postcode = postcode;
-        this.password = password;
-        this.notifications = new ArrayList<Notifications>();
-           
+        this.password = password;           
     }
     
     protected static String newUsername() {

@@ -5,13 +5,13 @@
  */
 package PatientSystem;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 
 /**
  *
  * @author Jonbr
  */
-public class Notifications {
+public class Notifications implements Serializable{
     String notification; 
 
     public Notifications(String notification) {

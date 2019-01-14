@@ -5,13 +5,14 @@
  */
 package PatientSystem;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
  *
  * @author Jonbr
  */
-public abstract class SystemUsers {
+public abstract class SystemUsers implements Serializable{
     protected String userId;
     protected String firstName;
     protected String lastName;

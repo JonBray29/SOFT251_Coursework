@@ -5,13 +5,14 @@
  */
 package PatientSystem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Jonbr
  */
-public class RequestOrder {
+public class RequestOrder implements Serializable{
     private Medicine medicine;
     private static ArrayList<RequestOrder> requestOrder;
 

@@ -5,13 +5,14 @@
  */
 package PatientSystem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Jonbr
  */
-public class Stock {
+public class Stock implements Serializable{
     private Medicine medicine;
     private int quantityInStock;
     private static ArrayList<Stock> listOfStock = new ArrayList<Stock>();

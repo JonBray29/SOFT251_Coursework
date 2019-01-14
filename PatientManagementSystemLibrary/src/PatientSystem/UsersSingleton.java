@@ -5,29 +5,30 @@
  */
 package PatientSystem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Jonbr
  */
-public class UsersSingleton {
+public class UsersSingleton implements Serializable{
     
     private static UsersSingleton instance;
     private ArrayList<SystemUsers> listOfUsers = null;
-    private ArrayList<Secretary> listOfSecretarys;
-    private ArrayList<Admin> listOfAdmins;
-    private ArrayList<Doctor> listOfDoctors;
-    private ArrayList<Patient> listOfPatients;
+    private ArrayList<Secretary> listOfSecretarys = null;
+    private ArrayList<Admin> listOfAdmins = null;
+    private ArrayList<Doctor> listOfDoctors = null;
+    private ArrayList<Patient> listOfPatients = null;
     
     
 
     private UsersSingleton() {
-        listOfUsers = new ArrayList<SystemUsers>();
-        listOfSecretarys = new ArrayList<Secretary>();
-        listOfAdmins = new ArrayList<Admin>();
-        listOfDoctors = new ArrayList<Doctor>();
-        listOfPatients = new ArrayList<Patient>();
+        listOfUsers = new ArrayList<>();
+        listOfSecretarys = new ArrayList<>();
+        listOfAdmins = new ArrayList<>();
+        listOfDoctors = new ArrayList<>();
+        listOfPatients = new ArrayList<>();
     }
     
     public static UsersSingleton getInstance() {

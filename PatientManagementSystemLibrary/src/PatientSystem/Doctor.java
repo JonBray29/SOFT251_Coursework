@@ -5,6 +5,7 @@
  */
 package PatientSystem;
 
+import java.io.Serializable;
 import java.util.Random;
 import java.util.ArrayList;
 
@@ -12,10 +13,10 @@ import java.util.ArrayList;
  *
  * @author Jonbr
  */
-public class Doctor extends SystemUsers {
-    private ArrayList<Appointments> doctorAppointments;
-    private ArrayList<Ratings> ratings;
-    private ArrayList<Notifications> notifications;
+public class Doctor extends SystemUsers implements Serializable{
+    private ArrayList<Appointments> doctorAppointments = new ArrayList<>();
+    private ArrayList<Ratings> ratings = new ArrayList<>();
+    private ArrayList<Notifications> notifications = new ArrayList<>();
     
     public Doctor(String userId, String firstName, String lastName, String addressLineOne, String city, String postcode, 
     String password, int age, String gender) {
@@ -26,9 +27,6 @@ public class Doctor extends SystemUsers {
         this.city = city;
         this.postcode = postcode;
         this.password = password;
-        this.doctorAppointments = new ArrayList<Appointments>();
-        this.ratings = new ArrayList<Ratings>();
-        this.notifications = new ArrayList<Notifications>();
     }
     
     protected static String newUsername() {

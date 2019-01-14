@@ -5,19 +5,20 @@
  */
 package PatientSystem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Jonbr
  */
-public class RequestAppointment {
+public class RequestAppointment implements Serializable{
     
     private Doctor doctor;
     private Patient patient;
     private String date;
     private String time;
-    private static ArrayList<RequestAppointment> requestAppointment;
+    private static ArrayList<RequestAppointment> requestAppointment = new ArrayList<RequestAppointment>();
     
     private RequestAppointment(Doctor doctor, Patient patient, String date, String time) {
         this.doctor = doctor;

@@ -5,20 +5,21 @@
  */
 package PatientSystem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Jonbr
  */
-public class Prescription {
+public class Prescription implements Serializable{
     private Doctor doctor;
     private Patient patient;
     private String notes;
     private Medicine medicine;
     private int quantity;
     private String dosage;
-    private static ArrayList<Prescription> uncollectedPrescriptions;
+    private static ArrayList<Prescription> uncollectedPrescriptions = new ArrayList<Prescription>();
     
     private Prescription(Doctor doctor, Patient patient, String notes, Medicine medicine, int quantity, String dosage) {
         this.doctor = doctor;
@@ -65,6 +66,9 @@ public class Prescription {
     public void setDosage(String dosage) {
         this.dosage = dosage;
     }
+    public static void setUncollectedPrescriptions(ArrayList<Prescription> uncollectedPrescriptions) {
+        Prescription.uncollectedPrescriptions = uncollectedPrescriptions;
+    }
     
     /*Getters*/
     public Doctor getDoctor() {
@@ -85,7 +89,6 @@ public class Prescription {
     public String getDosage() {
         return dosage;
     }
-
     public static ArrayList<Prescription> getUncollectedPrescriptions() {
         return uncollectedPrescriptions;
     }

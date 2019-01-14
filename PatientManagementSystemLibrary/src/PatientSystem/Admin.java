@@ -5,13 +5,14 @@
  */
 package PatientSystem;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author Jonbr
  */
-public class Admin extends SystemUsers {
+public class Admin extends SystemUsers implements Serializable{
     
     //remove this constructor and change systemusers construtor to variables
     public Admin(){
