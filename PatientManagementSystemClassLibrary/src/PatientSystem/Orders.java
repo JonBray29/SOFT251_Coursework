@@ -43,10 +43,26 @@ public class Orders implements Serializable{
     public static void write(Orders order) {
         Serialiser.writeObject(order, "order_file.ser");
     }
-    public static void read() {
-        Orders order = (Orders) Serialiser.readObject("order_file.ser");
-        listOfOrders.add(order);
-    }      
+
+    public static Serializable read(){
+        Serializable order = null;
+        try {
+         FileInputStream fileRead = new FileInputStream("order_file.ser");
+         ObjectInputStream in = new ObjectInputStream(fileRead);
+         while(fileRead.available() > 0) {
+            order = (Serializable) in.readObject();
+            listOfOrders.add((Orders) order);
+
+        }
+         in.close();
+         fileRead.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+        } catch (ClassNotFoundException c) {
+            c.printStackTrace();
+        }
+        return order;
+    } 
     
     /*Setters*/
     public void setMedicine(Medicine medicine) {

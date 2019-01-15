@@ -53,9 +53,24 @@ public class Ratings implements Serializable{
     public static void write(Ratings rating) {
         Serialiser.writeObject(rating, "ratings_file.ser");
     }
-    public static void read() {
-        Ratings rating = (Ratings) Serialiser.readObject("ratings_file.ser");
-    }
+    
+    public static Serializable read(){
+        Serializable rating = null;
+        try {
+         FileInputStream fileRead = new FileInputStream("ratings_file.ser");
+         ObjectInputStream in = new ObjectInputStream(fileRead);
+         while(fileRead.available() > 0) {
+            rating = (Serializable) in.readObject();
+        }
+         in.close();
+         fileRead.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+        } catch (ClassNotFoundException c) {
+            c.printStackTrace();
+        }
+        return rating;
+    }  
     
     /*Setters*/
     public void setRatingValue(int ratingValue) {

@@ -90,7 +90,6 @@ public class Stock implements Serializable{
          while(fileRead.available() > 0) {
             stock = (Serializable) in.readObject();
             listOfStock.add((Stock) stock);
-
         }
          in.close();
          fileRead.close();

@@ -46,10 +46,25 @@ public class RequestAppointment implements Serializable{
     public static void write(RequestAppointment appointment) {
         Serialiser.writeObject(appointment, "request_appointment_file.ser");
     }
-    public static void read() {
-        RequestAppointment appointment = (RequestAppointment) Serialiser.readObject("request_appointment_file.ser");
-        requestAppointment.add(appointment);
-    }      
+
+    public static Serializable read(){
+        Serializable appointment = null;
+        try {
+         FileInputStream fileRead = new FileInputStream("request_appointment_file.ser");
+         ObjectInputStream in = new ObjectInputStream(fileRead);
+         while(fileRead.available() > 0) {
+            appointment = (Serializable) in.readObject();
+            requestAppointment.add((RequestAppointment) appointment);
+        }
+         in.close();
+         fileRead.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+        } catch (ClassNotFoundException c) {
+            c.printStackTrace();
+        }
+        return appointment;
+    } 
     
     /*Setters*/
     public void setDoctor(Doctor doctor) {

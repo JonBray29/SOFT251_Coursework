@@ -26,6 +26,7 @@ public class Serialiser {
          }
     }
     
+    //Doesn't do anything
     public static Serializable readObject(String fileName){
         Serializable loadedObject = null;
         try {

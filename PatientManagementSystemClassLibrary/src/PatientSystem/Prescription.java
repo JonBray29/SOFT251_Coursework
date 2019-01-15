@@ -35,6 +35,7 @@ public class Prescription implements Serializable{
         patient.getPrescriptions().add(prescription);
         PrescriptionsSingleton.getInstance().getUncollectedPrescriptions().add(prescription);
         write(prescription);
+        PrescriptionsSingleton.write(PrescriptionsSingleton.getInstance());
         Patient.write(patient);
     }
     
@@ -46,6 +47,7 @@ public class Prescription implements Serializable{
                 }
             }
             PrescriptionsSingleton.getInstance().getUncollectedPrescriptions().remove(p);
+            PrescriptionsSingleton.write(PrescriptionsSingleton.getInstance());
         }
     }
     
@@ -61,7 +63,6 @@ public class Prescription implements Serializable{
          ObjectInputStream in = new ObjectInputStream(fileRead);
          while(fileRead.available() > 0) {
             prescription = (Serializable) in.readObject();
-            PrescriptionsSingleton.getInstance().getUncollectedPrescriptions().add((Prescription) prescription);
         }
          in.close();
          fileRead.close();

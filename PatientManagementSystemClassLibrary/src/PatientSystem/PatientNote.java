@@ -36,9 +36,24 @@ public class PatientNote implements Serializable{
     public static void write(PatientNote note) {
         Serialiser.writeObject(note, "patient_notes_file.ser");
     }
-    public static void read() {
-        PatientNote note = (PatientNote) Serialiser.readObject("patient_notes_file.ser");
-    }
+
+    public static Serializable read(){
+        Serializable patientNote = null;
+        try {
+         FileInputStream fileRead = new FileInputStream("patient_notes_file.ser");
+         ObjectInputStream in = new ObjectInputStream(fileRead);
+         while(fileRead.available() > 0) {
+            patientNote = (Serializable) in.readObject();
+        }
+         in.close();
+         fileRead.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+        } catch (ClassNotFoundException c) {
+            c.printStackTrace();
+        }
+        return patientNote;
+    }  
 
 
     /*Setters*/

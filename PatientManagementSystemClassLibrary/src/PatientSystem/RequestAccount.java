@@ -63,10 +63,25 @@ public class RequestAccount implements Serializable{
     public static void write(RequestAccount account) {
         Serialiser.writeObject(account, "request_account_file.ser");
     }
-    public static void read() {
-        RequestAccount account = (RequestAccount) Serialiser.readObject("request_account_file.ser");
-        requestAccount.add(account);
-    }      
+
+    public static Serializable read(){
+        Serializable account = null;
+        try {
+         FileInputStream fileRead = new FileInputStream("request_account_file.ser");
+         ObjectInputStream in = new ObjectInputStream(fileRead);
+         while(fileRead.available() > 0) {
+            account = (Serializable) in.readObject();
+            requestAccount.add((RequestAccount) account);
+        }
+         in.close();
+         fileRead.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+        } catch (ClassNotFoundException c) {
+            c.printStackTrace();
+        }
+        return account;
+    } 
     
     /*Setters*/
     public void setFirstName(String firstName) {

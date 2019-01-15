@@ -32,4 +32,24 @@ public class PrescriptionsSingleton implements Serializable{
     public ArrayList<Prescription> getUncollectedPrescriptions() {
         return uncollectedPrescriptions;
     }
+    
+    //Serialization
+    public static void write(PrescriptionsSingleton instance) {
+        Serialiser.writeObject(instance, "uncollected_prescriptions_file.ser");
+    }
+    public static Serializable read(){
+        Serializable instance = null;
+        try {
+         FileInputStream fileRead = new FileInputStream("uncollected_prescriptions_file.ser");
+         ObjectInputStream in = new ObjectInputStream(fileRead);
+            instance = (Serializable) in.readObject();
+         in.close();
+         fileRead.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+        } catch (ClassNotFoundException c) {
+            c.printStackTrace();
+        }
+        return instance;
+    } 
 }
