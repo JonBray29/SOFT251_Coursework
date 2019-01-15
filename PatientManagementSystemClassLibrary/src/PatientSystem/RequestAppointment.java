@@ -18,18 +18,18 @@ public class RequestAppointment implements Serializable{
     
     private Doctor doctor;
     private Patient patient;
-    private Date date;
+    private String date;
     private String time;
     private static ArrayList<RequestAppointment> requestAppointment = new ArrayList<RequestAppointment>();
     
-    private RequestAppointment(Doctor doctor, Patient patient, Date date, String time) {
+    private RequestAppointment(Doctor doctor, Patient patient, String date, String time) {
         this.doctor = doctor;
         this.patient = patient;
         this.date = date;
         this.time = time;
     }
     
-    public void createAppointment(Doctor doctor, Patient patient, Date date, String time) {
+    public void createAppointment(Doctor doctor, Patient patient, String date, String time) {
         RequestAppointment appointment = new RequestAppointment(doctor, patient, date, time);
         requestAppointment.add(appointment);
         String notification = "New appointment requested: " + appointment.toString();
@@ -66,6 +66,10 @@ public class RequestAppointment implements Serializable{
         return appointment;
     } 
     
+    public void delete(RequestAppointment appointment) {
+        requestAppointment.remove(appointment);
+    }
+    
     /*Setters*/
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
@@ -73,7 +77,7 @@ public class RequestAppointment implements Serializable{
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
     public void setTime(String time) {
@@ -91,7 +95,7 @@ public class RequestAppointment implements Serializable{
     public Patient getPatient() {
         return patient;
     }
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
     public String getTime() {

@@ -15,7 +15,7 @@ import java.io.*;
  */
 public class RequestOrder implements Serializable{
     private Medicine medicine;
-    private static ArrayList<RequestOrder> requestOrder;
+    private static ArrayList<RequestOrder> requestOrder = new ArrayList<RequestOrder>();
 
     public RequestOrder(Medicine medicine) {
         this.medicine = medicine;
@@ -56,6 +56,10 @@ public class RequestOrder implements Serializable{
         }
         return order;
     }     
+    
+    public void delete(RequestOrder order) {
+        requestOrder.remove(order);
+    }
     
     //setters
     public void setMedicine(Medicine medicine) {

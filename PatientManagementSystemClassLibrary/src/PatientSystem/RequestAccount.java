@@ -83,6 +83,10 @@ public class RequestAccount implements Serializable{
         return account;
     } 
     
+    public void delete(RequestAccount account) {
+        requestAccount.remove(account);
+    }
+    
     /*Setters*/
     public void setFirstName(String firstName) {
         this.firstName = firstName;
