@@ -78,17 +78,14 @@ public abstract class SystemUsers implements Serializable{
         UsersSingleton.getInstance().getListOfUsers().add(user);
     }
     
-    public void login(String userId, String password) { 
-        if(registeredUsers.containsKey(userId)  == true) {
-            if(password == registeredUsers.get(userId)  == true) {
-                /*Allow login*/
-            }
-            else {
-                /*password not recognised*/
-            }
+    public boolean login(String userId, String password) { 
+        if(password == registeredUsers.get(userId)  == true) {
+            /*Allow login*/
+            return true;
         }
         else {
-            /*Username not recognised*/
+            /*password not recognised*/
+            return false;
         }
     }
     
