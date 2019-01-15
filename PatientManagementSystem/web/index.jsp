@@ -12,10 +12,10 @@
         <title>Login Page</title>
     </head>
     <body>
-        <form name="login" method="POST">
-            <input type="text" name="userId" placeholder="Username" />
-            <input type="password" name="password" placeholder="Password" />
+        <form action="LoginServlet" name="login" method="POST">
+            <input type="text" name="userId" placeholder="Username" /><br>
+            <input type="password" name="password" placeholder="Password" /><br>
             <input type="submit" value="Login" name="login" />
         </form>
     </body>
-</html>
+</html> 
