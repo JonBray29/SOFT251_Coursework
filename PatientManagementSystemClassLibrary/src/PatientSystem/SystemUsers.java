@@ -7,6 +7,8 @@ package PatientSystem;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.io.*;
+
 
 /**
  *
@@ -104,10 +106,25 @@ public abstract class SystemUsers implements Serializable{
     public static void write(SystemUsers user) {
         Serialiser.writeObject(user, "user_file.ser");
     }
-    public static void read() {
-        SystemUsers user = (SystemUsers) Serialiser.readObject("user_file.ser");
-        addToList(user);
-    }
+
+    public static Serializable read(){
+        Serializable user = null;
+        try {
+         FileInputStream fileRead = new FileInputStream("user_file.ser");
+         ObjectInputStream in = new ObjectInputStream(fileRead);
+         while(fileRead.available() > 0) {
+            user = (Serializable) in.readObject();
+            addToList((SystemUsers) user);
+        }
+         in.close();
+         fileRead.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+        } catch (ClassNotFoundException c) {
+            c.printStackTrace();
+        }
+        return user;
+    }    
     
     /*setters*/
     

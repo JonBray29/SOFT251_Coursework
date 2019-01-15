@@ -7,6 +7,7 @@ package PatientSystem;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.io.*;
 
 /**
  *
@@ -80,10 +81,26 @@ public class Stock implements Serializable{
     public static void write(Stock stock) {
         Serialiser.writeObject(stock, "stock_file.ser");
     }
-    public static void read() {
-        Stock stock = (Stock) Serialiser.readObject("stock_file.ser");
-        listOfStock.add(stock);
-    }        
+     
+    public static Serializable read(){
+        Serializable stock = null;
+        try {
+         FileInputStream fileRead = new FileInputStream("stock_file.ser");
+         ObjectInputStream in = new ObjectInputStream(fileRead);
+         while(fileRead.available() > 0) {
+            stock = (Serializable) in.readObject();
+            listOfStock.add((Stock) stock);
+
+        }
+         in.close();
+         fileRead.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+        } catch (ClassNotFoundException c) {
+            c.printStackTrace();
+        }
+        return stock;
+    } 
     
     /*Setters*/
     public void setQuantityInStock(int quantityInStock) {

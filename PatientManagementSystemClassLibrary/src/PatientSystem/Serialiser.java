@@ -31,7 +31,9 @@ public class Serialiser {
         try {
          FileInputStream fileRead = new FileInputStream(fileName);
          ObjectInputStream in = new ObjectInputStream(fileRead);
-         loadedObject = (Serializable) in.readObject();
+         while(fileRead.available() > 0) {
+            loadedObject = (Serializable) in.readObject();
+        }
          in.close();
          fileRead.close();
         } catch (IOException i) {

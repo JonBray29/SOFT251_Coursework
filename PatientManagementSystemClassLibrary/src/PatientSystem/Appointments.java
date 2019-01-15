@@ -8,6 +8,8 @@ package PatientSystem;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.io.*;
+
 
 /**
  *
@@ -62,10 +64,25 @@ public class Appointments implements Serializable{
     public static void write(Appointments appointment) {
         Serialiser.writeObject(appointment, "appointment_file.ser");
     }
-    public static void read() {
-        Appointments appointment = (Appointments) Serialiser.readObject("appointment_file.ser");
-        allAppointments.add(appointment);
-    }
+
+    public static Serializable read(){
+        Serializable appointment = null;
+        try {
+         FileInputStream fileRead = new FileInputStream("appointment_file.ser");
+         ObjectInputStream in = new ObjectInputStream(fileRead);
+         while(fileRead.available() > 0) {
+            appointment = (Serializable) in.readObject();
+            allAppointments.add((Appointments) appointment);
+        }
+         in.close();
+         fileRead.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+        } catch (ClassNotFoundException c) {
+            c.printStackTrace();
+        }
+        return appointment;
+    }    
 
     /*Getters*/
     public Doctor getDoctor() {

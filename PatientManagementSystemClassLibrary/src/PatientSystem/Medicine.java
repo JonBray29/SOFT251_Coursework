@@ -7,6 +7,7 @@ package PatientSystem;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.io.*;
 
 /**
  *
@@ -30,10 +31,25 @@ public class Medicine implements Serializable{
     public static void write(Medicine medicine) {
         Serialiser.writeObject(medicine, "medicine_file.ser");
     }
-    public static void read() {
-        Medicine medicine = (Medicine) Serialiser.readObject("medicine_file.ser");
-        listOfMedicine.add(medicine);        
-    }
+
+    public static Serializable read(){
+        Serializable medicine = null;
+        try {
+         FileInputStream fileRead = new FileInputStream("medicine_file.ser");
+         ObjectInputStream in = new ObjectInputStream(fileRead);
+         while(fileRead.available() > 0) {
+            medicine = (Serializable) in.readObject();
+            listOfMedicine.add((Medicine) medicine);        
+        }
+         in.close();
+         fileRead.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+        } catch (ClassNotFoundException c) {
+            c.printStackTrace();
+        }
+        return medicine;
+    }   
     
     /*Setters*/
     public void setName(String name) {

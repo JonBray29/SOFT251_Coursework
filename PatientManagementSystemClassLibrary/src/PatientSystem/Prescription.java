@@ -7,6 +7,7 @@ package PatientSystem;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.io.*;
 
 /**
  *
@@ -19,7 +20,6 @@ public class Prescription implements Serializable{
     private Medicine medicine;
     private int quantity;
     private String dosage;
-    private static ArrayList<Prescription> uncollectedPrescriptions = new ArrayList<Prescription>();
     
     private Prescription(Doctor doctor, Patient patient, String notes, Medicine medicine, int quantity, String dosage) {
         this.doctor = doctor;
@@ -33,19 +33,19 @@ public class Prescription implements Serializable{
     public void createPrescription(Doctor doctor, Patient patient, String notes, Medicine medicine, int quantity, String dosage) {
         Prescription prescription = new Prescription(doctor, patient, notes, medicine, quantity, dosage);
         patient.getPrescriptions().add(prescription);
-        uncollectedPrescriptions.add(prescription);
+        PrescriptionsSingleton.getInstance().getUncollectedPrescriptions().add(prescription);
         write(prescription);
         Patient.write(patient);
     }
     
     public void collectPrescription(Prescription prescription) {        
-        for(Prescription p : uncollectedPrescriptions) {
+        for(Prescription p : PrescriptionsSingleton.getInstance().getUncollectedPrescriptions()) {
             for(Medicine m : Medicine.getListOfMedicine()){
                 if(m == p.getMedicine()) {
                     Stock.updateStock("remove", m, quantity);
                 }
             }
-            uncollectedPrescriptions.remove(p);
+            PrescriptionsSingleton.getInstance().getUncollectedPrescriptions().remove(p);
         }
     }
     
@@ -53,11 +53,25 @@ public class Prescription implements Serializable{
     public static void write(Prescription prescription) {
         Serialiser.writeObject(prescription, "prescription_file.ser");
     }
-    public static void read() {
-        Prescription prescription = (Prescription) Serialiser.readObject("prescription_file.ser");
-        uncollectedPrescriptions.add(prescription);
-    }
 
+    public static Serializable read(){
+        Serializable prescription = null;
+        try {
+         FileInputStream fileRead = new FileInputStream("prescription_file.ser");
+         ObjectInputStream in = new ObjectInputStream(fileRead);
+         while(fileRead.available() > 0) {
+            prescription = (Serializable) in.readObject();
+            PrescriptionsSingleton.getInstance().getUncollectedPrescriptions().add((Prescription) prescription);
+        }
+         in.close();
+         fileRead.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+        } catch (ClassNotFoundException c) {
+            c.printStackTrace();
+        }
+        return prescription;
+    }    
 
     /*Setters*/
     public void setDoctor(Doctor doctor) {
@@ -78,9 +92,7 @@ public class Prescription implements Serializable{
     public void setDosage(String dosage) {
         this.dosage = dosage;
     }
-    public static void setUncollectedPrescriptions(ArrayList<Prescription> uncollectedPrescriptions) {
-        Prescription.uncollectedPrescriptions = uncollectedPrescriptions;
-    }
+
     
     /*Getters*/
     public Doctor getDoctor() {
@@ -101,9 +113,5 @@ public class Prescription implements Serializable{
     public String getDosage() {
         return dosage;
     }
-    public static ArrayList<Prescription> getUncollectedPrescriptions() {
-        return uncollectedPrescriptions;
-    }
-    
           
 }
