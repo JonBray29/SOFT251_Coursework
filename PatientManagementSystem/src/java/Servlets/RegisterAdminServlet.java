@@ -73,7 +73,7 @@ public class RegisterAdminServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
         
         String type = "admin";
         
@@ -93,8 +93,9 @@ public class RegisterAdminServlet extends HttpServlet {
         SystemUsers.addToHashmap(userId, password);
         SystemUsers.addToList(user);
         
-        
-        
+        response.sendRedirect("index.jsp");
+     
+        processRequest(request, response);
     }
 
     /**
