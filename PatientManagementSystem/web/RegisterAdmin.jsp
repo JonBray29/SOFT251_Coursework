@@ -12,7 +12,7 @@
         <title>Admin Registration</title>
     </head>
     <body>
-        <form name="RegisterAdmin" method="POST">
+        <form action="RegisterAdminServlet" name="RegisterAdmin" method="POST">
             <input type="text" name="FirstName" placeholder="First Name" />
             <input type="text" name="LastName" placeholder="Last Name" />
             <input type="text" name="AddressLineOne" placeholder="Address Line One" />
