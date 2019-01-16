@@ -70,24 +70,23 @@ public class RequestAccount implements Serializable{
          }
     }
 
-    public static Serializable read(){
-        Serializable account = null;
+    public static void read(){
+        ArrayList<RequestAccount> account = new ArrayList<>();
         try {
-         FileInputStream fileRead = new FileInputStream("request_account_file.ser");
-         ObjectInputStream in = new ObjectInputStream(fileRead);
-         while(fileRead.available() > 0) {
-            account = (Serializable) in.readObject();
-            requestAccount.add((RequestAccount) account);
-        }
-         in.close();
-         fileRead.close();
+            FileInputStream fileRead = new FileInputStream("request_account_file.ser");
+            ObjectInputStream in = new ObjectInputStream(fileRead);
+            account = (ArrayList<RequestAccount>)in.readObject();       
+            in.close();
+            fileRead.close();
+            for(RequestAccount a : account) {
+                requestAccount.add(a);
+            }
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {
             c.printStackTrace();
         }
-        return account;
-    } 
+    }
     
     public void delete(RequestAccount account) {
         requestAccount.remove(account);

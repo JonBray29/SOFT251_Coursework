@@ -8,6 +8,7 @@ package PatientSystem;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.io.*;
+import java.util.ArrayList;
 
 
 /**
@@ -127,41 +128,36 @@ public abstract class SystemUsers implements Serializable{
          }
     }
 
-    public static Serializable read(){
-        Serializable user = null;
+    public static void read(){
+        ArrayList<SystemUsers> user = new ArrayList<>();
         try {
-         FileInputStream fileRead = new FileInputStream("user_file.ser");
-         ObjectInputStream in = new ObjectInputStream(fileRead);
-         while(fileRead.available() > 0) {
-            user = (Serializable) in.readObject();
-            addToList((SystemUsers) user);
-        }
-         in.close();
-         fileRead.close();
+            FileInputStream fileRead = new FileInputStream("user_file.ser");
+            ObjectInputStream in = new ObjectInputStream(fileRead);
+            user = (ArrayList<SystemUsers>)in.readObject();       
+            in.close();
+            fileRead.close();
+            for(SystemUsers s : user) {
+                UsersSingleton.getInstance().getListOfUsers().add(s);
+            }
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {
             c.printStackTrace();
         }
-        return user;
     }    
     
-    public static Serializable readHashmap(){
-        Serializable hashmap = null;
+    public static void readHashmap(){
         try {
-         FileInputStream fileRead = new FileInputStream("hashmap_file.ser");
-         ObjectInputStream in = new ObjectInputStream(fileRead);
-         while(fileRead.available() > 0) {
-            hashmap = (Serializable) in.readObject();
-        }
-         in.close();
-         fileRead.close();
+            FileInputStream fileRead = new FileInputStream("hashmap_file.ser");
+            ObjectInputStream in = new ObjectInputStream(fileRead);
+            registeredUsers = (HashMap<String, String>)in.readObject();       
+            in.close();
+            fileRead.close();
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {
             c.printStackTrace();
         }
-        return hashmap;
     } 
     
     /*setters*/

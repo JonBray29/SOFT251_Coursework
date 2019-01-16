@@ -40,24 +40,23 @@ public class Medicine implements Serializable{
          }
     }
 
-    public static Serializable read(){
-        Serializable medicine = null;
+    public static void read(){
+        ArrayList<Medicine> medicine = new ArrayList<>();
         try {
-         FileInputStream fileRead = new FileInputStream("medicine_file.ser");
-         ObjectInputStream in = new ObjectInputStream(fileRead);
-         while(fileRead.available() > 0) {
-            medicine = (Serializable) in.readObject();
-            listOfMedicine.add((Medicine) medicine);        
-        }
-         in.close();
-         fileRead.close();
+            FileInputStream fileRead = new FileInputStream("medicine_file.ser");
+            ObjectInputStream in = new ObjectInputStream(fileRead);
+            medicine = (ArrayList<Medicine>)in.readObject();       
+            in.close();
+            fileRead.close();
+            for(Medicine m : medicine) {
+                listOfMedicine.add(m);
+            }
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {
             c.printStackTrace();
         }
-        return medicine;
-    }   
+    }
     
     /*Setters*/
     public void setName(String name) {
