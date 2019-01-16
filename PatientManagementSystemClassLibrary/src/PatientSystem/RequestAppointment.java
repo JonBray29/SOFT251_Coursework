@@ -36,15 +36,22 @@ public class RequestAppointment implements Serializable{
         Notifications notifications = new Notifications(notification);
         for(Secretary i : UsersSingleton.getInstance().getListOfSecretarys()) {
             i.getNotifications().add(notifications);
-            Secretary.write(i);
         }
-        Notifications.write(notifications);
-        write(appointment);
+        SystemUsers.write();
+        write();
     }
     
     //Serialization
-    public static void write(RequestAppointment appointment) {
-        Serialiser.writeObject(appointment, "request_appointment_file.ser");
+    public static void write() {
+        try {
+            FileOutputStream fileWrite = new FileOutputStream("request_appointment_file.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileWrite);
+            out.writeObject(requestAppointment);
+            out.close();
+            fileWrite.close();
+         } catch (IOException i) {
+            i.printStackTrace();
+         }
     }
 
     public static Serializable read(){
@@ -68,6 +75,7 @@ public class RequestAppointment implements Serializable{
     
     public void delete(RequestAppointment appointment) {
         requestAppointment.remove(appointment);
+        write();
     }
     
     /*Setters*/

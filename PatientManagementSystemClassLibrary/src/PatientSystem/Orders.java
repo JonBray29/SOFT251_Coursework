@@ -26,22 +26,34 @@ public class Orders implements Serializable{
     public void createOrders(){
         Orders order = new Orders(medicine, quantity);
         listOfOrders.add(order);
-        write(order);
+        write();
 
     }
     
-    public void deliverOrder(String selectedMedicine, int quantity) {
+    public void deliverOrder(Orders order, int quantity) {
         //Simulate a delivery, updates the stock using existing update method.
-        for(Medicine m : Medicine.getListOfMedicine()) {
-            if(m.getName() == selectedMedicine) {
-            Stock.updateStock("add", m, quantity);
+        
+        for(Orders o : listOfOrders) {
+            if(o.getMedicine() == order.getMedicine()) {
+                Medicine m = o.getMedicine();
+                Stock.updateStock("add", m, quantity);
             }
+            listOfOrders.remove(o);
+            write();
         }
     }
     
     //Serialization
-    public static void write(Orders order) {
-        Serialiser.writeObject(order, "order_file.ser");
+    public static void write() {
+        try {
+            FileOutputStream fileWrite = new FileOutputStream("order_file.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileWrite);
+            out.writeObject(listOfOrders);
+            out.close();
+            fileWrite.close();
+         } catch (IOException i) {
+            i.printStackTrace();
+         }
     }
 
     public static Serializable read(){
@@ -85,6 +97,7 @@ public class Orders implements Serializable{
     public static ArrayList<Orders> getListOfOrders() {
         return listOfOrders;
     }   
+    
     
     
 }

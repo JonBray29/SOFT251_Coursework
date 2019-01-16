@@ -26,7 +26,7 @@ public class Stock implements Serializable{
     public void createStock(Medicine medicine, int quantityInStock){
         Stock stock = new Stock(medicine, quantityInStock);
         listOfStock.add(stock);
-        write(stock);
+        write();
 
     }
     
@@ -38,12 +38,10 @@ public class Stock implements Serializable{
                 String type = s.getMedicine().toString();
                 String notification = type + " is running low on stock";
                 Notifications notifications = new Notifications(notification);
-                Notifications.write(notifications);
                 for(Secretary i : UsersSingleton.getInstance().getListOfSecretarys()) {
                     i.getNotifications().add(notifications);
-                    Secretary.write(i);
+                    SystemUsers.write();
                 }
-                Notifications.write(notifications);
             }
         }
     }
@@ -59,7 +57,7 @@ public class Stock implements Serializable{
                     if(s.getMedicine() == medicine) {
                         newQuantity = s.getQuantityInStock() + quantity;
                         s.setQuantityInStock(newQuantity);
-                        write(s);
+                        write();
                     }
                 }
                 checkStock();
@@ -69,7 +67,7 @@ public class Stock implements Serializable{
                     if(s.getMedicine() == medicine) {
                         newQuantity = s.getQuantityInStock() - quantity;
                         s.setQuantityInStock(newQuantity);
-                        write(s);
+                        write();
                     }
                 }
                 checkStock();
@@ -78,8 +76,16 @@ public class Stock implements Serializable{
     }
        
     //Serialization
-    public static void write(Stock stock) {
-        Serialiser.writeObject(stock, "stock_file.ser");
+    public static void write() {
+        try {
+            FileOutputStream fileWrite = new FileOutputStream("stock_file.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileWrite);
+            out.writeObject(listOfStock);
+            out.close();
+            fileWrite.close();
+         } catch (IOException i) {
+            i.printStackTrace();
+         }
     }
      
     public static Serializable read(){

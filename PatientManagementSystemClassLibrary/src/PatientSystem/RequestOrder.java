@@ -28,14 +28,22 @@ public class RequestOrder implements Serializable{
         Notifications notifications = new Notifications(notification);
         for(Secretary i : UsersSingleton.getInstance().getListOfSecretarys()) {
             i.getNotifications().add(notifications);
-            Secretary.write(i);
         }
-        write(order);
+        SystemUsers.write();        
+        write();
     }
     
     //Serialization
-    public static void write(RequestOrder order) {
-        Serialiser.writeObject(order, "request_order_file.ser");
+    public static void write() {
+        try {
+            FileOutputStream fileWrite = new FileOutputStream("request_order_file.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileWrite);
+            out.writeObject(requestOrder);
+            out.close();
+            fileWrite.close();
+         } catch (IOException i) {
+            i.printStackTrace();
+         }
     }
 
     public static Serializable read(){
@@ -59,6 +67,7 @@ public class RequestOrder implements Serializable{
     
     public void delete(RequestOrder order) {
         requestOrder.remove(order);
+        write();
     }
     
     //setters

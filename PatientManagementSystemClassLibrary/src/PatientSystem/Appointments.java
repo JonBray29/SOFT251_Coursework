@@ -7,7 +7,6 @@ package PatientSystem;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.io.*;
 
 
@@ -38,31 +37,22 @@ public class Appointments implements Serializable{
         patient.getPatientAppointments().add(appointment);
         patient.getNotifications().add(notifications);
         allAppointments.add(appointment);   
-        write(appointment);
-        Doctor.write(doctor);
-        Patient.write(patient);
+        write();
+        SystemUsers.write();
     }
-
-    /*Setters*/
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
-    }
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-    public void setDate(String date) {
-        this.date = date;
-    }
-    public void setTime(String time) {
-        this.time = time;
-    }
-    public static void setAllAppointments(ArrayList<Appointments> allAppointments) {
-        Appointments.allAppointments = allAppointments;
-    }  
+ 
     
     //Serialization
-    public static void write(Appointments appointment) {
-        Serialiser.writeObject(appointment, "appointment_file.ser");
+    public static void write() {
+        try {
+            FileOutputStream fileWrite = new FileOutputStream("appointment_file.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileWrite);
+            out.writeObject(allAppointments);
+            out.close();
+            fileWrite.close();
+         } catch (IOException i) {
+            i.printStackTrace();
+         }
     }
 
     public static Serializable read(){
@@ -83,6 +73,24 @@ public class Appointments implements Serializable{
         }
         return appointment;
     }    
+    
+
+    /*Setters*/
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+    public void setDate(String date) {
+        this.date = date;
+    }
+    public void setTime(String time) {
+        this.time = time;
+    }
+    public static void setAllAppointments(ArrayList<Appointments> allAppointments) {
+        Appointments.allAppointments = allAppointments;
+    } 
 
     /*Getters*/
     public Doctor getDoctor() {

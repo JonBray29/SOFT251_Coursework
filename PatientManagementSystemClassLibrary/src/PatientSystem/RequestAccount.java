@@ -43,10 +43,9 @@ public class RequestAccount implements Serializable{
         Notifications notifications = new Notifications(notification);
         for(Secretary i : UsersSingleton.getInstance().getListOfSecretarys()) {
             i.getNotifications().add(notifications);
-            Secretary.write(i);
         }
-        write(account);
-        Notifications.write(notifications);
+        SystemUsers.write();
+        write();
     }
     
     public void requestTermination(Patient patient) {
@@ -54,14 +53,21 @@ public class RequestAccount implements Serializable{
         Notifications notifications = new Notifications(notification);
         for(Secretary i : UsersSingleton.getInstance().getListOfSecretarys()) {
             i.getNotifications().add(notifications);
-            Secretary.write(i);            
         }
-        Notifications.write(notifications);
+        SystemUsers.write();
     }
 
     //Serialization
-    public static void write(RequestAccount account) {
-        Serialiser.writeObject(account, "request_account_file.ser");
+    public static void write() {
+        try {
+            FileOutputStream fileWrite = new FileOutputStream("request_account_file.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileWrite);
+            out.writeObject(requestAccount);
+            out.close();
+            fileWrite.close();
+         } catch (IOException i) {
+            i.printStackTrace();
+         }
     }
 
     public static Serializable read(){

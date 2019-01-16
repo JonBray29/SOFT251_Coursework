@@ -24,12 +24,20 @@ public class Medicine implements Serializable{
     public void createMedicine(String name){
         Medicine medicine = new Medicine(name);
         listOfMedicine.add(medicine);
-        write(medicine);
+        write();
     }
     
     //Serialization
-    public static void write(Medicine medicine) {
-        Serialiser.writeObject(medicine, "medicine_file.ser");
+    public static void write() {
+        try {
+            FileOutputStream fileWrite = new FileOutputStream("medicine_file.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileWrite);
+            out.writeObject(listOfMedicine);
+            out.close();
+            fileWrite.close();
+         } catch (IOException i) {
+            i.printStackTrace();
+         }
     }
 
     public static Serializable read(){

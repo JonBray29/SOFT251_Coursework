@@ -23,10 +23,8 @@ public class Ratings implements Serializable{
     
     public void createRating(int ratingValue, String comments, Doctor doctor) {
         Ratings rating = new Ratings(ratingValue, comments);
-        SystemUsers.write(doctor);
         doctor.getRatings().add(rating);
-        write(rating);
-        Doctor.write(doctor);
+        SystemUsers.write();
     }
 
     public void createFeedback(Doctor doctor, String comment) {
@@ -43,33 +41,9 @@ public class Ratings implements Serializable{
                 String notification = "Average rating: " + Double.toString(average) + "" + comment;
                 Notifications notifications = new Notifications(notification);
                 d.getNotifications().add(notifications);
-                Notifications.write(notifications);
-                Doctor.write(d);
+                SystemUsers.write();
             }
         }
-    }
-    
-    //Serialization
-    public static void write(Ratings rating) {
-        Serialiser.writeObject(rating, "ratings_file.ser");
-    }
-    
-    public static Serializable read(){
-        Serializable rating = null;
-        try {
-         FileInputStream fileRead = new FileInputStream("ratings_file.ser");
-         ObjectInputStream in = new ObjectInputStream(fileRead);
-         while(fileRead.available() > 0) {
-            rating = (Serializable) in.readObject();
-        }
-         in.close();
-         fileRead.close();
-        } catch (IOException i) {
-            i.printStackTrace();
-        } catch (ClassNotFoundException c) {
-            c.printStackTrace();
-        }
-        return rating;
     }  
     
     /*Setters*/

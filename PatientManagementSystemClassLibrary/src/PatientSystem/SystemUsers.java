@@ -48,7 +48,7 @@ public abstract class SystemUsers implements Serializable{
         return user;
     }
     
-    private String createId(String type){
+    public static String createId(String type){
         String userId;
         switch(type.toLowerCase()){
             case"admin":
@@ -69,16 +69,19 @@ public abstract class SystemUsers implements Serializable{
         return userId;
     }
     
-    public void addToHashmap(String userId, String password) {
+    public static void addToHashmap(String userId, String password) {
         registeredUsers.put(userId, password);
+        writeHashmap();
     }
     
         
-    private static void addToList(SystemUsers user) {
+    public static void addToList(SystemUsers user) {
         UsersSingleton.getInstance().getListOfUsers().add(user);
+        write();
     }
     
     public boolean login(String userId, String password) { 
+        readHashmap();
         if(password == registeredUsers.get(userId)  == true) {
             /*Allow login*/
             return true;
@@ -94,14 +97,34 @@ public abstract class SystemUsers implements Serializable{
         for(SystemUsers s : UsersSingleton.getInstance().getListOfUsers()) {
             if(s.getUserId() == userId) {
                 UsersSingleton.getInstance().getListOfUsers().remove(s);
-                write(s);
+                write();
             }
         }
     }
     
     //Serialization
-    public static void write(SystemUsers user) {
-        Serialiser.writeObject(user, "user_file.ser");
+    public static void write() {        
+        try {
+            FileOutputStream fileWrite = new FileOutputStream("user_file.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileWrite);
+            out.writeObject(UsersSingleton.getInstance().getListOfUsers());
+            out.close();
+            fileWrite.close();
+         } catch (IOException i) {
+            i.printStackTrace();
+         }
+    }
+    
+    public static void writeHashmap() {
+        try {
+            FileOutputStream fileWrite = new FileOutputStream("hashmap_file.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileWrite);
+            out.writeObject(registeredUsers);
+            out.close();
+            fileWrite.close();
+         } catch (IOException i) {
+            i.printStackTrace();
+         }
     }
 
     public static Serializable read(){
@@ -122,6 +145,24 @@ public abstract class SystemUsers implements Serializable{
         }
         return user;
     }    
+    
+    public static Serializable readHashmap(){
+        Serializable hashmap = null;
+        try {
+         FileInputStream fileRead = new FileInputStream("hashmap_file.ser");
+         ObjectInputStream in = new ObjectInputStream(fileRead);
+         while(fileRead.available() > 0) {
+            hashmap = (Serializable) in.readObject();
+        }
+         in.close();
+         fileRead.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+        } catch (ClassNotFoundException c) {
+            c.printStackTrace();
+        }
+        return hashmap;
+    } 
     
     /*setters*/
     

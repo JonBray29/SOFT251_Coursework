@@ -34,9 +34,8 @@ public class Prescription implements Serializable{
         Prescription prescription = new Prescription(doctor, patient, notes, medicine, quantity, dosage);
         patient.getPrescriptions().add(prescription);
         PrescriptionsSingleton.getInstance().getUncollectedPrescriptions().add(prescription);
-        write(prescription);
-        PrescriptionsSingleton.write(PrescriptionsSingleton.getInstance());
-        Patient.write(patient);
+        PrescriptionsSingleton.write();
+        SystemUsers.write();
     }
     
     public void collectPrescription(Prescription prescription) {        
@@ -47,32 +46,10 @@ public class Prescription implements Serializable{
                 }
             }
             PrescriptionsSingleton.getInstance().getUncollectedPrescriptions().remove(p);
-            PrescriptionsSingleton.write(PrescriptionsSingleton.getInstance());
+            PrescriptionsSingleton.write();
         }
     }
-    
-    //Serialization
-    public static void write(Prescription prescription) {
-        Serialiser.writeObject(prescription, "prescription_file.ser");
-    }
-
-    public static Serializable read(){
-        Serializable prescription = null;
-        try {
-         FileInputStream fileRead = new FileInputStream("prescription_file.ser");
-         ObjectInputStream in = new ObjectInputStream(fileRead);
-         while(fileRead.available() > 0) {
-            prescription = (Serializable) in.readObject();
-        }
-         in.close();
-         fileRead.close();
-        } catch (IOException i) {
-            i.printStackTrace();
-        } catch (ClassNotFoundException c) {
-            c.printStackTrace();
-        }
-        return prescription;
-    }    
+   
 
     /*Setters*/
     public void setDoctor(Doctor doctor) {

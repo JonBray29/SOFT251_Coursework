@@ -34,8 +34,16 @@ public class PrescriptionsSingleton implements Serializable{
     }
     
     //Serialization
-    public static void write(PrescriptionsSingleton instance) {
-        Serialiser.writeObject(instance, "uncollected_prescriptions_file.ser");
+    public static void write() {
+        try {
+            FileOutputStream fileWrite = new FileOutputStream("uncollected_prescriptions_file.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileWrite);
+            out.writeObject(PrescriptionsSingleton.getInstance().getUncollectedPrescriptions());
+            out.close();
+            fileWrite.close();
+         } catch (IOException i) {
+            i.printStackTrace();
+         }
     }
     public static Serializable read(){
         Serializable instance = null;
