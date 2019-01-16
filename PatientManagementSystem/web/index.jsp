@@ -13,6 +13,19 @@
     </head>
     <body>
         <form action="LoginServlet" name="login" method="POST">
+            
+            <% 
+            Cookie[] cookies = request.getCookies();
+            String userId = cookies[1].getValue();
+            out.println("Username of session is: " + userId);
+            /*if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    String userId = cookie.getValue();
+                    out.println("Username of session is: " + userId);
+                }
+            }*/
+            %>
+            <br>
             <input type="text" name="userId" placeholder="Username" /><br><br>
             <input type="password" name="password" placeholder="Password" /><br><br>
             <input type="submit" value="Login" name="login" />

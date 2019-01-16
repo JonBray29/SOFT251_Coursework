@@ -81,7 +81,7 @@ public abstract class SystemUsers implements Serializable{
         write();
     }
     
-    public boolean login(String userId, String password) { 
+    public static boolean login(String userId, String password) { 
         readHashmap();
         if(password == registeredUsers.get(userId)  == true) {
             /*Allow login*/

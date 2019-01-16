@@ -32,14 +32,20 @@ public class Admin extends SystemUsers implements Serializable{
     
     protected static String newUsername() {
         Random rand = new Random();
-        String userId = "A" + rand.nextInt(10000);
+        int randomNum = rand.nextInt(10000);
+        String userId = "A" + randomNum;
+        if (randomNum <= 1000) {
+            newUsername();
+        }
+        else{
             if (registeredUsers.containsKey(userId)  == true){
                 newUsername();
             }
             else{
                 return userId;
             }
-        return userId;
+        return userId;  
+        }
+    return userId;
     }
-    
 }

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -74,8 +75,8 @@ public class RegisterAdminServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
         String type = "admin";
+        
         
         String userId = SystemUsers.createId(type);
         
@@ -92,10 +93,16 @@ public class RegisterAdminServlet extends HttpServlet {
         SystemUsers user = SystemUsers.createUser(type, userId, firstName, lastName, addressLineOne, city, postcode, password, age, gender);
         SystemUsers.addToHashmap(userId, password);
         SystemUsers.addToList(user);
-        
+
+        Cookie userIdCookie = new Cookie("UserID", userId);
+        response.addCookie(userIdCookie);
         response.sendRedirect("index.jsp");
-     
+
+        
+        
         processRequest(request, response);
+        
+        
     }
 
     /**

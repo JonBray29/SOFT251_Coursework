@@ -6,6 +6,7 @@ package Servlets;
  * and open the template in the editor.
  */
 
+import PatientSystem.SystemUsers;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -74,15 +75,35 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
         
         String userId = request.getParameter("userId");
         String password = request.getParameter("password");
+        String letter = Character.toString(userId.charAt(0));
         
-        if(userId == "admin" && password == "password") {
-            RequestDispatcher rd = request.getRequestDispatcher("AdminHome.jsp");
-            rd.forward(request, response);
+        String type = null;
+        switch(letter){
+            case"a":
+                type = "AdminHome.jsp";
+                break;
+            case"s":
+                type = "SecretaryHome.jsp";
+                break;
+            case"p":
+                type = "PatientHome.jsp";
+                break;
+            case"d":
+                type = "DoctorHome.jsp";
+                break;
         }
+        
+        if(SystemUsers.login(userId, password) == true) {
+            
+        }
+        
+        response.sendRedirect(type);
+        
+        processRequest(request, response);
     }
 
     /**
