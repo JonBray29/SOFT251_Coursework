@@ -30,6 +30,17 @@ public class Prescription implements Serializable{
         this.dosage = dosage;
     };
     
+    /**
+    * creates new prescription and adds to lists
+    * 
+    * @param doctor what doctor created it
+    * @param patient who its for
+    * @param notes notes on reason of prescription
+    * @param medicine what medicine is being prescribed
+    * @param quantity amount
+    * @param dosage how many should be taken and how often
+    * 
+    */ 
     public void createPrescription(Doctor doctor, Patient patient, String notes, Medicine medicine, int quantity, String dosage) {
         Prescription prescription = new Prescription(doctor, patient, notes, medicine, quantity, dosage);
         patient.getPrescriptions().add(prescription);

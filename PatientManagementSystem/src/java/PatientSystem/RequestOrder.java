@@ -21,6 +21,11 @@ public class RequestOrder implements Serializable{
         this.medicine = medicine;
     }
 
+    /**
+    * creates request of order which is useful for doctor to use to request more stock or new stock
+    * 
+    * @param medicine is the medicine that needs to be ordered
+    */
     public void createRequestOrder(Medicine medicine) {
         RequestOrder order = new RequestOrder(medicine);
         requestOrder.add(order);

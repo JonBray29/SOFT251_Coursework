@@ -29,6 +29,14 @@ public class RequestAppointment implements Serializable{
         this.time = time;
     }
     
+    /**
+    * creates request of a new appointment using parameters
+    * 
+    * @param doctor is the doctor who will have the appointment
+    * @param patient is the patient who will have the appointment
+    * @param date is the date of the appointment
+    * @param time is the time of the appointment
+    */
     public static void createAppointment(Doctor doctor, Patient patient, String date, String time) {
         RequestAppointment appointment = new RequestAppointment(doctor, patient, date, time);
         requestAppointment.add(appointment);
@@ -72,6 +80,11 @@ public class RequestAppointment implements Serializable{
         }
     }
     
+    /**
+    * deleted requests of appointment, useful for after requested appointment has been made/declined
+    * 
+    * @param appointment is the requested appointment that will be deleted 
+    */
     public void delete(RequestAppointment appointment) {
         requestAppointment.remove(appointment);
         write();

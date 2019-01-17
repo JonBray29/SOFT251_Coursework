@@ -28,6 +28,14 @@ public class Appointments implements Serializable{
         this.time = time;
     }
     
+    /**
+    * creates a new appointment using parameters
+    * 
+    * @param doctor is the doctor who will have the appointment
+    * @param patient is the patient who will have the appointment
+    * @param date is the date of the appointment
+    * @param time is the time of the appointment
+    */
     public static void createAppointment(Doctor doctor, Patient patient, String date, String time) {
         Appointments appointment = new Appointments(doctor, patient, date, time);
         String notification = "New appointment has been made: " + appointment.toString();

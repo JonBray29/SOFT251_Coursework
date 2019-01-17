@@ -27,6 +27,21 @@ public abstract class SystemUsers implements Serializable{
     protected String gender;
     protected static HashMap<String, String> registeredUsers = new HashMap<String, String>();
     
+    /**
+    * creates new user, this is a static factory
+    * 
+    * @param type
+    * @param userId also is username 
+    * @param firstName 
+    * @param lastName 
+    * @param addressLineOne
+    * @param city 
+    * @param posscode 
+    * @param password password for user
+    * @param age sets age
+    * @param gender sets gender
+    * 
+    */
     public static SystemUsers createUser(String type, String userId, String firstName, String lastName, String addressLineOne, 
         String city, String postcode, String password, int age, String gender){
         SystemUsers user;
@@ -49,6 +64,12 @@ public abstract class SystemUsers implements Serializable{
         return user;
     }
     
+    /**
+    * calls method from subclasses for a new userID
+    * 
+    * @param type the subclass this is called from is depending on this
+    * 
+    */ 
     public static String createId(String type){
         read();
         String userId;
@@ -76,7 +97,12 @@ public abstract class SystemUsers implements Serializable{
         writeHashmap();
     }
     
-        
+    /**
+    * adds user to list of users, useful for new user creation
+    * 
+    * @param user what user it is being added
+    * 
+    */     
     public static void addToList(SystemUsers user) {
         UsersSingleton.getInstance().getListOfUsers().add(user);
         write();
@@ -94,6 +120,15 @@ public abstract class SystemUsers implements Serializable{
         }
     }*/
     
+    /**
+    * logs in user if username and password are correct
+    * 
+    * doesn't work properly with servlets
+    * 
+    * @param userId sets what userId the user used
+    * @param password what password the user used
+    * 
+    */ 
     public static boolean login(String userId, String password) {
         read();
         boolean login = false;
@@ -107,6 +142,13 @@ public abstract class SystemUsers implements Serializable{
     return login;   
     }
     
+    
+    /**
+    *removes user 
+    * 
+    * @param userId sets what user will be removed
+    * 
+    */ 
     public void removeUser(String userId) {
         //Remove user account
         for(SystemUsers s : UsersSingleton.getInstance().getListOfUsers()) {

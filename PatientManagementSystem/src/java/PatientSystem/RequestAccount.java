@@ -25,6 +25,7 @@ public class RequestAccount implements Serializable{
     private String gender;
     private static ArrayList<RequestAccount> requestAccount = new ArrayList<RequestAccount>();
 
+
     private RequestAccount(String firstName, String lastName, String addressLineOne, String city, String postcode, String password, int age, String gender) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -35,7 +36,20 @@ public class RequestAccount implements Serializable{
         this.age = age;
         this.gender = gender;
     }
-    
+
+    /**
+    * requests new user for patients to use
+    * 
+    * @param firstName 
+    * @param lastName 
+    * @param addressLineOne
+    * @param city 
+    * @param posscode 
+    * @param password password for user
+    * @param age sets age
+    * @param gender sets gender
+    * 
+    */    
     public static void requestAccount(String firstName, String lastName, String addressLineOne, String city, String postcode, String password, int age, String gender){
         RequestAccount account = new RequestAccount(firstName, lastName, addressLineOne, city, postcode, password, age, gender);
         requestAccount.add(account);
@@ -48,6 +62,12 @@ public class RequestAccount implements Serializable{
         write();
     }
     
+    /**
+    * requests termination, for users to use
+    * 
+    * @param patient says which patient is it requesting termination
+    * 
+    */     
     public static void requestTermination(Patient patient) {
         String notification = patient.getUserId() + patient.getFirstName() + patient.getLastName() + " Requested account termination";
         Notifications notifications = new Notifications(notification);

@@ -24,6 +24,15 @@ public class PatientNote implements Serializable{
         this.time = time;
     }
     
+    /**
+    * creates new note and writes to patients arraylist
+    * 
+    * @param notes sets what the note says
+    * @param date sets date for note, when it was created
+    * @param time and at what time
+    * @param patient sets what patient it is for
+    * 
+    */ 
     public void createNote(String notes, Date date, String time, Patient patient) {
         PatientNote note = new PatientNote(notes, date, time);
         patient.getNotes().add(note);

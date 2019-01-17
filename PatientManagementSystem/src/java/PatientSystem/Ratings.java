@@ -21,6 +21,14 @@ public class Ratings implements Serializable{
         this.comments = comments;
     }
     
+    /**
+    * used to review doctors
+    * 
+    * @param ratingValue value out of 5
+    * @param comments review comments
+    * @param doctor what doctor is being rated
+    * 
+    */ 
     public void createRating(int ratingValue, String comments, Doctor doctor) {
         Ratings rating = new Ratings(ratingValue, comments);
         doctor.getRatings().add(rating);
