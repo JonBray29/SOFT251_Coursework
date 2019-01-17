@@ -21,7 +21,7 @@ public class Medicine implements Serializable{
         this.name = name;
     }
 
-    public void createMedicine(String name){
+    public static void createMedicine(String name){
         Medicine medicine = new Medicine(name);
         listOfMedicine.add(medicine);
         write();

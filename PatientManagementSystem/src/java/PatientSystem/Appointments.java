@@ -28,7 +28,7 @@ public class Appointments implements Serializable{
         this.time = time;
     }
     
-    public void createAppointment(Doctor doctor, Patient patient, String date, String time) {
+    public static void createAppointment(Doctor doctor, Patient patient, String date, String time) {
         Appointments appointment = new Appointments(doctor, patient, date, time);
         String notification = "New appointment has been made: " + appointment.toString();
         Notifications notifications = new Notifications(notification);

@@ -51,6 +51,16 @@ public class Patient extends SystemUsers implements Serializable{
     return userId;
     }
     
+    public static Patient getPatient(String userId) {
+        Patient patient = null;
+        for(Patient p : UsersSingleton.getInstance().getListOfPatients()){
+            if(p.getUserId() == userId){
+                patient = p;
+            }
+        }
+        return patient;
+    }
+    
     /*Setters*/
 
     public void setPatientAppointments(ArrayList<Appointments> patientAppointments) {

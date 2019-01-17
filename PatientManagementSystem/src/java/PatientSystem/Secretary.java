@@ -48,6 +48,16 @@ public class Secretary extends SystemUsers implements Serializable{
     return userId;
     }
 
+    public static Secretary getSecretary(String userId) {
+        Secretary secretary = null;
+        for(Secretary s : UsersSingleton.getInstance().getListOfSecretarys()){
+            if(s.getUserId() == userId){
+                secretary = s;
+            }
+        }
+        return secretary;
+    }
+    
     /*Setters*/
     public void setNotifications(ArrayList<Notifications> notifications) {
         this.notifications = notifications;

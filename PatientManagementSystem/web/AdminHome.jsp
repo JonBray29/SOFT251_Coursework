@@ -13,6 +13,13 @@
         <title>Admin Home</title>
     </head>
     <body>
-
+        <%
+            for(Doctor d : UsersSingleton.getInstance().getListOfDoctors()){
+                out.println(d.getFirstName() + d.getLastName() + "<br>");
+                for(Ratings r : d.getRatings()){
+                    out.println(r.getRatingValue() + r.getComments() + "<br>");
+                }
+            }
+        %>
     </body>
 </html>

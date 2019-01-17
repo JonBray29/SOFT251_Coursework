@@ -47,6 +47,16 @@ public class Doctor extends SystemUsers implements Serializable{
         }
     return userId;
     }
+    
+    public static Doctor getDoctor(String userId) {
+        Doctor doctor = null;
+        for(Doctor d : UsersSingleton.getInstance().getListOfDoctors()){
+            if(d.getUserId() == userId){
+                doctor = d;
+            }
+        }
+        return doctor;
+    }
 
     /*Setters*/
     public void setDoctorAppointments(ArrayList<Appointments> doctorAppointments) {

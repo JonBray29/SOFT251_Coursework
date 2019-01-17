@@ -28,7 +28,6 @@
             <input type="submit" value="Create" name="createPatient" />
         </form>
         
-
         
     </body>
 </html>

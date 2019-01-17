@@ -13,6 +13,12 @@
         <title>Create Appointment</title>
     </head>
     <body>
-        
+        <form name="Create Appointment" action="CreateAppointment" method="POST">
+            <input type="text" name="Doctor" placeholder="Doctor Id" />
+            <input type="text" name="Patient" placeholder="Patient Id" />
+            <input type="date" name="Date"  />
+            <input type="time" name="Time" />
+            <input type="submit" value="Create" />
+        </form>
     </body>
 </html>

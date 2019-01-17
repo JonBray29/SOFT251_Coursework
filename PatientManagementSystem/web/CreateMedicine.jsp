@@ -12,6 +12,9 @@
         <title>Create Medicine</title>
     </head>
     <body>
-        
+        <form name="CreateMedicine" action="CreateMedicine" method="POST">
+            <input type="text" name="Medicinename" Placeholder="Medicine Name" />
+            <input type="submit" value="Create" />
+        </form>
     </body>
 </html>
