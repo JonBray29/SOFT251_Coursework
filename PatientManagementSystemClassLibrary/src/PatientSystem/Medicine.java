@@ -21,6 +21,11 @@ public class Medicine implements Serializable{
         this.name = name;
     }
 
+    /**
+    * creates medicine, useful for when then doctor wants new
+    * 
+    * @param name name of the medicine
+    */
     public static void createMedicine(String name){
         Medicine medicine = new Medicine(name);
         listOfMedicine.add(medicine);

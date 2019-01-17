@@ -29,6 +29,11 @@ public class Doctor extends SystemUsers implements Serializable{
         this.password = password;
     }
     
+    /**
+    *
+    * Method Creates a new number of 4 digits and adds prefix to it
+    * it then returns this as userId type string
+    */
     protected static String newUsername() {
         Random rand = new Random();
         int randomNum = rand.nextInt(10000);
@@ -48,6 +53,11 @@ public class Doctor extends SystemUsers implements Serializable{
     return userId;
     }
     
+    /**
+    * returns doctor object that has userId equal to userId
+    * 
+    * @param String userId
+    */
     public static Doctor getDoctor(String userId) {
         SystemUsers.read();
         Doctor doctor = null;

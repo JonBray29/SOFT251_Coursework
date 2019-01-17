@@ -32,6 +32,11 @@ public class Patient extends SystemUsers implements Serializable{
         this.gender = gender;
     }
     
+    /**
+    *
+    * Method Creates a new number of 4 digits and adds prefix to it
+    * it then returns this as userId type string
+    */
     protected static String newUsername() {
         Random rand = new Random();
         int randomNum = rand.nextInt(10000);
@@ -51,6 +56,11 @@ public class Patient extends SystemUsers implements Serializable{
     return userId;
     }
     
+    /**
+    * returns patient object that has userId equal to userId
+    * 
+    * @param String userId
+    */
     public static Patient getPatient(String userId) {
         SystemUsers.read();
         Patient patient = null;

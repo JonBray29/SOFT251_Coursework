@@ -23,6 +23,12 @@ public class Orders implements Serializable{
         this.quantity = quantity;
     }
 
+    /**
+    * creates order which is useful for ordering more stock
+    * 
+    * @param medicine is the medicine that needs to be ordered
+    * @param quantity is the amount that will be ordered
+    */
     public static void createOrders(Medicine medicine, int quantity){
         Orders order = new Orders(medicine, quantity);
         listOfOrders.add(order);
@@ -31,6 +37,12 @@ public class Orders implements Serializable{
 
     }
     
+    /**
+    * delivers order and deleted order from list
+    * 
+    * @param order order that is being delivered
+    * @param quantity is the amount that is delivered
+    */
     public static void deliverOrder(Orders order, int quantity) {
         //Simulate a delivery, updates the stock using existing update method.
         
