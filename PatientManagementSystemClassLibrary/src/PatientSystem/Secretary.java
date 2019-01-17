@@ -49,6 +49,7 @@ public class Secretary extends SystemUsers implements Serializable{
     }
 
     public static Secretary getSecretary(String userId) {
+        SystemUsers.read();
         Secretary secretary = null;
         for(Secretary s : UsersSingleton.getInstance().getListOfSecretarys()){
             if(s.getUserId() == userId){

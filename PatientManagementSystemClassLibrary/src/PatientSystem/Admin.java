@@ -50,6 +50,7 @@ public class Admin extends SystemUsers implements Serializable{
     }
     
     public static Admin getAdmin(String userId) {
+        SystemUsers.read();
         Admin admin = null;
         for(Admin a : UsersSingleton.getInstance().getListOfAdmins()){
             if(a.getUserId() == userId){

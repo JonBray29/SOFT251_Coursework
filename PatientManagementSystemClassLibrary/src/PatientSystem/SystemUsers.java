@@ -50,6 +50,7 @@ public abstract class SystemUsers implements Serializable{
     }
     
     public static String createId(String type){
+        read();
         String userId;
         switch(type.toLowerCase()){
             case"admin":

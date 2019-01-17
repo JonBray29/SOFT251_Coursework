@@ -23,14 +23,15 @@ public class Orders implements Serializable{
         this.quantity = quantity;
     }
 
-    public void createOrders(){
+    public static void createOrders(Medicine medicine, int quantity){
         Orders order = new Orders(medicine, quantity);
         listOfOrders.add(order);
         write();
+        deliverOrder(order, quantity);
 
     }
     
-    public void deliverOrder(Orders order, int quantity) {
+    public static void deliverOrder(Orders order, int quantity) {
         //Simulate a delivery, updates the stock using existing update method.
         
         for(Orders o : listOfOrders) {

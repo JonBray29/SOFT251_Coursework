@@ -18,6 +18,15 @@ public class Notifications implements Serializable{
     public Notifications(String notification) {
         this.notification = notification;
     }
+
+    public void setNotification(String notification) {
+        this.notification = notification;
+    }
+
+    public String getNotification() {
+        return notification;
+    }
+    
     
     
 }
