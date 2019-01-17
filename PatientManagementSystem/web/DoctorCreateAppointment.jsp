@@ -4,6 +4,7 @@
     Author     : Jonbr
 --%>
 
+<%@page import="PatientSystem.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +13,6 @@
         <title>Create Appointment</title>
     </head>
     <body>
-        
+
     </body>
 </html>

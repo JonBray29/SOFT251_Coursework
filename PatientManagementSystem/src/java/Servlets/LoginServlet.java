@@ -77,31 +77,44 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         
         
-        String userId = request.getParameter("userId");
+        String userId = request.getParameter("username");
         String password = request.getParameter("password");
         String letter = Character.toString(userId.charAt(0));
-        
-        String type = null;
-        switch(letter){
-            case"a":
-                type = "AdminHome.jsp";
-                break;
-            case"s":
-                type = "SecretaryHome.jsp";
-                break;
-            case"p":
-                type = "PatientHome.jsp";
-                break;
-            case"d":
-                type = "DoctorHome.jsp";
-                break;
-        }
+        String yes;
         
         if(SystemUsers.login(userId, password) == true) {
-            
+            yes = "y";
+        }
+        else {
+            yes = "n";
         }
         
-        response.sendRedirect(type);
+        switch(yes){
+            case"y":
+                response.sendRedirect("AdminHome.jsp");
+                break;
+            case"n":
+                response.sendRedirect("DoctorHome.jsp");
+                break;
+        }
+        
+        /*switch(letter.toLowerCase()){
+            case"a":
+                response.sendRedirect("AdminHome.jsp");            
+                break;
+            case"s":
+                response.sendRedirect("SecretaryHome.jsp");          
+                break;
+            case"p":
+                response.sendRedirect("PatientHome.jsp");            
+                break;
+            case"d":
+                response.sendRedirect("DoctorHome.jsp");            
+                break;
+        }*/
+        
+        
+        
         
         processRequest(request, response);
     }
