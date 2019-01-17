@@ -78,22 +78,13 @@ public class CreateAppointment extends HttpServlet {
         String patientString = request.getParameter("Patient");
         String date = request.getParameter("Date");
         String time = request.getParameter("Time");
-        Doctor doctor;
-        Patient patient;
-        
-        for(Doctor d : UsersSingleton.getInstance().getListOfDoctors()){
-            if(d.getUserId() == doctorString){
-                doctor = d;
-            }
-        }
-        
-        for(Patient p : UsersSingleton.getInstance().getListOfPatients()){
-            if(p.getUserId() == patientString){
-                patient = p;
-            }
-        }
+        Doctor doctor = Doctor.getDoctor(doctorString);
+        Patient patient = Patient.getPatient(patientString);
+               
         
         Appointments.createAppointment(doctor, patient, date, time);
+        
+        response.sendRedirect("DoctorCreateAppointment.jsp");
         
         processRequest(request, response);
     }

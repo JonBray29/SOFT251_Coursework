@@ -21,7 +21,7 @@ public class Medicine implements Serializable{
         this.name = name;
     }
 
-    public void createMedicine(String name){
+    public static void createMedicine(String name){
         Medicine medicine = new Medicine(name);
         listOfMedicine.add(medicine);
         write();
@@ -40,24 +40,23 @@ public class Medicine implements Serializable{
          }
     }
 
-    public static Serializable read(){
-        Serializable medicine = null;
+    public static void read(){
         try {
-         FileInputStream fileRead = new FileInputStream("medicine_file.ser");
-         ObjectInputStream in = new ObjectInputStream(fileRead);
-         while(fileRead.available() > 0) {
-            medicine = (Serializable) in.readObject();
-            listOfMedicine.add((Medicine) medicine);        
-        }
-         in.close();
-         fileRead.close();
+            FileInputStream fileRead = new FileInputStream("medicine_file.ser");
+            ObjectInputStream in = new ObjectInputStream(fileRead);
+            ArrayList<Medicine> medicine = (ArrayList<Medicine>)in.readObject();       
+            in.close();
+            fileRead.close();
+            setListOfMedicine(medicine);
+            /*for(Medicine m : medicine) {
+                listOfMedicine.add(m);
+            }*/
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {
             c.printStackTrace();
         }
-        return medicine;
-    }   
+    }
     
     /*Setters*/
     public void setName(String name) {

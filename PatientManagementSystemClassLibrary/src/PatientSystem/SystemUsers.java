@@ -8,6 +8,7 @@ package PatientSystem;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.io.*;
+import java.util.ArrayList;
 
 
 /**
@@ -80,16 +81,29 @@ public abstract class SystemUsers implements Serializable{
         write();
     }
     
-    public boolean login(String userId, String password) { 
+    /*public static boolean login(String userId, String password) { 
         readHashmap();
         if(password == registeredUsers.get(userId)  == true) {
-            /*Allow login*/
+            //Allow login
             return true;
         }
         else {
-            /*password not recognised*/
+            //password not recognised
             return false;
         }
+    }*/
+    
+    public static boolean login(String userId, String password) {
+        read();
+        boolean login = false;
+        //for(SystemUsers s : UsersSingleton.getInstance().getListOfUsers()){
+          if(userId == userId && password == password){
+                login = true;
+            }
+
+        //return login;  
+        //}
+    return login;   
     }
     
     public void removeUser(String userId) {
@@ -115,6 +129,7 @@ public abstract class SystemUsers implements Serializable{
          }
     }
     
+    
     public static void writeHashmap() {
         try {
             FileOutputStream fileWrite = new FileOutputStream("hashmap_file.ser");
@@ -127,41 +142,39 @@ public abstract class SystemUsers implements Serializable{
          }
     }
 
-    public static Serializable read(){
-        Serializable user = null;
+    public static void read(){
+        //ArrayList<SystemUsers> user = new ArrayList<>();
         try {
-         FileInputStream fileRead = new FileInputStream("user_file.ser");
-         ObjectInputStream in = new ObjectInputStream(fileRead);
-         while(fileRead.available() > 0) {
-            user = (Serializable) in.readObject();
-            addToList((SystemUsers) user);
-        }
-         in.close();
-         fileRead.close();
+            FileInputStream fileRead = new FileInputStream("user_file.ser");
+            ObjectInputStream in = new ObjectInputStream(fileRead);
+            ArrayList<SystemUsers> user = (ArrayList<SystemUsers>) in.readObject();       
+            in.close();
+            fileRead.close();
+            UsersSingleton.getInstance().setListOfUsers(user);
+            //for(SystemUsers s : user) {
+            //    UsersSingleton.getInstance().getListOfUsers().add(s);
+            //}
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {
             c.printStackTrace();
         }
-        return user;
     }    
     
-    public static Serializable readHashmap(){
-        Serializable hashmap = null;
-        try {
+    public static void readHashmap(){
+      try
+      {
          FileInputStream fileRead = new FileInputStream("hashmap_file.ser");
          ObjectInputStream in = new ObjectInputStream(fileRead);
-         while(fileRead.available() > 0) {
-            hashmap = (Serializable) in.readObject();
-        }
+         HashMap<String, String> map = (HashMap<String, String>) in.readObject();
+         setRegisteredUsers(map);
          in.close();
-         fileRead.close();
+         fileRead.close();  
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {
             c.printStackTrace();
         }
-        return hashmap;
     } 
     
     /*setters*/
@@ -193,6 +206,10 @@ public abstract class SystemUsers implements Serializable{
     public void setGender(String gender) {
         this.gender = gender;
     }    
+    public static void setRegisteredUsers(HashMap<String, String> registeredUsers) {
+        SystemUsers.registeredUsers = registeredUsers;
+    }
+    
     
     /*getters*/
     public String getUserId() {

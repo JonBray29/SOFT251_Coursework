@@ -28,7 +28,7 @@ public class Appointments implements Serializable{
         this.time = time;
     }
     
-    public void createAppointment(Doctor doctor, Patient patient, String date, String time) {
+    public static void createAppointment(Doctor doctor, Patient patient, String date, String time) {
         Appointments appointment = new Appointments(doctor, patient, date, time);
         String notification = "New appointment has been made: " + appointment.toString();
         Notifications notifications = new Notifications(notification);
@@ -55,23 +55,22 @@ public class Appointments implements Serializable{
          }
     }
 
-    public static Serializable read(){
-        Serializable appointment = null;
+    public static void read(){
         try {
-         FileInputStream fileRead = new FileInputStream("appointment_file.ser");
-         ObjectInputStream in = new ObjectInputStream(fileRead);
-         while(fileRead.available() > 0) {
-            appointment = (Serializable) in.readObject();
-            allAppointments.add((Appointments) appointment);
-        }
-         in.close();
-         fileRead.close();
+            FileInputStream fileRead = new FileInputStream("appointment_file.ser");
+            ObjectInputStream in = new ObjectInputStream(fileRead);
+            ArrayList<Appointments> appointment = (ArrayList<Appointments>)in.readObject();       
+            in.close();
+            fileRead.close();
+            setAllAppointments(appointment);
+            /*for(Appointments a : appointment) {
+                allAppointments.add(a);
+            }*/
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {
             c.printStackTrace();
         }
-        return appointment;
     }    
     
 

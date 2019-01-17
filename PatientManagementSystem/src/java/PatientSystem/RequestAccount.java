@@ -48,7 +48,7 @@ public class RequestAccount implements Serializable{
         write();
     }
     
-    public void requestTermination(Patient patient) {
+    public static void requestTermination(Patient patient) {
         String notification = patient.getUserId() + patient.getFirstName() + patient.getLastName() + " Requested account termination";
         Notifications notifications = new Notifications(notification);
         for(Secretary i : UsersSingleton.getInstance().getListOfSecretarys()) {

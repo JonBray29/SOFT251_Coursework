@@ -27,6 +27,17 @@ public class Medicine implements Serializable{
         write();
     }
     
+    public static Medicine getMedicine(String name) {
+        read();
+        Medicine medicine = null;
+        for(Medicine m : listOfMedicine){
+            if(m.getName().toLowerCase() == name.toLowerCase()){
+                medicine = m;
+            }
+        }
+        return medicine;
+    }
+    
     //Serialization
     public static void write() {
         try {

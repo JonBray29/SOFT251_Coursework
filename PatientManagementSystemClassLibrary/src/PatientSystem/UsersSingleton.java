@@ -77,4 +77,10 @@ public class UsersSingleton implements Serializable{
         }
         return listOfPatients;
     }
+
+    public void setListOfUsers(ArrayList<SystemUsers> listOfUsers) {
+        this.listOfUsers = listOfUsers;
+    }
+    
+    
 }

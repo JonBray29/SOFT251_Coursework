@@ -31,16 +31,33 @@ public class Secretary extends SystemUsers implements Serializable{
     
     protected static String newUsername() {
         Random rand = new Random();
-        String userId = "S" + rand.nextInt(10000);
+        int randomNum = rand.nextInt(10000);
+        String userId = "S" + randomNum;
+        if (randomNum <= 1000) {
+            newUsername();
+        }
+        else{
             if (registeredUsers.containsKey(userId)  == true){
                 newUsername();
             }
             else{
                 return userId;
             }
-        return userId;
+        return userId;  
+        }
+    return userId;
     }
 
+    public static Secretary getSecretary(String userId) {
+        Secretary secretary = null;
+        for(Secretary s : UsersSingleton.getInstance().getListOfSecretarys()){
+            if(s.getUserId() == userId){
+                secretary = s;
+            }
+        }
+        return secretary;
+    }
+    
     /*Setters*/
     public void setNotifications(ArrayList<Notifications> notifications) {
         this.notifications = notifications;

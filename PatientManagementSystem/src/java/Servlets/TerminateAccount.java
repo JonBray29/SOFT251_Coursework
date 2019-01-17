@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Jonbr
  */
-@WebServlet(name = "RequestAppointments", urlPatterns = {"/RequestAppointments"})
-public class RequestAppointments extends HttpServlet {
+@WebServlet(name = "TerminateAccount", urlPatterns = {"/TerminateAccount"})
+public class TerminateAccount extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +39,10 @@ public class RequestAppointments extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RequestAppointments</title>");            
+            out.println("<title>Servlet TerminateAccount</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RequestAppointments at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet TerminateAccount at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -74,17 +75,14 @@ public class RequestAppointments extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String doctorString = request.getParameter("Doctor");
-        String patientString = request.getParameter("Patient");
-        String date = request.getParameter("Date");
-        String time = request.getParameter("Time");
-        Doctor doctor = Doctor.getDoctor(doctorString);
-        Patient patient = Patient.getPatient(patientString);
-               
+        Cookie[] cookies = request.getCookies();
+        String userId = cookies[1].getValue();
         
-        RequestAppointment.createAppointment(doctor, patient, date, time);
+        Patient patient = Patient.getPatient(userId);
         
-        response.sendRedirect("PatientHome.jsp");
+        RequestAccount.requestTermination(patient);
+        
+        response.sendRedirect("index.jsp");
         
         processRequest(request, response);
     }

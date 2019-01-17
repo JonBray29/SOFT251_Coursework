@@ -52,6 +52,7 @@ public class Patient extends SystemUsers implements Serializable{
     }
     
     public static Patient getPatient(String userId) {
+        SystemUsers.read();
         Patient patient = null;
         for(Patient p : UsersSingleton.getInstance().getListOfPatients()){
             if(p.getUserId() == userId){

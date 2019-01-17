@@ -46,24 +46,23 @@ public class RequestOrder implements Serializable{
          }
     }
 
-    public static Serializable read(){
-        Serializable order = null;
+    public static void read(){
         try {
-         FileInputStream fileRead = new FileInputStream("request_order_file.ser");
-         ObjectInputStream in = new ObjectInputStream(fileRead);
-         while(fileRead.available() > 0) {
-            order = (Serializable) in.readObject();
-            requestOrder.add((RequestOrder) order);
-        }
-         in.close();
-         fileRead.close();
+            FileInputStream fileRead = new FileInputStream("request_order_file.ser");
+            ObjectInputStream in = new ObjectInputStream(fileRead);
+            ArrayList<RequestOrder> order = (ArrayList<RequestOrder>)in.readObject();    
+            setRequestOrder(order);
+            in.close();
+            fileRead.close();
+            /*for(RequestOrder o : order) {
+                requestOrder.add(o);
+            }*/
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {
             c.printStackTrace();
         }
-        return order;
-    }     
+    }    
     
     public void delete(RequestOrder order) {
         requestOrder.remove(order);

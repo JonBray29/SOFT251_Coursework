@@ -1,15 +1,16 @@
 <%-- 
-    Document   : SecretaryHome
-    Created on : 15-Jan-2019, 21:53:27
+    Document   : SecretaryNotifications
+    Created on : 17-Jan-2019, 03:35:51
     Author     : Jonbr
 --%>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<%@page import="PatientSystem.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Secretary Home</title>
+        <title>Notifications</title>
     </head>
     <body>
         
@@ -28,5 +29,20 @@
     	</ul>
   	</nav>
         
+        
+        <%  /*Doesn't work
+            *            
+            Cookie[] cookies = request.getCookies();
+            String userId = cookies[1].getValue();
+        
+            for(Secretary s : UsersSingleton.getInstance().getListOfSecretarys()){
+                if(s.getUserId() == userId) {
+                    for(Notifications n : s.getNotifications()){
+                        out.println(n.getNotification() + "<br>");
+                    }
+                    
+                }*/
+
+        %>
     </body>
 </html>

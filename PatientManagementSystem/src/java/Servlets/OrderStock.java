@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Jonbr
  */
-@WebServlet(name = "RequestAppointments", urlPatterns = {"/RequestAppointments"})
-public class RequestAppointments extends HttpServlet {
+@WebServlet(name = "OrderStock", urlPatterns = {"/OrderStock"})
+public class OrderStock extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +38,10 @@ public class RequestAppointments extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RequestAppointments</title>");            
+            out.println("<title>Servlet OrderStock</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RequestAppointments at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet OrderStock at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -74,19 +74,18 @@ public class RequestAppointments extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String doctorString = request.getParameter("Doctor");
-        String patientString = request.getParameter("Patient");
-        String date = request.getParameter("Date");
-        String time = request.getParameter("Time");
-        Doctor doctor = Doctor.getDoctor(doctorString);
-        Patient patient = Patient.getPatient(patientString);
+        String medicineString = request.getParameter("Medicine");
+        String tempQuantity = request.getParameter("Quantity");
+        int quantity = Integer.valueOf(tempQuantity);
+        Medicine medicine = Medicine.getMedicine(medicineString);
                
         
-        RequestAppointment.createAppointment(doctor, patient, date, time);
+        Orders.createOrders(medicine, quantity);
         
-        response.sendRedirect("PatientHome.jsp");
+        response.sendRedirect("ViewStockAndOrders.jsp");
         
         processRequest(request, response);
+        
     }
 
     /**

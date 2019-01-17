@@ -36,7 +36,7 @@ public class RequestAccount implements Serializable{
         this.gender = gender;
     }
     
-    public void requestAccount(String firstName, String lastName, String addressLineOne, String city, String postcode, String password, int age, String gender){
+    public static void requestAccount(String firstName, String lastName, String addressLineOne, String city, String postcode, String password, int age, String gender){
         RequestAccount account = new RequestAccount(firstName, lastName, addressLineOne, city, postcode, password, age, gender);
         requestAccount.add(account);
         String notification = "new account requested";
@@ -70,24 +70,23 @@ public class RequestAccount implements Serializable{
          }
     }
 
-    public static Serializable read(){
-        Serializable account = null;
+    public static void read(){
         try {
-         FileInputStream fileRead = new FileInputStream("request_account_file.ser");
-         ObjectInputStream in = new ObjectInputStream(fileRead);
-         while(fileRead.available() > 0) {
-            account = (Serializable) in.readObject();
-            requestAccount.add((RequestAccount) account);
-        }
-         in.close();
-         fileRead.close();
+            FileInputStream fileRead = new FileInputStream("request_account_file.ser");
+            ObjectInputStream in = new ObjectInputStream(fileRead);
+            ArrayList<RequestAccount> account = (ArrayList<RequestAccount>)in.readObject();    
+            setRequestAccount(account);
+            in.close();
+            fileRead.close();
+            /*for(RequestAccount a : account) {
+                requestAccount.add(a);
+            }*/
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {
             c.printStackTrace();
         }
-        return account;
-    } 
+    }
     
     public void delete(RequestAccount account) {
         requestAccount.remove(account);

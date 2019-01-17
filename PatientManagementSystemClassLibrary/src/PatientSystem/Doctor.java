@@ -31,14 +31,31 @@ public class Doctor extends SystemUsers implements Serializable{
     
     protected static String newUsername() {
         Random rand = new Random();
-        String userId = "D" + rand.nextInt(10000);
+        int randomNum = rand.nextInt(10000);
+        String userId = "D" + randomNum;
+        if (randomNum <= 1000) {
+            newUsername();
+        }
+        else{
             if (registeredUsers.containsKey(userId)  == true){
                 newUsername();
             }
             else{
                 return userId;
             }
-        return userId;
+        return userId;  
+        }
+    return userId;
+    }
+    
+    public static Doctor getDoctor(String userId) {
+        Doctor doctor = null;
+        for(Doctor d : UsersSingleton.getInstance().getListOfDoctors()){
+            if(d.getUserId() == userId){
+                doctor = d;
+            }
+        }
+        return doctor;
     }
 
     /*Setters*/

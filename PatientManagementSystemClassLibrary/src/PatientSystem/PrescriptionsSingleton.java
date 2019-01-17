@@ -15,7 +15,7 @@ import java.io.*;
 public class PrescriptionsSingleton implements Serializable{
     
     private static PrescriptionsSingleton instance;
-    private ArrayList<Prescription> uncollectedPrescriptions = null;
+    private static ArrayList<Prescription> uncollectedPrescriptions = null;
     
     private PrescriptionsSingleton() {
         uncollectedPrescriptions = new ArrayList<>();
@@ -45,19 +45,28 @@ public class PrescriptionsSingleton implements Serializable{
             i.printStackTrace();
          }
     }
-    public static Serializable read(){
-        Serializable instance = null;
+    
+    public static void read(){
         try {
-         FileInputStream fileRead = new FileInputStream("uncollected_prescriptions_file.ser");
-         ObjectInputStream in = new ObjectInputStream(fileRead);
-            instance = (Serializable) in.readObject();
-         in.close();
-         fileRead.close();
+            FileInputStream fileRead = new FileInputStream("uncollected_prescriptions_file.ser");
+            ObjectInputStream in = new ObjectInputStream(fileRead);
+            ArrayList<Prescription> prescription = (ArrayList<Prescription>)in.readObject(); 
+            setUncollectedPrescriptions(prescription);
+            in.close();
+            fileRead.close();
+            /*for(Prescription p : prescription) {
+                uncollectedPrescriptions.add(p);
+            }*/
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {
             c.printStackTrace();
         }
-        return instance;
-    } 
+    }
+
+    public static void setUncollectedPrescriptions(ArrayList<Prescription> uncollectedPrescriptions) {
+        PrescriptionsSingleton.uncollectedPrescriptions = uncollectedPrescriptions;
+    }
+    
+    
 }
