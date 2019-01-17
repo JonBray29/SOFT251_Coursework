@@ -41,16 +41,16 @@ public class Medicine implements Serializable{
     }
 
     public static void read(){
-        ArrayList<Medicine> medicine = new ArrayList<>();
         try {
             FileInputStream fileRead = new FileInputStream("medicine_file.ser");
             ObjectInputStream in = new ObjectInputStream(fileRead);
-            medicine = (ArrayList<Medicine>)in.readObject();       
+            ArrayList<Medicine> medicine = (ArrayList<Medicine>)in.readObject();       
             in.close();
             fileRead.close();
-            for(Medicine m : medicine) {
+            setListOfMedicine(medicine);
+            /*for(Medicine m : medicine) {
                 listOfMedicine.add(m);
-            }
+            }*/
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {

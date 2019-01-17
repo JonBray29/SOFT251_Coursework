@@ -47,20 +47,26 @@ public class PrescriptionsSingleton implements Serializable{
     }
     
     public static void read(){
-        ArrayList<Prescription> prescription = new ArrayList<>();
         try {
             FileInputStream fileRead = new FileInputStream("uncollected_prescriptions_file.ser");
             ObjectInputStream in = new ObjectInputStream(fileRead);
-            prescription = (ArrayList<Prescription>)in.readObject();       
+            ArrayList<Prescription> prescription = (ArrayList<Prescription>)in.readObject(); 
+            setUncollectedPrescriptions(prescription);
             in.close();
             fileRead.close();
-            for(Prescription p : prescription) {
+            /*for(Prescription p : prescription) {
                 uncollectedPrescriptions.add(p);
-            }
+            }*/
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {
             c.printStackTrace();
         }
     }
+
+    public static void setUncollectedPrescriptions(ArrayList<Prescription> uncollectedPrescriptions) {
+        PrescriptionsSingleton.uncollectedPrescriptions = uncollectedPrescriptions;
+    }
+    
+    
 }

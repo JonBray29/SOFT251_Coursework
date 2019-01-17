@@ -89,16 +89,16 @@ public class Stock implements Serializable{
     }
      
     public static void read(){
-        ArrayList<Stock> stock = new ArrayList<>();
         try {
             FileInputStream fileRead = new FileInputStream("request_order_file.ser");
             ObjectInputStream in = new ObjectInputStream(fileRead);
-            stock = (ArrayList<Stock>)in.readObject();       
+            ArrayList<Stock> stock = (ArrayList<Stock>)in.readObject(); 
+            setListOfStock(stock);
             in.close();
             fileRead.close();
-            for(Stock s : stock) {
+            /*for(Stock s : stock) {
                 listOfStock.add(s);
-            }
+            }*/
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {

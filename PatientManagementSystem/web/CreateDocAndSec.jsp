@@ -12,7 +12,7 @@
         <title>Register Doctor and Secretary</title>
     </head>
     <body>
-        <form name="Register" method="POST">
+        <form name="Register" action="CreateDocAndSecretarys" method="POST">
             <select name="type">
                 <option>doctor</option>
                 <option>secretary</option>

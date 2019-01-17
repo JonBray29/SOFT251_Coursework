@@ -47,16 +47,16 @@ public class RequestOrder implements Serializable{
     }
 
     public static void read(){
-        ArrayList<RequestOrder> order = new ArrayList<>();
         try {
             FileInputStream fileRead = new FileInputStream("request_order_file.ser");
             ObjectInputStream in = new ObjectInputStream(fileRead);
-            order = (ArrayList<RequestOrder>)in.readObject();       
+            ArrayList<RequestOrder> order = (ArrayList<RequestOrder>)in.readObject();    
+            setRequestOrder(order);
             in.close();
             fileRead.close();
-            for(RequestOrder o : order) {
+            /*for(RequestOrder o : order) {
                 requestOrder.add(o);
-            }
+            }*/
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {

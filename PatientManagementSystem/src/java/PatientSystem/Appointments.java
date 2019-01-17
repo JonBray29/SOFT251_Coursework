@@ -56,16 +56,16 @@ public class Appointments implements Serializable{
     }
 
     public static void read(){
-        ArrayList<Appointments> appointment = new ArrayList<>();
         try {
-            FileInputStream fileRead = new FileInputStream("user_file.ser");
+            FileInputStream fileRead = new FileInputStream("appointment_file.ser");
             ObjectInputStream in = new ObjectInputStream(fileRead);
-            appointment = (ArrayList<Appointments>)in.readObject();       
+            ArrayList<Appointments> appointment = (ArrayList<Appointments>)in.readObject();       
             in.close();
             fileRead.close();
-            for(Appointments a : appointment) {
+            setAllAppointments(appointment);
+            /*for(Appointments a : appointment) {
                 allAppointments.add(a);
-            }
+            }*/
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {

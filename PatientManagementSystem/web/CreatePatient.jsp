@@ -4,6 +4,7 @@
     Author     : Jonbr
 --%>
 
+<%@page import="PatientSystem.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,7 @@
         <title>Create Patient</title>
     </head>
     <body>
-        <form name="RegisterPatient" method="POST">
+        <form name="RegisterPatient" action="CreatePatient" method="POST">
             <input type="text" name="FirstName" placeholder="First Name" />
             <input type="text" name="LastName" placeholder="Last Name" />
             <input type="text" name="AddressLineOne" placeholder="Address Line One" />
@@ -26,5 +27,8 @@
             </select>
             <input type="submit" value="Create" name="createPatient" />
         </form>
+        
+
+        
     </body>
 </html>

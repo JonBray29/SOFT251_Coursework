@@ -1,15 +1,13 @@
-package Servlets;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package Servlets;
 
 import PatientSystem.SystemUsers;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -21,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Jonbr
  */
-@WebServlet(urlPatterns = {"/LoginServlet"})
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "CreatePatient", urlPatterns = {"/CreatePatient"})
+public class CreatePatient extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +39,10 @@ public class LoginServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");            
+            out.println("<title>Servlet CreatePatient</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet CreatePatient at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -76,34 +74,30 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String type = "patient";
         
         
-        String userId = request.getParameter("username");
-        String password = request.getParameter("password");
-        String letter = Character.toString(userId.charAt(0));
+        String userId = SystemUsers.createId(type);
         
+        String firstName = request.getParameter("FirstName");
+        String lastName = request.getParameter("LastName");
+        String addressLineOne = request.getParameter("AddressLineOne");
+        String city = request.getParameter("City");
+        String postcode = request.getParameter("Postcode");
+        String password = request.getParameter("Password");
+        String tempAge = request.getParameter("Age");
+        int age = Integer.valueOf(tempAge);
+        String gender = request.getParameter("Gender");
+        
+        SystemUsers user = SystemUsers.createUser(type, userId, firstName, lastName, addressLineOne, city, postcode, password, age, gender);
+        SystemUsers.addToHashmap(userId, password);
+        SystemUsers.addToList(user);
 
-        if(SystemUsers.login(userId, password) == true) {
-            switch(letter.toLowerCase()){
-            case"a":
-                response.sendRedirect("AdminHome.jsp");            
-                break;
-            case"s":
-                response.sendRedirect("SecretaryHome.jsp");          
-                break;
-            case"p":
-                response.sendRedirect("PatientHome.jsp");            
-                break;
-            case"d":
-                response.sendRedirect("DoctorHome.jsp");            
-                break;
-        }
-        }
+        Cookie userIdCookie = new Cookie("UserID", userId);
+        response.addCookie(userIdCookie);
+        response.sendRedirect("CreatedPatient.jsp");
+
         
-        
-        
-        Cookie userLoggedIn = new Cookie("UserID", userId);
-        response.addCookie(userLoggedIn);
         
         processRequest(request, response);
     }

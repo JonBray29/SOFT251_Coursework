@@ -162,12 +162,12 @@ public abstract class SystemUsers implements Serializable{
     }    
     
     public static void readHashmap(){
-        registeredUsers = null;
       try
       {
          FileInputStream fileRead = new FileInputStream("hashmap_file.ser");
          ObjectInputStream in = new ObjectInputStream(fileRead);
-         registeredUsers = (HashMap<String, String>) in.readObject();
+         HashMap<String, String> map = (HashMap<String, String>) in.readObject();
+         setRegisteredUsers(map);
          in.close();
          fileRead.close();  
         } catch (IOException i) {
@@ -206,6 +206,10 @@ public abstract class SystemUsers implements Serializable{
     public void setGender(String gender) {
         this.gender = gender;
     }    
+    public static void setRegisteredUsers(HashMap<String, String> registeredUsers) {
+        SystemUsers.registeredUsers = registeredUsers;
+    }
+    
     
     /*getters*/
     public String getUserId() {

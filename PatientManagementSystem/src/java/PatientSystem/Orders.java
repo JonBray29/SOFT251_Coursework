@@ -57,16 +57,16 @@ public class Orders implements Serializable{
     }
 
     public static void read(){
-        ArrayList<Orders> order = new ArrayList<>();
         try {
             FileInputStream fileRead = new FileInputStream("order_file.ser");
             ObjectInputStream in = new ObjectInputStream(fileRead);
-            order = (ArrayList<Orders>)in.readObject();       
+            ArrayList<Orders> order = (ArrayList<Orders>)in.readObject();       
             in.close();
             fileRead.close();
-            for(Orders o : order) {
+            setListOfOrders(order);
+            /*for(Orders o : order) {
                 listOfOrders.add(o);
-            }
+            }*/
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {

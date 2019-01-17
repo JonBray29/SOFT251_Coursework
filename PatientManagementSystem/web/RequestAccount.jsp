@@ -12,7 +12,7 @@
         <title>Request Account</title>
     </head>
     <body>
-        <form name="RequestAccount" method="POST">
+        <form name="RequestAccount" action="requestAccount" method="POST">
             <input type="text" name="FirstName" placeholder="First Name" />
             <input type="text" name="LastName" placeholder="Last Name" />
             <input type="text" name="AddressLineOne" placeholder="Address Line One" />

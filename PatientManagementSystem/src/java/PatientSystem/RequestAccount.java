@@ -36,7 +36,7 @@ public class RequestAccount implements Serializable{
         this.gender = gender;
     }
     
-    public void requestAccount(String firstName, String lastName, String addressLineOne, String city, String postcode, String password, int age, String gender){
+    public static void requestAccount(String firstName, String lastName, String addressLineOne, String city, String postcode, String password, int age, String gender){
         RequestAccount account = new RequestAccount(firstName, lastName, addressLineOne, city, postcode, password, age, gender);
         requestAccount.add(account);
         String notification = "new account requested";
@@ -71,16 +71,16 @@ public class RequestAccount implements Serializable{
     }
 
     public static void read(){
-        ArrayList<RequestAccount> account = new ArrayList<>();
         try {
             FileInputStream fileRead = new FileInputStream("request_account_file.ser");
             ObjectInputStream in = new ObjectInputStream(fileRead);
-            account = (ArrayList<RequestAccount>)in.readObject();       
+            ArrayList<RequestAccount> account = (ArrayList<RequestAccount>)in.readObject();    
+            setRequestAccount(account);
             in.close();
             fileRead.close();
-            for(RequestAccount a : account) {
+            /*for(RequestAccount a : account) {
                 requestAccount.add(a);
-            }
+            }*/
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {

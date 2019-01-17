@@ -55,16 +55,16 @@ public class RequestAppointment implements Serializable{
     }
 
     public static void read(){
-        ArrayList<RequestAppointment> appointment = new ArrayList<>();
         try {
             FileInputStream fileRead = new FileInputStream("request_appointment_file.ser");
             ObjectInputStream in = new ObjectInputStream(fileRead);
-            appointment = (ArrayList<RequestAppointment>)in.readObject();       
+            ArrayList<RequestAppointment> appointment = (ArrayList<RequestAppointment>)in.readObject();  
+            setRequestAppointment(appointment);
             in.close();
             fileRead.close();
-            for(RequestAppointment a : appointment) {
+            /*for(RequestAppointment a : appointment) {
                 requestAppointment.add(a);
-            }
+            }*/
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {
